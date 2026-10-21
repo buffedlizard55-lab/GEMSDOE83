@@ -5,6 +5,9 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
-data/raw/
+data/raw/*
+!data/raw/sample_submission.tif
+!data/raw/labels.tif
+!data/raw/existing_faults.tif
 data/processed/
 .DS_Store

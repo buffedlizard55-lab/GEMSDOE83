@@ -1,0 +1,74 @@
+{
+  "sample_submission": {
+    "shape": [
+      3730,
+      3292
+    ],
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "nodata": "NaN (metadata)",
+    "count": 1,
+    "valid_pixels": 5167373,
+    "finite": false,
+    "min": 0.0,
+    "max": 1.0
+  },
+  "labels": {
+    "shape": [
+      3730,
+      3292
+    ],
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "nodata": -1.0,
+    "count": 1,
+    "valid_pixels": 5167373,
+    "finite": true,
+    "min": -1.0,
+    "max": 1.0
+  },
+  "existing_faults": {
+    "shape": [
+      3730,
+      3292
+    ],
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "nodata": -1.0,
+    "count": 1,
+    "valid_pixels": 5167373,
+    "finite": true,
+    "min": -1.0,
+    "max": 1.0
+  }
+}

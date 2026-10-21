@@ -439,6 +439,7 @@ def build_index_html(card: dict, canary: dict, exp2: dict, uniq: dict, ok: bool,
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- url=docs/index.html -->
   <title>GEMSDOE83 · Lane H83-GVCD — Geothermal-Vent &amp; Structural-Relay Counterfactual Dinkelbach Submodular Fusion</title>
   <style>{CSS}</style>
 </head>
