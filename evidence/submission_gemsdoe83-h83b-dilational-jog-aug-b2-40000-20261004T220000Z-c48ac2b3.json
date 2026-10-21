@@ -223,34 +223,76 @@
   },
   "registry_checks": [
     {
-      "path": "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+      "path": "13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+      "pearson": -0.0006256482563321521,
+      "overlap_3px": 0.84065,
+      "reg_dots": 206895
+    },
+    {
+      "path": "8GEMSDOE_Hedge-v2_submission.tif",
+      "pearson": 0.018694388762179676,
+      "overlap_3px": 0.471,
+      "reg_dots": 227507
+    },
+    {
+      "path": "gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif",
+      "pearson": 0.02784641918135451,
+      "overlap_3px": 0.434425,
+      "reg_dots": 174232
+    },
+    {
+      "path": "gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+      "pearson": 0.015046437065469365,
+      "overlap_3px": 0.430325,
+      "reg_dots": 69281
+    },
+    {
+      "path": "gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan.tif",
+      "pearson": 0.27040583547310215,
+      "overlap_3px": 0.6713,
+      "reg_dots": 123939
+    },
+    {
+      "path": "gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan.tif",
+      "pearson": 0.32613442369819035,
+      "overlap_3px": 0.685175,
+      "reg_dots": 123779
+    },
+    {
+      "path": "gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif",
+      "pearson": 0.3804468959508483,
+      "overlap_3px": 0.6923,
+      "reg_dots": 121131
+    },
+    {
+      "path": "gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+      "pearson": 0.3635318914383429,
+      "overlap_3px": 0.6882,
+      "reg_dots": 60069
+    },
+    {
+      "path": "gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
       "pearson": 0.6400106219330927,
       "overlap_3px": 0.6826,
       "reg_dots": 44090
     },
     {
-      "path": "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-zeros.tif",
-      "pearson": 0.6400106219330927,
-      "overlap_3px": 0.6826,
-      "reg_dots": 44090
+      "path": "gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+      "pearson": 0.3596674914609007,
+      "overlap_3px": 0.68935,
+      "reg_dots": 61328
     },
     {
-      "path": "gems32-bayesopt-dilation-scarp-d28-20261004-nan.tif",
-      "pearson": 0.006266075379774823,
-      "overlap_3px": 0.257825,
-      "reg_dots": 45000
+      "path": "gemsdoe-ens12-adopted-7f00890a.tif",
+      "pearson": 0.026504456616233442,
+      "overlap_3px": 0.455975,
+      "reg_dots": 172974
     },
     {
-      "path": "gems32-bayesopt-dilation-scarp-d28-20261004-zeros.tif",
-      "pearson": 0.006266075379774823,
-      "overlap_3px": 0.257825,
-      "reg_dots": 45000
-    },
-    {
-      "path": "gems32-lazygreedy-maxcov-44090-supconfined-zeros.tif",
-      "pearson": 0.2788407940495693,
-      "overlap_3px": 0.684475,
-      "reg_dots": 44090
+      "path": "gemsdoe9-PLACEHOLDER-2314b599.tif",
+      "pearson": -0.0033820048019055442,
+      "overlap_3px": 0.04965,
+      "reg_dots": 147684
     }
   ],
   "hypothesis": "H83-B dilational jog + radiometric alteration via Th/K & clay-cap breach, augments B2-pruned base (27000 top base +13000 new)",
