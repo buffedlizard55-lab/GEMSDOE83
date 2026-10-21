@@ -1,0 +1,136 @@
+{
+  "candidate_id": "P5-Q-BASEMENT-TRIPLE-37654",
+  "description": "Basement depth gradient + gravity slope + mag vertical gradient triple conjunction for Quaternary piedmont blind faults, 37654 binary dots, N-S en-echelon with 300-700m stepovers, 300m submodular spacing",
+  "submission_name": "GEMSDOE83-P5-Q-BASEMENT-TRIPLE-37654",
+  "submission_note": "GEMSDOE83 P5-Q basement triple: depth+grav slope+mag vert grad, 37654 binary off-cat dots, piedmont blind, 300m submodular",
+  "allfinite": {
+    "filename": "gemsdoe83-piedmont-basement-triple-37654-20261021.tif",
+    "size_bytes": 791152,
+    "sha256": "c2d183f5905fda63583acce67d7a33e194964c044ad4d9cfe286eaea50a9c84e",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "None",
+    "finite_pixels": 12279160,
+    "nan_pixels": 0,
+    "inf_pixels": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "positive_pixels": 37654,
+    "out_of_range": 0,
+    "sentinel_count": 0
+  },
+  "nan": {
+    "filename": "gemsdoe83-piedmont-basement-triple-37654-20261021-nan.tif",
+    "size_bytes": 3605421,
+    "sha256": "0f4bd0c91dd3e650453cadbf84f37ac971aaac97ad89262e9959465a10ebbc66",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": "nan",
+    "nodata_repr": "nan",
+    "finite_pixels": 5167373,
+    "nan_pixels": 7111787,
+    "inf_pixels": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "positive_pixels": 37654,
+    "out_of_range": 0,
+    "sentinel_count": 0
+  },
+  "zip": {
+    "filename": "gemsdoe83-piedmont-basement-triple-37654-20261021.zip",
+    "size_bytes": 190912,
+    "sha256": "8b3722cc17694300318b5e668221bf6b84bc4e011897e5b1ab9a76582958e346"
+  },
+  "validation": {
+    "single_band": true,
+    "dtype_float32": true,
+    "shape_3730x3292": true,
+    "crs_epsg_32611": true,
+    "transform_100_0_243350_0_-100_4508550": true,
+    "in_footprint_all_finite_allfinite": true,
+    "in_footprint_finite_5167373_nan": true,
+    "range_0_1": true,
+    "no_nan_inside_allfinite": true,
+    "no_inf": true,
+    "no_sentinel": true,
+    "positive_pixels": 37654,
+    "on_catalogue": 0,
+    "all_checks_passed": true,
+    "ok_to_upload_format_only": true
+  },
+  "holdout": {
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "instrument_a_dti": 0.1123,
+    "instrument_a_ci95": [
+      0.0945,
+      0.1301
+    ],
+    "instrument_a_withheld": 11321,
+    "instrument_c_pied_dti": 0.1156,
+    "instrument_c_pied_ci95": [
+      0.0972,
+      0.1339
+    ],
+    "instrument_c_pied_withheld": 9949,
+    "instrument_c_pied_spearman_vs_live": 0.8667,
+    "instrument_c_pied_p": 1.82e-07,
+    "instrument_b_prime_dti": 0.1224,
+    "instrument_b_prime_ci95": [
+      0.1041,
+      0.1412
+    ],
+    "instrument_b_prime_withheld": 59937,
+    "paired_vs_h33": {
+      "a_delta": 0.1086,
+      "a_ci": [
+        0.0901,
+        0.1271
+      ],
+      "c_pied_delta": 0.0219,
+      "c_pied_ci": [
+        0.0045,
+        0.0393
+      ],
+      "b_prime_delta": 0.0286,
+      "b_prime_ci": [
+        0.0121,
+        0.0451
+      ]
+    }
+  },
+  "uniqueness": {
+    "rasters_checked": 73,
+    "surface_max_abs_spearman": 0.0613,
+    "threshold_spearman": 0.9,
+    "worst_mutual_overlap": 0.4771,
+    "worst_vs": "P8-OOF38k",
+    "worst_vs_h33": 0.4066,
+    "threshold_overlap": 0.7,
+    "unique": true
+  }
+}
