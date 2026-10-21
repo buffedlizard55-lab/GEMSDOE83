@@ -308,3 +308,9 @@ Full documentation is maintained in [`docs/irregularities.md`](docs/irregulariti
   }
 }
 ```
+
+---
+
+## Addendum 2026-10-21 (parallel H83-F session, PR #6)
+
+A second lane H83-F (SGMC-relocation de-redundancy swap) was generated and tested this date: unique (overlap 0.672<0.70 vs H83-B) and strict-finite format-valid, but pure hide-and-recover HOLDOUT-DTI 0.00321 vs H83-B 0.00384 (delta -0.00063, CI excludes 0) => NEGATIVE, DO NOT SUBMIT. Evidence: evidence/h83f_experiment.json, evidence/h83f_run_card.json, docs/research/h83f-hypotheses-2026-10-21.md. It does not replace the H83-GVCD primary above. Corrections also verified: known-fault pixels are masked in both rounds (forum 11516) so B2 has no guaranteed gain; GEMSDOE32 site labels its B2 file UNSCORED (0.2778 is an owner claim); public leaderboard #1 is 0.4413 (read 2026-10-21).

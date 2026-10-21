@@ -46,7 +46,7 @@
       4508550.0
     ],
     "dtype": "float32",
-    "nodata": NaN,
+    "nodata": "NaN (metadata)",
     "finite_inside": 5167373,
     "min_in": 0.0,
     "max_in": 1.0,

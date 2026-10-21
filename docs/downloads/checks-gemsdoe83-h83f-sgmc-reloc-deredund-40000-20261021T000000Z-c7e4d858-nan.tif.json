@@ -1,0 +1,33 @@
+{
+  "file": "gemsdoe83-h83f-sgmc-reloc-deredund-40000-20261021T000000Z-c7e4d858-nan.tif",
+  "sha256": "1af464f7992c499db20170bd7701bfcd0031904c91824548820d36d3c748e620",
+  "bytes": 360222,
+  "crs": "EPSG:32611",
+  "width": 3292,
+  "height": 3730,
+  "transform": [
+    100.0,
+    0.0,
+    243350.0,
+    0.0,
+    -100.0,
+    4508550.0
+  ],
+  "dtype": "float32",
+  "count": 1,
+  "nodata": "NaN (metadata)",
+  "crs_match": true,
+  "shape_match": true,
+  "transform_match": true,
+  "finite_inside_footprint": 5167373,
+  "footprint_px": 5167373,
+  "no_nan_inside_footprint": true,
+  "min_inside": 0.0,
+  "max_inside": 1.0,
+  "values_in_0_1_inside": true,
+  "all_cells_finite": false,
+  "nan_count_total": 7111787,
+  "strict_finite_passed": false,
+  "positive_px": 40000,
+  "on_catalogue_px": 0
+}
