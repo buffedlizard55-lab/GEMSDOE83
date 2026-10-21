@@ -1,0 +1,50 @@
+{
+  "lane_id": "H83-GVCD",
+  "repository": "buffedlizard55-lab/GEMSDOE83",
+  "branch": "arena/a27c329b-gemsdoe83",
+  "date_utc": "2026-10-21",
+  "title": "Geothermal-Vent & Structural-Relay Counterfactual Dinkelbach Submodular Fusion (H83-GVCD)",
+  "incumbents_to_beat": {
+    "H77_Step_seed20": 0.152718,
+    "H83_NETSIB_seed20": 0.153825,
+    "H83_NETSIB_seed30": 0.163700,
+    "H77_VDS_seed20": 0.160795,
+    "H77_VDS_seed30": 0.171625,
+    "H85_EDTI_dualseed_pooled": 0.182804
+  },
+  "evaluator_pin": {
+    "evaluator_module": "vendor/gems57/evaluate_holdout.py",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "holdout_module": "vendor/gems57/holdout.py",
+    "metric_module": "vendor/gems57/metric.py",
+    "alpha": 0.2,
+    "beta": 0.8,
+    "kernel_radius_m": 300.0,
+    "withhold_fraction": 0.20,
+    "context_buffer_px": 3,
+    "seeds": [30, 20],
+    "bootstrap_draws": 2000
+  },
+  "budget_dots": 37654,
+  "experiment_cap": 3,
+  "preregistered_experiments": [
+    {
+      "id": "EXP-83-1",
+      "description": "Single-feature leakage canary audit across all 82 channels (60 label-free physical/geothermal/radiometric/LiDAR + 18 fold-proper visible-network continuation/relay + 4 explicit geothermal-structural coupling channels) on Seed 30 and Seed 20 (gate: symmetric AUC <= 0.90) plus pure physical/geothermal Out-Of-Fold LOQO baseline."
+    },
+    {
+      "id": "EXP-83-2",
+      "description": "Paired 6-arm dual-seed spatial-quadrant holdout (Seed 30 = 11,342 withheld positives, Seed 20 = 11,321 withheld positives, combined 22,663 withheld positives) at identical 37,654-dot budget comparing A0_random, A1_phys_poisson, A2_struct_poisson, A3_gvcd_poisson, A4_gvcd_dink_c20, and A5_gvcd_dink_c30."
+    },
+    {
+      "id": "EXP-83-3",
+      "description": "Full-catalogue 4-fold LOQO production surface build, pre-placement surface uniqueness scan, Collar-Decoupled (excl_px=3.0) Quadrant-Calibrated Dinkelbach Submodular 300m Kernel + Uniqueness Cap (0.640 < 0.70) 37,654-dot emission, vendor submission_writer + validate + uniqueness audit."
+    }
+  ],
+  "gates": {
+    "leakage_canary_max_symmetric_auc": 0.90,
+    "registry_max_abs_spearman_rho": 0.90,
+    "registry_max_3px_dot_overlap": 0.70,
+    "enforced_dinkelbach_overlap_cap": 0.640
+  }
+}

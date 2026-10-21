@@ -1,0 +1,89 @@
+{
+  "experiment": "EXP-83-3",
+  "evidence_class": "BUILD-AND-VALIDATION",
+  "submission_name": "gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros",
+  "tif_path": "submissions/gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros.tif",
+  "zip_path": "submissions/gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros.zip",
+  "docs_tif_path": "docs/downloads/gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros.tif",
+  "docs_zip_path": "docs/downloads/gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros.zip",
+  "raster_sha256": "79f14dc84cd7760cb44645bc090ed2d33dbcfe789cec844fd83753fcff1082a2",
+  "zip_sha256": "4a556307f06e31edadb5e9b73366998c7efb5857d88db51ecb70f2850e5b460e",
+  "tif_size_bytes": 144047,
+  "zip_size_bytes": 110287,
+  "dinkelbach_stats": {
+    "n_dots": 37654,
+    "expected_tp_w": 2919.1605,
+    "expected_fp_w": 37211.6539,
+    "expected_k_hat": 10387.1221,
+    "expected_dti_at_budget": 0.178696,
+    "dinkelbach_peak_expected_dti": 0.180691,
+    "dinkelbach_opt_budget": 30955,
+    "overlap_cap_skips": 278863,
+    "max_tracked_halo_overlap": 0.649997
+  },
+  "distance_breakdown": {
+    "total_binary_dots": 37654,
+    "min_distance_to_catalogue_px": 3.1623,
+    "median_distance_to_catalogue_px": 7.6158,
+    "mean_distance_to_catalogue_px": 10.4783,
+    "near_continuation_300m_to_1p2km_dots": 25887,
+    "step_over_and_piedmont_1p2km_to_5km_dots": 11767,
+    "blind_intrabasin_gt_5km_dots": 0
+  },
+  "validator_output": {
+    "file": "/home/user/GEMSDOE83/submissions/gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros.tif",
+    "bytes": 144047,
+    "sha256": "79f14dc84cd7760cb44645bc090ed2d33dbcfe789cec844fd83753fcff1082a2",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "emitted_positive_pixels": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37654,
+    "footprint_fraction": 0.007286874781441169
+  }
+}

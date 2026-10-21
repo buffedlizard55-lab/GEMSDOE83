@@ -29,8 +29,10 @@ foot=ctx.foot
 labels=ctx.labels
 dcat=distance_transform_edt(~labels)
 
-# Load base D28
-p28=Path("/tmp/test_data/scored/gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif")
+# Load base D28 (hash-pinned mirror now lives under data/raw/scored)
+p28=DATA/"scored"/"gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif"
+if not p28.exists():
+    raise FileNotFoundError(f"base D28 raster missing: {p28} — run bash scripts/fetch_mirrors.sh data/raw first")
 with rasterio.open(p28) as s:
     base=s.read(1)>0.5
 base=base & foot
@@ -156,10 +158,10 @@ val_nan=validate(path_nan, foot, labels)
 print(f"validate zeros passed {val_zeros['passed']} min {val_zeros['min_in']} max {val_zeros['max_in']} pos {val_zeros['positive_px']}")
 print(f"validate nan passed {val_nan['passed']} min {val_nan['min_in']} max {val_nan['max_in']} pos {val_nan['positive_px']}")
 
-# Compute registry overlap/correlation
-registry_paths=list(Path("/tmp/GEMSDOE32/docs/downloads").glob("*.tif"))
+# Compute registry overlap/correlation against every scored raster available locally
+registry_paths=sorted((DATA/"scored").glob("*.tif"))
 checks=[]
-for rp in registry_paths[:5]:
+for rp in registry_paths:
     try:
         with rasterio.open(rp) as s:
             reg=s.read(1)>0.5
@@ -171,7 +173,9 @@ for rp in registry_paths[:5]:
         checks.append({"path": rp.name, "pearson": corr, "overlap_3px": float(overlap), "reg_dots": int(reg.sum())})
         print(f"registry {rp.name} corr {corr:.3f} overlap {overlap:.3f}")
     except Exception as e:
-        print(e)
+        print(f"registry {rp.name} ERROR {e}")
+best=max(checks,key=lambda c:c["pearson"]) if checks else None
+print(f"best registry match: {best}")
 
 # Holdout evaluation for run card
 from gems83.holdout import evaluate_candidate_holdout
@@ -189,6 +193,8 @@ def _json_safe(o):
         return int(o)
     if isinstance(o, (np.floating,)):
         return float(o)
+    if isinstance(o, np.generic):
+        return o.item()
     if isinstance(o, np.ndarray):
         return o.tolist()
     raise TypeError(type(o))
@@ -225,5 +231,5 @@ print(f"done bundle {name} note: {bundle['submission_note']}")
 import json as _json
 safe_hold=json.loads(_json.dumps(hold, default=_json_safe) if isinstance(hold, dict) else _json.dumps(hold))
 # Use already safe versions
-(DOCS/f"checks-{name}-zeros.tif.json").write_text(_json.dumps({"holdout": json.loads(_json.dumps(hold, default=_json_safe)), "validation": val_zeros, "checks": json.loads(_json.dumps(checks, default=_json_safe))}, indent=2))
+(DOCS/f"checks-{name}-zeros.tif.json").write_text(_json.dumps({"holdout": json.loads(_json.dumps(hold, default=_json_safe)), "validation": val_zeros, "checks": json.loads(_json.dumps(checks, default=_json_safe))}, indent=2, default=_json_safe))
 print(f"wrote evidence and registry")

@@ -1,16 +1,13 @@
-# Large data raw is intentionally not committed (fetch via mirrors)
-data/raw/training_features.tif
-data/raw/*.tif.part-*
-data/raw/external/
-data/raw/scored/
-data/processed/
-# Keep downloads tifs
-!docs/downloads/*.tif
-!docs/downloads/*.zip
-__pycache__/
-*.pyc
-.pytest_cache/
 .venv/
 .cache/
-data/
-*.partial
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+data/raw/*
+!data/raw/sample_submission.tif
+!data/raw/labels.tif
+!data/raw/existing_faults.tif
+data/processed/
+.DS_Store
