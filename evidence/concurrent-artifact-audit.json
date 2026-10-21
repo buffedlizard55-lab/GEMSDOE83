@@ -1,0 +1,50 @@
+[
+  {
+    "schema": "gems83-format-audit-v1",
+    "candidate": "research/quarantine/concurrent-session/downloads/gemsdoe83-piedmont-basement-triple-37654-20261021-nan.tif",
+    "template": "data/sample_submission.tif",
+    "sha256": "0f4bd0c91dd3e650453cadbf84f37ac971aaac97ad89262e9959465a10ebbc66",
+    "checks": {
+      "single_band": true,
+      "shape_match": true,
+      "crs_match": true,
+      "transform_match": true,
+      "nonempty_footprint": true,
+      "no_nan_inside_footprint": false,
+      "no_masked_predictions_inside_footprint": false,
+      "all_pixels_finite": false,
+      "all_values_in_0_1": false,
+      "real_numeric_dtype": true
+    },
+    "format_valid": false,
+    "submission_ready": false,
+    "scope": "Format only. No holdout, uniqueness, official template authentication, or slot authorization implied.",
+    "positive_pixels_outside_true_mirrored_footprint": 19834,
+    "positive_pixels_on_catalogue": 202,
+    "missing_values_inside_true_mirrored_footprint": 2928189
+  },
+  {
+    "schema": "gems83-format-audit-v1",
+    "candidate": "research/quarantine/concurrent-session/downloads/gemsdoe83-piedmont-basement-triple-37654-20261021.tif",
+    "template": "data/sample_submission.tif",
+    "sha256": "c2d183f5905fda63583acce67d7a33e194964c044ad4d9cfe286eaea50a9c84e",
+    "checks": {
+      "single_band": true,
+      "shape_match": true,
+      "crs_match": true,
+      "transform_match": true,
+      "nonempty_footprint": true,
+      "no_nan_inside_footprint": true,
+      "no_masked_predictions_inside_footprint": true,
+      "all_pixels_finite": true,
+      "all_values_in_0_1": true,
+      "real_numeric_dtype": true
+    },
+    "format_valid": true,
+    "submission_ready": false,
+    "scope": "Format only. No holdout, uniqueness, official template authentication, or slot authorization implied.",
+    "positive_pixels_outside_true_mirrored_footprint": 19834,
+    "positive_pixels_on_catalogue": 202,
+    "missing_values_inside_true_mirrored_footprint": 0
+  }
+]

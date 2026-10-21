@@ -1,0 +1,303 @@
+{
+  "candidate_id": "gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3",
+  "slug": "h83b-dilational-jog-aug-b2-40000",
+  "digest8": "c48ac2b3",
+  "emitted_pixels": 40000,
+  "on_catalogue": 0,
+  "validation_zeros": {
+    "crs": "EPSG:32611",
+    "width": 3292,
+    "height": 3730,
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "finite_inside": 5167373,
+    "min_in": 0.0,
+    "max_in": 1.0,
+    "outside_ok": true,
+    "no_nan_inside": true,
+    "in_range": true,
+    "crs_ok": true,
+    "shape_ok": true,
+    "transform_ok": true,
+    "passed": true,
+    "sha256": "e731b16b2811ff6cc0b581742acbd4b7a18858b8a83d5b4f2e4031967bc735a5",
+    "bytes": 195264,
+    "positive_px": 40000,
+    "on_catalogue": 0
+  },
+  "validation_nan": {
+    "crs": "EPSG:32611",
+    "width": 3292,
+    "height": 3730,
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "dtype": "float32",
+    "nodata": NaN,
+    "finite_inside": 5167373,
+    "min_in": 0.0,
+    "max_in": 1.0,
+    "outside_ok": true,
+    "no_nan_inside": true,
+    "in_range": true,
+    "crs_ok": true,
+    "shape_ok": true,
+    "transform_ok": true,
+    "passed": true,
+    "sha256": "4379f3ea044a27c69b0a17c6887f1d260debe47caaf874921266ad1390d82789",
+    "bytes": 331547,
+    "positive_px": 40000,
+    "on_catalogue": 0
+  },
+  "holdout": {
+    "candidate_id": "gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3",
+    "name": "gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3",
+    "emitted_pixels": 40000,
+    "share_of_footprint": 0.007740877231041769,
+    "on_catalogue_pixels": 0,
+    "on_catalogue_emitted_px": 0,
+    "on_catalogue_waste_frac": 0.0,
+    "hug_share": 0.052075,
+    "catalogue_hidden_mean": 0.004418697790082602,
+    "catalogue_hidden_std": 0.0005228088544066607,
+    "catalogue_hidden_per_draw": {
+      "draw20": 0.0053393009910989615,
+      "draw21": 0.0034980945890662426
+    },
+    "catalogue_hidden_per_quadrant": {
+      "NW": 0.0048522112258992285,
+      "NE": 0.004897447630626845,
+      "SW": 0.0036019632252425166,
+      "SE": 0.004323169078561817
+    },
+    "catalogue_hidden_folds": {
+      "draw20_fold0": {
+        "dti": 0.0054851627324669725,
+        "coverage": 0.008528775175291787,
+        "tp": 16.298489359982604,
+        "fp": 7196.589222932459,
+        "n_truth": 1911,
+        "emitted": 7209
+      },
+      "draw20_fold1": {
+        "dti": 0.005975775829160085,
+        "coverage": 0.013500261311652984,
+        "tp": 31.739114343696166,
+        "fp": 17120.740957095994,
+        "n_truth": 2351,
+        "emitted": 17148
+      },
+      "draw20_fold2": {
+        "dti": 0.004243768940557803,
+        "coverage": 0.0048671111834620384,
+        "tp": 17.93530471105761,
+        "fp": 6373.404504637966,
+        "n_truth": 3685,
+        "emitted": 6387
+      },
+      "draw20_fold3": {
+        "dti": 0.005652496462210983,
+        "coverage": 0.006766826977829201,
+        "tp": 21.823017003499174,
+        "fp": 6382.0519605343525,
+        "n_truth": 3225,
+        "emitted": 6399
+      },
+      "draw21_fold0": {
+        "dti": 0.004219259719331485,
+        "coverage": 0.00625838488175848,
+        "tp": 13.211450485392152,
+        "fp": 7198.912329784549,
+        "n_truth": 2111,
+        "emitted": 7209
+      },
+      "draw21_fold1": {
+        "dti": 0.0038191194320936045,
+        "coverage": 0.008838878316967615,
+        "tp": 20.02005938793165,
+        "fp": 17130.28802851185,
+        "n_truth": 2265,
+        "emitted": 17148
+      },
+      "draw21_fold2": {
+        "dti": 0.0029601575099272304,
+        "coverage": 0.003423692794887512,
+        "tp": 12.270514976876843,
+        "fp": 6377.847834682303,
+        "n_truth": 3584,
+        "emitted": 6387
+      },
+      "draw21_fold3": {
+        "dti": 0.002993841694912651,
+        "coverage": 0.0036314095347218874,
+        "tp": 11.257369557637851,
+        "fp": 6389.619070848632,
+        "n_truth": 3100,
+        "emitted": 6399
+      }
+    },
+    "debiased_catalogue_hidden_mean": 0.0301703953751888,
+    "sgmc_off_catalogue_raw_dti": 0.10420576507490277,
+    "sgmc_off_catalogue_coverage": 0.09742712695288998,
+    "sgmc_prevalence_calibrated_dti": 0.06811333062442855,
+    "drift_corrected_holdout_mean": 0.04165521742377875,
+    "drift_corrected_holdout_std": 0.004843712896682314,
+    "drift_corrected_per_quadrant": {
+      "NW": 0.04615756736614102,
+      "NE": 0.046158537679263985,
+      "SW": 0.039676676515197504,
+      "SE": 0.03462808813451249
+    }
+  },
+  "live_mirror": {
+    "candidate_id": "gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3",
+    "lm_mean": 0.07932327205512071,
+    "lm_std": 0.028962048218628505,
+    "lm_per_fold": {
+      "foldNW": 0.06852790688646693,
+      "foldNE": 0.1276246270865515,
+      "foldSW": 0.07062737668778091,
+      "foldSE": 0.05051317755968353
+    },
+    "lm_min_fold": 0.05051317755968353,
+    "lm_folds_positive": 4,
+    "lm_calibrated_mean": 0.07932327205512071,
+    "lm_calibrated_std": 0.028962048218628505,
+    "lm_calibrated_per_fold": {
+      "foldNW": 0.06852790688646693,
+      "foldNE": 0.1276246270865515,
+      "foldSW": 0.07062737668778091,
+      "foldSE": 0.05051317755968353
+    },
+    "lm_calibrated_min_fold": 0.05051317755968353,
+    "emitted_pixels": 40000,
+    "emitted_pixels_before_flank_policy": 40000,
+    "on_catalogue_pixels": 0,
+    "fold_detail": {
+      "foldNW": {
+        "dti": 0.06852790688646693,
+        "tp_w": 565.328542085882,
+        "tp_p": 738.94696232775,
+        "tp_g": 391.7101218440138,
+        "n_p": 7209,
+        "n_g": 8857
+      },
+      "foldNE": {
+        "dti": 0.1276246270865515,
+        "tp_w": 2876.5155788436973,
+        "tp_p": 3333.218400129301,
+        "tp_g": 2419.812757558094,
+        "n_p": 17148,
+        "n_g": 24800
+      },
+      "foldSW": {
+        "dti": 0.07062737668778091,
+        "tp_w": 631.51160242439,
+        "tp_p": 881.976413269949,
+        "tp_g": 381.04679157883106,
+        "n_p": 6387,
+        "n_g": 10081
+      },
+      "foldSE": {
+        "dti": 0.05051317755968353,
+        "tp_w": 706.4060324673447,
+        "tp_p": 912.9128429897698,
+        "tp_g": 499.89922194491965,
+        "n_p": 6399,
+        "n_g": 16294
+      }
+    }
+  },
+  "registry_checks": [
+    {
+      "path": "13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+      "pearson": -0.0006256482563321521,
+      "overlap_3px": 0.84065,
+      "reg_dots": 206895
+    },
+    {
+      "path": "8GEMSDOE_Hedge-v2_submission.tif",
+      "pearson": 0.018694388762179676,
+      "overlap_3px": 0.471,
+      "reg_dots": 227507
+    },
+    {
+      "path": "gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif",
+      "pearson": 0.02784641918135451,
+      "overlap_3px": 0.434425,
+      "reg_dots": 174232
+    },
+    {
+      "path": "gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+      "pearson": 0.015046437065469365,
+      "overlap_3px": 0.430325,
+      "reg_dots": 69281
+    },
+    {
+      "path": "gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan.tif",
+      "pearson": 0.27040583547310215,
+      "overlap_3px": 0.6713,
+      "reg_dots": 123939
+    },
+    {
+      "path": "gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan.tif",
+      "pearson": 0.32613442369819035,
+      "overlap_3px": 0.685175,
+      "reg_dots": 123779
+    },
+    {
+      "path": "gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif",
+      "pearson": 0.3804468959508483,
+      "overlap_3px": 0.6923,
+      "reg_dots": 121131
+    },
+    {
+      "path": "gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+      "pearson": 0.3635318914383429,
+      "overlap_3px": 0.6882,
+      "reg_dots": 60069
+    },
+    {
+      "path": "gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+      "pearson": 0.6400106219330927,
+      "overlap_3px": 0.6826,
+      "reg_dots": 44090
+    },
+    {
+      "path": "gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+      "pearson": 0.3596674914609007,
+      "overlap_3px": 0.68935,
+      "reg_dots": 61328
+    },
+    {
+      "path": "gemsdoe-ens12-adopted-7f00890a.tif",
+      "pearson": 0.026504456616233442,
+      "overlap_3px": 0.455975,
+      "reg_dots": 172974
+    },
+    {
+      "path": "gemsdoe9-PLACEHOLDER-2314b599.tif",
+      "pearson": -0.0033820048019055442,
+      "overlap_3px": 0.04965,
+      "reg_dots": 147684
+    }
+  ],
+  "hypothesis": "H83-B dilational jog + radiometric alteration via Th/K & clay-cap breach, augments B2-pruned base (27000 top base +13000 new)",
+  "mechanism": "Dilational jogs at fault bends under extension (positive dilatation \u00d7 shear) coincide with Th/K alteration halo and conductivity breach, marking blind geothermal conduits; augments pruned base to add off-catalogue credit while preserving catalogue buffer.",
+  "non_fault_mimic": "Felsic tuff contacts produce Th/K steps without fault; agricultural K fertilizer masks depletion; quarry blasts align artifactually in seismicity (for H83-D)",
+  "submission_note": "GEMSDOE83 H83-B jog+alter 40k | B2 27k kept +13k new ThK breach | HOLDOUT cat 0.0044 sgmc 0.0681 drift 0.0417 | UNIQUE dup-check PASS",
+  "unique_name": "GEMSDOE83-H83B-JOG-AUG-B2-40K"
+}
