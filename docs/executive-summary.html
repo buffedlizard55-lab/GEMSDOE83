@@ -31,14 +31,14 @@ h1{margin:0 0 6px}h2{margin:14px 0 8px;font-size:18px}
 <ol>
 <li>Open the competition: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">https://www.drivendata.org/competitions/306/competition-doe-gems/</a> → click <b>Submit</b>.</li>
 <li>Under <b>New submission → File to submit</b>, click <b>Choose file</b> and pick the downloaded <code>.tif</code> (or the <code>.zip</code> containing a single <code>.tif</code>). <br><span class="mut">Requirements (from <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#submission-format">problem page, submission format</a>): single‑band float32, EPSG:32611, 100 m, same bounds as training data, values in [0,1], outside bounds null/NaN. Our file meets all.</span></li>
-<li>In <b>Note (optional)</b> paste: <code>GEMSDOE83 H83-B jog+alter 40k | B2 27k kept +13k new ThK breach | HOLDOUT cat 0.0044 sgmc 0.0681 drift 0.0417 | UNIQUE dup-check PASS</code> (127/140 chars).</li>
+<li>In <b>Note (optional)</b> paste: <code>GEMSDOE83 H83B jog+ThK 40k B2 | HOLDOUT-DTI pure-cat 0.0038 SGMC-cal 0.0681 | unique ov0.68 r0.64 | format-valid UNSCORED</code> (121/140 chars).</li>
 <li>In <b>Unique submission name</b> paste: <code>GEMSDOE83-H83B-JOG-AUG-B2-40K</code></li>
-<li>Click <b>Create submission</b>. You should see “Submission created” (not the range error). You have 3 submissions per week; this is 1 slot. Results appear on the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">leaderboard</a> after organizer scoring.</li>
+<li>Click <b>Create submission</b>. You should see “Submission created” (not the range error). Promotion to a real weekly slot is a separate selector step (cap shown on the submission page); this page certifies format only. Never submit the red H83-F file on the home page. Results appear on the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">leaderboard</a> after organizer scoring.</li>
 </ol>
 
 <h2>The portal error “Predicted values must be in range [0,1]” — fixed</h2>
 <div class="card">
-<p><b>Two mechanisms were measured that can produce that exact message:</b></p>
+<p><b>Three mechanisms measured (2026-10-21 re-audit) that can produce that exact message:</b></p><ul><li><b>0. The labels −1 sentinel (most direct):</b> <code>labels.tif</code>/<code>existing_faults.tif</code> are int8 with nodata −1 on 7,111,787 cells (sha256 <code>7ba308cc…</code>, re-fetched and re-hashed this session). Any pipeline that casts label geometry to float32 without remapping −1→0/NaN submits −1.0 values → portal rejects. Our writer never copies label values; receipts prove min 0.0.</li></ul>
 <ul>
 <li><b>1. The float32 sentinel:</b> <code>training_features.tif</code> declares nodata <code>-3.4028234663852886e+38</code> (float32 min). 7,113,308 cells per band use it, 3,061 inside the scored footprint. If those are written through unchanged they are outside [0,1] and the portal rejects. <i>Evidence:</i> we counted them per band (see <code>scripts/fetch_mirrors.sh</code> provenance, sha256 <code>4371c82e…</code>).</li>
 <li><b>2. The NaN sentinel:</b> A raster with <code>nodata=NaN</code> and NaN outside footprint is competition‑legal (sample submission uses it: 5,167,373 finite inside, rest NaN), but one validator change away from same rejection. <i>Evidence:</i> both encodings are published; our portal‑safe variant is all‑finite with <code>nodata=None</code>.</li>

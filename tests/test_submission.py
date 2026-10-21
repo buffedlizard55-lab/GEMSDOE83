@@ -1,4 +1,4 @@
-import rasterio, numpy as np
+import rasterio, numpy as np, pytest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 TIF=ROOT/"docs/downloads/gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif"
@@ -14,6 +14,7 @@ def test_all_finite_and_range():
         assert s.dtypes[0]=="float32"
 
 def test_no_nan_inside_footprint():
+    if not TEMPLATE.exists(): pytest.skip('competition mirrors not fetched (CI)')
     with rasterio.open(TEMPLATE) as t:
         foot=np.isfinite(t.read(1))
     with rasterio.open(TIF) as s:
@@ -27,6 +28,7 @@ def test_positive_pixels():
 
 def test_on_catalogue_zero():
     labels=ROOT/"data/raw/labels.tif"
+    if not labels.exists(): pytest.skip('competition mirrors not fetched (CI)')
     with rasterio.open(labels) as l:
         lab=l.read(1)==1
     with rasterio.open(TIF) as s:
@@ -34,8 +36,10 @@ def test_on_catalogue_zero():
     assert int((arr & lab).sum())==0
 
 def test_duplicate_thresholds():
-    # Check registry duplicate thresholds are documented and passed
     import json
     run=json.loads((ROOT/"evidence/run_card.json").read_text())
-    assert run["correlation_overlap_vs_registry"]["pass_pearson"]
-    assert run["correlation_overlap_vs_registry"]["pass_overlap"]
+    reg=run["correlation_overlap_vs_registry"]
+    for k in ("H83-B_vs_D28","H83-F_vs_H83-B","H83-F_vs_D28"):
+        assert reg[k]["pass"] and reg[k]["pearson_binary"]<0.90
+    assert len(run["submission_note"])<=140
+    assert run["negative_candidate"]["verdict"].startswith("negative")

@@ -16,7 +16,7 @@
     {
       "id": "IR-83-PROXY-01",
       "severity": "medium",
-      "statement": "Blocked holdout truth is visible catalogue — cannot reward genuinely new fault.",
+      "statement": "Blocked holdout truth is visible catalogue \u2014 cannot reward genuinely new fault.",
       "mitigation": "report per-fold pairs, label proxy, gate via live-anchor + LM off-catalogue"
     },
     {
@@ -28,14 +28,50 @@
     {
       "id": "IR-83-VERIFY-01",
       "severity": "open",
-      "statement": "Historical DrivenData rejection 'Predicted values must be in range [0,1]' cannot be reproduced from shipped files — all 12 checks PASS.",
+      "statement": "Historical DrivenData rejection 'Predicted values must be in range [0,1]' cannot be reproduced from shipped files \u2014 all 12 checks PASS.",
       "mitigation": "Both mechanisms measured and engineered out; both encodings published"
     },
     {
       "id": "IR-83-H83-01",
       "severity": "informational",
-      "statement": "H83-A/C pure surfaces scored below random on catalogue-hidden (0.001-0.002 vs 0.032 random) and below incumbent on SGMC — falsified as standalone emitters.",
+      "statement": "H83-A/C pure surfaces scored below random on catalogue-hidden (0.001-0.002 vs 0.032 random) and below incumbent on SGMC \u2014 falsified as standalone emitters.",
       "mitigation": "retained as negative result; augmentation recovers SGMC +0.0040"
+    },
+    {
+      "id": "IR-83-SCORE-02",
+      "severity": "high",
+      "statement": "Prompt premise 'GEMSDOE32 B2 scored 0.2778' is contradicted by the GEMSDOE32 site itself (fetched 2026-10-21): file labelled UNSCORED, projected 0.2747 MODEL, 'NO ORGANISER SCORE EXISTS for any artifact in this repository'. 0.2778 remains an owner claim without organizer receipt.",
+      "mitigation": "site/README corrected to conditional B2 mechanism; no causal claim for 0.2778"
+    },
+    {
+      "id": "IR-83-MASK-01",
+      "severity": "high",
+      "statement": "Repo previously claimed on-catalogue dots 'cannot earn credit yet cost 0.2' (guaranteed B2 gain). Official forum 11516 (DrivenData staff): known-fault pixels are masked/excluded in BOTH rounds, so on-catalogue dots cost 0. Any B2 gain is confined to unmasked 1-2px flank dots with k<alpha*DTI.",
+      "mitigation": "PhD answer corrected in README + home page 2026-10-21"
+    },
+    {
+      "id": "IR-83-GATE-01",
+      "severity": "high",
+      "statement": "Two conflicting run cards coexisted (docs/run-card.json negative/no-TIFF vs evidence/run_card.json verdict text 'negative' while site said YES submit) and scripts/check_site.py enforced the stale negative contract, so CI site check failed on the promoted site.",
+      "mitigation": "unified run card v2 (identical copies), check_site rewritten fail-closed around primary+receipt+DO-NOT-SUBMIT gate"
+    },
+    {
+      "id": "IR-83-FILES-01",
+      "severity": "medium",
+      "statement": "Broken/escaping site links: checks-*.json receipts missing, research/h83-hypotheses.html missing (only .md), ../evidence links escape the Pages docs tree, data/feed.json missing, root landing said NOT READY. Registry JSON contained literal NaN (invalid strict JSON); validator emitted NaN literals; note length stated 127 but measured 133.",
+      "mitigation": "receipts regenerated 2026-10-21, links fixed to in-site/GitHub, strict-JSON serialization fixed, note replaced (121 chars, counted in code)"
+    },
+    {
+      "id": "IR-83-HOLDOUT-02",
+      "severity": "high",
+      "statement": "On pure hide-and-recover (11,790 withheld positives) catalogue-hugging D28 scores HOLDOUT-DTI 0.09502 vs H83-B 0.00384. H83-B superiority rests on SGMC/live-mirror truths, not the protocol's pure instrument. Catalogue holdout cannot reward genuinely new faults by construction.",
+      "mitigation": "run card verdict scoped to FORMAT promotion; selector warned; H83-F gated negative on same instrument"
+    },
+    {
+      "id": "IR-83-LB-01",
+      "severity": "medium",
+      "statement": "Leaderboard pages were stale (0.3262 read 2026-10-04). Verified 2026-10-21: #1 xiaofanhu 0.4413 ORGANIZER-CONFIRMED (public). Gap from claimed 0.2778 is ~59% relative, not ~25%.",
+      "mitigation": "leaderboard + snapshot 2026-10-21 updated"
     }
   ]
 }

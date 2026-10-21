@@ -1,43 +1,74 @@
 {
-  "hypothesis": "H83-B: Dilational jog geothermal conduit augmented with radiometric Th/K alteration corridor (positive dilatation × shear × basement step × bend) + K depletion × Th/K high × cond cap breach",
-  "mechanism": "Extensional jog at fault bend opens dilational quadrant; hydrothermal alteration bleaches K, enriches Th/K along structure; conductive clay cap breached by permeable fault; composite marks blind faults under Lahontan lacustrine cover where surface catalogue has no scarp.",
-  "non_fault_mimic": "Felsic tuff lithologic contacts produce Th/K steps without fault; agricultural fertilizer K enrichment masks depletion; quarry blasts create artifactual epicenter alignments (H83-D).",
+  "schema": "gems83-run-card-v2",
+  "as_of": "2026-10-21",
+  "session_lane": "H83-F SGMC-relocation de-redundancy swap (tested, negative); primary remains H83-B",
+  "hypothesis": "Primary H83-B: dilational jog (positive dilatation x shear x basement step x bend) + radiometric Th/K alteration + conductivity clay-cap breach marks blind geothermal faults under cover. Session test H83-F: replacing the most kernel-redundant dots with SGMC geologic-map faults raises credit density.",
+  "mechanism": "H83-B: extensional jogs open permeability; alteration bleaches K (Th/K high) along the structure. H83-F: dots whose 300m disks duplicate neighbours earn ~0 marginal TPw but cost alpha=0.2 denominator each (dD=alpha exactly); relocating that mass onto independent SGMC traces should raise mean k per dot.",
+  "non_fault_mimic": "Felsic tuff lithologic contacts (Th/K step without fault); SGMC compilation linework includes inferred/lithologic contacts and pre-Quaternary structures that are not active geothermal faults.",
   "holdout_dti": {
-    "evaluator_version": "gems83 holdout v2026-10-04, 4 quadrants × 2 draws (8 cells), collar 15 px (1.5 km), domain erosion 12 px (1.2 km), hide_frac 0.20, pooled DTI α0.2 β0.8 R300m",
-    "withheld_positives": "20% of fault segments per quadrant (~12k px total, SGMC off-catalogue 62703 px)",
-    "catalogue_hidden_mean": 0.00442,
-    "catalogue_hidden_std": 0.00052,
-    "catalogue_hidden_per_quadrant": {"NW": 0.00492, "NE": 0.00490, "SW": 0.00360, "SE": 0.00432},
-    "sgmc_prevalence_calibrated_dti": 0.06811,
-    "drift_corrected_holdout_mean": 0.04166,
-    "live_mirror_off_catalogue_mean": 0.07771,
-    "ci95_catalogue_hidden": "0.00442 ±0.00102 (per-quad std 0.00052, n=4, t=2.776)",
-    "ci95_sgmc": "0.06811 ±0.0041 (derived from per-fold std 0.008, n=4)",
-    "baseline_B2_37654": {"catalogue_hidden_mean": 0.00460, "sgmc": 0.06412, "drift": 0.04504},
-    "incumbent_D28_44090_claim": {"dti": 0.2600, "label": "ORGANIZER-REPORTED claim, not receipt"},
-    "random_40000_HOLDOUT": {"catalogue_hidden_mean": 0.03211, "sgmc": 0.04718, "drift": 0.06962}
+    "label": "HOLDOUT-DTI",
+    "evaluator_version": "gems83.metric.dti_binary pooled-quadrant v-h83f-1 (pure hide-and-recover, whole components withheld, visible masked pixel-exactly, alpha0.2 beta0.8 R300m)",
+    "withheld_positives": 11790,
+    "held_components": 639,
+    "total_components": 3199,
+    "H83-B-incumbent_pooled": 0.0038407251651301744,
+    "H83-F_pooled": 0.0032099035663308464,
+    "D28-reference_pooled_same_instrument": 0.09502481980448896,
+    "delta_F_minus_B": -0.000630821598799328,
+    "delta_ci95_cluster_bootstrap": [
+      -0.0010352778538891033,
+      -0.00035885906524176213
+    ],
+    "prior_mixed_instruments_H83-B": {
+      "catalogue_hidden_mean": 0.00442,
+      "sgmc_prevalence_calibrated_dti": 0.06811,
+      "note": "different truths; SGMC/live-mirror favour H83-B, pure catalogue holdout favours catalogue-hugging D28 by construction (IR-83-PROXY-01). Superiority of H83-B over D28 is NOT established on the pure instrument."
+    },
+    "leakage_canary": {
+      "feature": "SGMC 7x7 line-support",
+      "two_sided_auc_vs_heldout": 0.7388095916030535,
+      "threshold": 0.9,
+      "leakage_flag": false
+    }
   },
   "correlation_overlap_vs_registry": {
-    "registry_rasters_checked": 5,
-    "most_similar_registry": "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif (D28 44090, incumbent 0.2600 claim)",
-    "pearson_rank_correlation": 0.64,
-    "threshold_pearson": 0.90,
-    "pass_pearson": true,
-    "overlap_within_3px_fraction": 0.683,
-    "threshold_overlap": 0.70,
-    "pass_overlap": true,
-    "unique_lane_verdict": "UNIQUE — not duplicate per parallel-run protocol (surface before placement AND final dots checked)",
-    "other_checks": [
-      {"path": "gems32-bayesopt-dilation-scarp-d28-20261004-nan.tif", "pearson": 0.006, "overlap_3px": 0.258},
-      {"path": "gems32-lazygreedy-maxcov-44090-supconfined-zeros.tif", "pearson": 0.279, "overlap_3px": 0.684}
-    ]
+    "H83-B_vs_D28": {
+      "pearson_binary": 0.6400106219330927,
+      "overlap_within_3px": 0.6826,
+      "pass": true
+    },
+    "H83-F_vs_H83-B": {
+      "pearson_binary": 0.6521070030208356,
+      "overlap_within_3px_euclid": 0.671975,
+      "pass": true
+    },
+    "H83-F_vs_D28": {
+      "pearson_binary": 0.5878421802958461,
+      "overlap_within_3px_euclid": 0.640075,
+      "pass": true
+    },
+    "thresholds": {
+      "rank_correlation_max": 0.9,
+      "overlap_max": 0.7
+    },
+    "caveat": "Registry here = rasters actually fetched and re-measured this session (H83-B, D28 sha 91eae1ca...). Full 80-site registry was not re-fetched; surface rank-correlation before placement exists only for H83-B build records."
   },
   "raster_sha256": "e731b16b2811ff6cc0b581742acbd4b7a18858b8a83d5b4f2e4031967bc735a5",
   "raster_sha256_nan_twin": "4379f3ea044a27c69b0a17c6887f1d260debe47caaf874921266ad1390d82789",
   "validator_output": {
     "crs": "EPSG:32611",
-    "shape": [3730, 3292],
-    "transform": [100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0],
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
     "dtype": "float32",
     "count": 1,
     "nodata": null,
@@ -47,23 +78,29 @@
     "all_finite": true,
     "all_in_range_0_1": true,
     "no_nan_inside_footprint": true,
-    "outside_value": 0.0,
-    "min_inside": 0.0,
-    "max_inside": 1.0,
+    "min": 0.0,
+    "max": 1.0,
     "positive_pixels": 40000,
     "on_catalogue_pixels": 0,
     "footprint_pixels": 5167373,
-    "total_pixels": 12279160,
     "passed": true,
-    "checked_via": "scripts/check_submission.py --strict-finite (re-read bytes)"
+    "checked_via": "scripts/check_submission.py --strict-finite (re-read bytes) + docs/downloads/checks-*.json receipts 2026-10-21"
   },
   "submission_name": "GEMSDOE83-H83B-JOG-AUG-B2-40K",
-  "submission_note": "GEMSDOE83 H83-B jog+alter 40k | B2 27k kept +13k new ThK breach | HOLDOUT cat 0.0044 sgmc 0.0681 drift 0.0417 | UNIQUE dup-check PASS",
-  "submission_note_length": 127,
+  "submission_note": "GEMSDOE83 H83B jog+ThK 40k B2 | HOLDOUT-DTI pure-cat 0.0038 SGMC-cal 0.0681 | unique ov0.68 r0.64 | format-valid UNSCORED",
+  "submission_note_length": 121,
   "submission_file": "gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif",
-  "submission_file_nan_twin": "gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-nan.tif",
-  "submission_zip": "gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3.zip",
-  "leakage_canary": {"tested": "H83-B surface solo AUC (4 quadrants)", "max_two_sided_auc": 0.588, "threshold": 0.90, "pass": true, "verdict": "no leakage"},
-  "verdict": "negative (HOLDOUT-DTI catalogue_hidden_mean 0.00442 slightly below B2 baseline 0.00460, but SGMC off-catalogue 0.06811 > B2 0.06412 (+0.00399, SGMC is best live predictor ρ0.54 vs catalogue ρ0.14); LM 0.0777 > B2 0.0740; UNIQUE lane; promote to slot only if SGMC instrument trusted for blind geothermal faults — negative results are deliverables per protocol)",
-  "budget": {"experiments_used": 2, "experiments_allowed": 3, "hours_used": 1.2, "hours_allowed": 2, "stop_reason": "budget not exceeded, candidate meets UNIQUE and portal checks; further SGMC calibration needed before slot spend"}
+  "negative_candidate": {
+    "file": "gemsdoe83-h83f-sgmc-reloc-deredund-40000-20261021T000000Z-c7e4d858-zeros.tif",
+    "sha256": "7e5a8874043bd49f4d6f1a2d117d875003d4ae30ac529450ab864c7d98080019",
+    "verdict": "negative \u2014 DO NOT SUBMIT (unique and format-valid, but HOLDOUT-DTI delta -0.00063, CI excludes 0)"
+  },
+  "organizer_confirmed_scores": {
+    "this_repo": null,
+    "note": "No organizer receipt for any GEMSDOE83/GEMSDOE32 file. Public leaderboard read 2026-10-21: #1 xiaofanhu 0.4413 ORGANIZER-CONFIRMED (public). Group 0.2778/0.2708/0.2600 are owner-reported claims; GEMSDOE32 site itself labels its B2 file UNSCORED."
+  },
+  "verdict": "promote",
+  "verdict_scope": "FORMAT promotion only: portal-safe and ready for the separate selector step. Science gate: H83-F negative; H83-B superiority over D28 not established on pure hide-and-recover. No weekly slot spent by this run card.",
+  "experiments_run_this_session": 1,
+  "weekly_slots_used": 0
 }

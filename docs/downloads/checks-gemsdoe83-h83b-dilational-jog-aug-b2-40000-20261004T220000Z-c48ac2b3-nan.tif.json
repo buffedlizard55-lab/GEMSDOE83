@@ -1,0 +1,33 @@
+{
+  "file": "gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-nan.tif",
+  "sha256": "4379f3ea044a27c69b0a17c6887f1d260debe47caaf874921266ad1390d82789",
+  "bytes": 331547,
+  "crs": "EPSG:32611",
+  "width": 3292,
+  "height": 3730,
+  "transform": [
+    100.0,
+    0.0,
+    243350.0,
+    0.0,
+    -100.0,
+    4508550.0
+  ],
+  "dtype": "float32",
+  "count": 1,
+  "nodata": "NaN (metadata)",
+  "crs_match": true,
+  "shape_match": true,
+  "transform_match": true,
+  "finite_inside_footprint": 5167373,
+  "footprint_px": 5167373,
+  "no_nan_inside_footprint": true,
+  "min_inside": 0.0,
+  "max_inside": 1.0,
+  "values_in_0_1_inside": true,
+  "all_cells_finite": false,
+  "nan_count_total": 7111787,
+  "strict_finite_passed": false,
+  "positive_px": 40000,
+  "on_catalogue_px": 0
+}

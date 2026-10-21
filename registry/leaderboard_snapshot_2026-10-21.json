@@ -1,0 +1,33 @@
+{
+  "read": "2026-10-21",
+  "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "label": "ORGANIZER-CONFIRMED (public leaderboard)",
+  "top5": [
+    {
+      "rank": 1,
+      "team": "xiaofanhu",
+      "score": 0.4413
+    },
+    {
+      "rank": 2,
+      "team": "cfld__",
+      "score": 0.3904
+    },
+    {
+      "rank": 3,
+      "team": "Batik Shirt Brothers",
+      "score": 0.3894
+    },
+    {
+      "rank": 4,
+      "team": "BrandenKMurray",
+      "score": 0.3713
+    },
+    {
+      "rank": 5,
+      "team": "No Fault of Our Own",
+      "score": 0.3539
+    }
+  ],
+  "supersedes": "registry/leaderboard_snapshot_2026-10-04.json (nchuzhoy 0.3262, now rank 20)"
+}

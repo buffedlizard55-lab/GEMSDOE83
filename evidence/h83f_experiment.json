@@ -1,0 +1,101 @@
+{
+  "candidate": "gemsdoe83-h83f-sgmc-reloc-deredund-40000-20261021T000000Z-c7e4d858",
+  "digest8": "c7e4d858",
+  "keep_n": 26000,
+  "add_n": 14000,
+  "emitted": 40000,
+  "on_catalogue": 0,
+  "min_dist_to_catalogue_px": 2.23606797749979,
+  "uniqueness": {
+    "vs_H83B": {
+      "overlap_within_3px_euclid": 0.671975,
+      "pearson_binary": 0.6521070030208356
+    },
+    "vs_D28": {
+      "overlap_within_3px_euclid": 0.640075,
+      "pearson_binary": 0.5878421802958461
+    },
+    "pass_overlap_lt_0p70": true,
+    "pass_corr_lt_0p90": true
+  },
+  "canary": {
+    "feature": "SGMC 7x7 line-support",
+    "two_sided_auc_vs_heldout": 0.7388095916030535,
+    "leakage_flag": false
+  },
+  "holdout": {
+    "label": "HOLDOUT-DTI",
+    "evaluator": "gems83.metric.dti_binary pooled-quadrant v-h83f-1",
+    "withheld_positives": 11790,
+    "held_components": 639,
+    "total_components": 3199,
+    "results": {
+      "H83-B-incumbent": {
+        "pooled_dti": 0.0038407251651301744,
+        "tp": 66.96144654012517,
+        "fp": 39945.9598914224,
+        "fn": 11723.038553459875,
+        "per_quadrant": {
+          "Q0": 0.0032053694182916184,
+          "Q1": 0.003986326463414791,
+          "Q2": 0.006114081455644914,
+          "Q3": 0.0032780357886002375
+        },
+        "emitted": 40000,
+        "on_catalogue": 0
+      },
+      "H83-F-sgmc-swap": {
+        "pooled_dti": 0.0032099035663308464,
+        "tp": 55.964151600748664,
+        "fp": 39958.23040639926,
+        "fn": 11734.035848399251,
+        "per_quadrant": {
+          "Q0": 0.0030045868206633216,
+          "Q1": 0.003033264544009999,
+          "Q2": 0.005386513376271932,
+          "Q3": 0.0021966763072604287
+        },
+        "emitted": 40000,
+        "on_catalogue": 0
+      },
+      "D28-reference": {
+        "pooled_dti": 0.09502481980448896,
+        "tp": 1752.9832125024207,
+        "fp": 43325.192882392425,
+        "fn": 10037.016787497578,
+        "per_quadrant": {
+          "Q0": 0.08139746823292117,
+          "Q1": 0.10524828487600338,
+          "Q2": 0.12387339822384028,
+          "Q3": 0.09663716111754421
+        },
+        "emitted": 44090,
+        "on_catalogue": 0
+      }
+    },
+    "delta_F_minus_B": -0.000630821598799328,
+    "delta_bootstrap_ci95": [
+      -0.0010352778538891033,
+      -0.00035885906524176213
+    ],
+    "caveat": "Both fixed rasters used full-catalogue distance (B2) at build time; holdout compares emission geometry, B2 advantage is common-mode. FP held fixed in bootstrap, rescaled by resampled truth mass."
+  },
+  "files": {
+    "zeros": {
+      "path": "docs/downloads/gemsdoe83-h83f-sgmc-reloc-deredund-40000-20261021T000000Z-c7e4d858-zeros.tif",
+      "sha256": "7e5a8874043bd49f4d6f1a2d117d875003d4ae30ac529450ab864c7d98080019",
+      "bytes": 223791
+    },
+    "nan": {
+      "path": "docs/downloads/gemsdoe83-h83f-sgmc-reloc-deredund-40000-20261021T000000Z-c7e4d858-nan.tif",
+      "sha256": "1af464f7992c499db20170bd7701bfcd0031904c91824548820d36d3c748e620",
+      "bytes": 360222
+    },
+    "zip": {
+      "path": "docs/downloads/gemsdoe83-h83f-sgmc-reloc-deredund-40000-20261021T000000Z-c7e4d858.zip",
+      "sha256": "af022911e078dcdff1c1ae880ff13da3db3b45b85f006377d7cd1afa1a77a85c",
+      "bytes": 190704
+    }
+  },
+  "verdict": "negative"
+}

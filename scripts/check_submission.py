@@ -15,7 +15,7 @@ def validate(geotiff: Path, template: Path, strict_finite: bool=False):
         out={
             "filename": geotiff.name,
             "crs": str(s.crs), "width": s.width, "height": s.height, "transform": list(s.transform)[:6],
-            "dtype": s.dtypes[0], "nodata": s.nodata,
+            "dtype": s.dtypes[0], "nodata": ("NaN (metadata)" if (s.nodata is not None and s.nodata!=s.nodata) else s.nodata),
             "crs_match": str(s.crs)==exp_crs,
             "shape_match": (s.width==exp_width and s.height==exp_height),
             "transform_match": s.transform==exp_transform,
@@ -51,5 +51,5 @@ if __name__=="__main__":
     p.add_argument("--strict-finite", action="store_true")
     args=p.parse_args()
     rep=validate(args.geotiff, args.template, args.strict_finite)
-    print(json.dumps(rep, indent=2))
+    print(json.dumps(rep, indent=2, allow_nan=False))
     sys.exit(0 if rep["passed"] else 2)

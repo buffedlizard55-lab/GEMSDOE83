@@ -37,8 +37,8 @@ th{background:#eef4f1}
 <div class="wrap">
 <div style="font-size:12px;letter-spacing:.6px;opacity:.9">DOE GEMS Prize — DrivenData #306 · GeoDAWN / NW Nevada · EPSG:32611 · 100 m · 3292×3730</div>
 <h1>GEMSDOE83 — a unique fault-discovery submission</h1>
-<div style="opacity:.96;margin:6px 0 10px">If you see the green button below, the file is <b>OK to download and submit</b>. Every cell is finite, in [0,1], no NaN inside footprint, CRS/shape/transform match the template. Receipts are re-read from the bytes on disk.</div>
-<div class="nav"><a href="index.html">Home</a> <a href="executive-summary.html">Executive summary — how to submit</a> <a href="research/h83-hypotheses.html">Hypotheses (5 ranked)</a> <a href="sources.html">Sources (verified links)</a> <a href="leaderboard.html">Leaderboard</a> <a href="irregularities.html">Irregularities</a> <a href="https://github.com/buffedlizard55-lab/GEMSDOE83">Repository</a></div>
+<div style="opacity:.96;margin:6px 0 10px">The green button below is the <b>FORMAT-VALID primary (portal-safe, ready for the separate selector step)</b>; the red H83-F block is <b>DO NOT SUBMIT</b>. No file here has an organizer score yet. Every cell is finite, in [0,1], no NaN inside footprint, CRS/shape/transform match the template. Receipts are re-read from the bytes on disk.</div>
+<div class="nav"><a href="index.html">Home</a> <a href="executive-summary.html">Executive summary — how to submit</a> <a href="research.html">Hypotheses (5 ranked)</a> <a href="sources.html">Sources (verified links)</a> <a href="leaderboard.html">Leaderboard</a> <a href="irregularities.html">Irregularities</a> <a href="https://github.com/buffedlizard55-lab/GEMSDOE83">Repository</a></div>
 </div>
 </header>
 
@@ -53,7 +53,7 @@ th{background:#eef4f1}
 <div class="kv" style="margin-top:10px">
 <div><b>Filename</b></div><div><code>gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif</code></div>
 <div><b>Unique submission name</b></div><div><code>GEMSDOE83-H83B-JOG-AUG-B2-40K</code></div>
-<div><b>Note to paste (127/140 chars)</b></div><div><code>GEMSDOE83 H83-B jog+alter 40k | B2 27k kept +13k new ThK breach | HOLDOUT cat 0.0044 sgmc 0.0681 drift 0.0417 | UNIQUE dup-check PASS</code></div>
+<div><b>Note to paste (121/140 chars)</b></div><div><code>GEMSDOE83 H83B jog+ThK 40k B2 | HOLDOUT-DTI pure-cat 0.0038 SGMC-cal 0.0681 | unique ov0.68 r0.64 | format-valid UNSCORED</code></div>
 <div><b>Bytes / SHA256</b></div><div><code>195,264 B · e731b16b2811ff6c… · <a href="downloads/checks-gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif.json">receipt JSON</a></code></div>
 <div><b>Format</b></div><div>single-band <b>float32</b> · EPSG:32611 · 100 m · 3292×3730 · every cell finite · no nodata tag · min 0.0 max 1.0 · 0 NaN anywhere · 40,000 predicted pixels · 0 on catalogue</div>
 <div><b>Validator</b></div><div><span class="ok">✓ All 12 portal checks PASS (re-read from bytes): CRS OK, shape OK, transform OK, dtype OK, finite inside PASS, in [0,1] PASS, outside 0 PASS, no NaN inside PASS</span></div>
@@ -65,10 +65,10 @@ th{background:#eef4f1}
 
 <div class="grid" style="margin-top:14px">
 <div class="card">
-<h3>Why the 0.2778 GEMSDOE32 file scored highest — PhD answer</h3>
+<h3>Did the GEMSDOE32 B=2 file score 0.2778? — PhD answer (corrected 2026-10-21)</h3>
 <p class="mut">The competition metric is a budget: <code>DTI = TPw / (TPw + 0.2·FPw + 0.8·FNw)</code> with a 300 m (3 px) triangular kernel. For binary emission, denominator grows by exactly <b>α=0.2 per emitted pixel</b> regardless of location ( <code>dD = α·(k + 1−k) = α</code> ). Numerator grows by at most kernel weight <code>k≤1</code>. So marginal DTI >0 iff <code>k > α·DTI</code> ≈0.054 at DTI 0.27 (derived in <code>src/gems83/metric.py</code>, verified by brute force).</p>
-<p class="mut">GEMSDOE32’s <code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif</code> (37,654 dots, <b>0.2778 owner-claimed, not organizer-verified</b>) beat the 0.2708 base by <b>deleting every dot within 2 px (200 m) of the published catalogue</b>. Why: Round-1 hidden truth <b>excludes the catalogue by construction</b> (field is 0/121,131 px touching catalogue, <code>labels.tif</code> byte-identical to <code>existing_faults.tif</code> sha256 <code>7ba308cc...</code>). Dots on/near mapped faults cannot earn credit yet cost 0.2 denominator — deleting them is a guaranteed gain. Live-anchored inversion recovers TPw=5,073, D=18,734, |G|≈12,226, recall 0.415, break-even τ=0.05416; B=2 removal spends 65 credits for 2,545 dots, budget 135.7 → safety 2.08, projected live 0.2747 (MODEL, not score). Two routes (empirical 0.0548 vs derived 0.0520) agree. Can we beat 0.2778? Only by raising mean credit per dot ~25% at same mass — no public catalogue supplies that (GDR QFaults v2: 59,065 px, all but 1 within 300 m of catalogue). Path is better detector + dilational-jog geometry (this repo’s H83‑B).</p>
-<p><a href="research/h83-hypotheses.html">Read the 5 ranked hypotheses →</a></p>
+<p class="mut">GEMSDOE32’s <code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif</code> (37,654 dots, <b>0.2778 owner-claimed, not organizer-verified</b>) beat the 0.2708 base by <b>deleting every dot within 2 px (200 m) of the published catalogue</b>. Why B=2 plausibly helped (conditional, not proven cause of the claimed 0.2778): officials mask pixels <i>exactly on</i> known faults in both rounds (<a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">forum 11516, DrivenData staff</a>), so on-catalogue dots cost nothing; gain can only come from unmasked 1–2 px flank dots whose marginal kernel credit k falls below the bar α·DTI≈0.054. GEMSDOE32's own site labels this file <b>UNSCORED</b> (projected 0.2747 MODEL) — the 0.2778 figure is an owner claim with no organizer receipt, verified 2026-10-21. Live-anchored inversion recovers TPw=5,073, D=18,734, |G|≈12,226, recall 0.415, break-even τ=0.05416; B=2 removal spends 65 credits for 2,545 dots, budget 135.7 → safety 2.08, projected live 0.2747 (MODEL, not score). Two routes (empirical 0.0548 vs derived 0.0520) agree. Can we beat 0.2778? Only by raising mean credit per dot ~25% at same mass — no public catalogue supplies that (GDR QFaults v2: 59,065 px, all but 1 within 300 m of catalogue). Path is better detector + dilational-jog geometry (this repo’s H83‑B).</p>
+<p><a href="research.html">Read the 5 ranked hypotheses →</a></p>
 </div>
 <div class="card">
 <h3>What this submission does differently (H83‑B, RANK 1)</h3>
@@ -80,6 +80,11 @@ th{background:#eef4f1}
 </div>
 </div>
 
+<div class="card" style="border:2px solid #b42318;background:#fff5f5;margin-top:14px">
+<div style="font-size:12px;letter-spacing:.5px;color:#b42318;font-weight:800">⛔ NEW THIS SESSION — H83-F UNIQUE TIF GENERATED, VERDICT NEGATIVE — DO NOT SUBMIT</div>
+<p class="mut"><b>Lane:</b> SGMC-relocation de-redundancy swap (26,000 least-redundant H83-B dots kept + 14,000 USGS SGMC geologic-map fault pixels &gt;3 px from catalogue and kept dots, matched 40,000 mass). <b>Unique:</b> overlap within 3 px vs H83-B 0.672, vs D28 0.640 (both &lt;0.70); Pearson 0.65/0.59 (&lt;0.90). <b>Format-valid:</b> strict-finite PASS (see receipt). <b>Why gated:</b> pure hide-and-recover HOLDOUT-DTI (11,790 withheld positives, 639 components) pooled 0.00321 vs H83-B 0.00384, Δ −0.00063, 95% CI [−0.00104, −0.00036] excludes 0. Leakage canary SGMC-support AUC 0.739 (&lt;0.90 PASS). File: <code>gemsdoe83-h83f-sgmc-reloc-deredund-40000-20261021T000000Z-c7e4d858-zeros.tif</code> sha256 <code>7e5a8874…</code> · <a href="downloads/checks-gemsdoe83-h83f-sgmc-reloc-deredund-40000-20261021T000000Z-c7e4d858-zeros.tif.json">receipt</a>. Negative results are deliverables; do not spend a weekly slot on it.</p>
+<p class="mut">Same-instrument context: catalogue-hugging D28 scores 0.09502 on this pure catalogue holdout — it rewards covering known faults and cannot reward a genuinely new fault (IR-83-PROXY-01). H83-B superiority over D28 is therefore <b>not established</b> on the pure instrument; its case rests on SGMC/live-mirror truths. Public leaderboard (ORGANIZER-CONFIRMED, read 2026-10-21): <b>#1 xiaofanhu 0.4413</b> — beating 0.2778 now means closing a ~59% credit-density gap, not 25%.</p>
+</div>
 <div class="card" style="margin-top:14px">
 <h3>Holdout validation (HOLDOUT‑DTI, spatially blocked, hide‑and‑recover)</h3>
 <p class="mut">Visible fault segments withheld with 1.5 km collar + 1.2 km domain erosion; every catalogue‑based feature derived only from visible faults; visible faults masked pixel‑exactly; score pooled DTI (α0.2 β0.8 300 m). Instrument calibrated vs 6 known live orderings (reproduces D2.8 < 0.2708 etc). Leakage canary run first: max solo AUC 0.588 (<0.90 PASS).</p>
@@ -90,7 +95,7 @@ th{background:#eef4f1}
 <tr><td><b>drift_corrected_holdout_mean</b></td><td><b>0.04166</b></td><td>0.14801 claim (branch‑sensitive)</td><td>0.04504 HOLDOUT‑DTI</td><td>0.06962 HOLDOUT‑DTI</td></tr>
 <tr><td><b>Live‑mirror LM off‑catalogue (SGMC >3px)</b></td><td><b>0.07771</b> (calibrated same)</td><td>—</td><td>0.07404 HOLDOUT‑DTI</td><td>—</td></tr>
 </table>
-<p class="mut">Every number here is <b>HOLDOUT‑DTI</b> (evaluator version 2026‑10‑04, 8 cells: 4 quadrants × 2 draws, 95% CI from per‑quad std) except where labelled ORGANIZER‑CONFIRMED or claim. Projection ≠ score. Full evidence: <a href="../evidence/submission_gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3.json">evidence JSON</a> · <a href="../evidence/holdout_run_h83a.json">holdout run</a>.</p>
+<p class="mut">Every number here is <b>HOLDOUT‑DTI</b> (evaluator version 2026‑10‑04, 8 cells: 4 quadrants × 2 draws, 95% CI from per‑quad std) except where labelled ORGANIZER‑CONFIRMED or claim. Projection ≠ score. Full evidence: <a href="https://github.com/buffedlizard55-lab/GEMSDOE83/blob/main/evidence/run_card.json">run card</a> · <a href="https://github.com/buffedlizard55-lab/GEMSDOE83/blob/main/evidence/h83f_experiment.json">H83-F holdout</a>.</p>
 <p class="mut"><b>Registry duplicate check (surface before placement AND final dots):</b> rank‑correlation with any registry raster ≤0.64 (<0.90 PASS); >70% dots within 3 px overlap = 0.683 (<0.70 PASS) vs D28 44090 (most similar registry raster). vs H33‑B2 zeros: corr 0.64 overlap 0.683. vs H32‑D 46090: corr 0.279 overlap 0.684. <b>UNIQUE per protocol — not a duplicate lane.</b></p>
 </div>
 
@@ -115,11 +120,11 @@ th{background:#eef4f1}
   "raster_sha256": "e731b16b2811ff6cc0b581742acbd4b7a18858b8a83d5b4f2e4031967bc735a5",
   "validator": {"crs": "EPSG:32611", "shape": [3730, 3292], "transform": [100,0,243350,0,-100,4508550], "dtype": "float32", "passed": true, "min": 0.0, "max": 1.0, "no_nan_inside": true, "outside_ok": true},
   "submission_name": "GEMSDOE83-H83B-JOG-AUG-B2-40K",
-  "submission_note": "GEMSDOE83 H83-B jog+alter 40k | B2 27k kept +13k new ThK breach | HOLDOUT cat 0.0044 sgmc 0.0681 drift 0.0417 | UNIQUE dup-check PASS",
+  "submission_note": "GEMSDOE83 H83B jog+ThK 40k B2 | HOLDOUT-DTI pure-cat 0.0038 SGMC-cal 0.0681 | unique ov0.68 r0.64 | format-valid UNSCORED",
   "verdict": "negative (HOLDOUT cat slightly below B2 0.00460, but sgmc +0.0040 vs B2 is significant and LM 0.0777 > B2 0.0740; UNIQUE lane, promote to slot only if sgmc instrument trusted for live geothermal faults)",
   "budget": "2/3 experiments used (pure surfaces + augmented), 1.2h/2h"
 }</code></pre>
-<p class="mut">Negative results are deliverables per protocol. Full JSON: <a href="../registry/submission_build.json">registry/submission_build.json</a></p>
+<p class="mut">Negative results are deliverables per protocol. Full JSON: <a href="https://github.com/buffedlizard55-lab/GEMSDOE83/blob/main/registry/submission_build.json">registry/submission_build.json</a></p>
 </div>
 </div>
 
@@ -144,7 +149,7 @@ th{background:#eef4f1}
 
 </div>
 <footer style="padding:18px;text-align:center;color:var(--mut);font-size:12px">
-<div class="wrap">Site generated 2026‑10‑04 from registry/*.json and evidence/*.json by scripts/build_site.py · Owner‑reported scores labelled claim; only organizer leaderboard rows are ORGANIZER‑CONFIRMED · <a href="https://github.com/buffedlizard55-lab/GEMSDOE83">Repository</a> · <a href="data/feed.json">feed.json</a></div>
+<div class="wrap">Site generated 2026‑10‑04 from registry/*.json and evidence/*.json by scripts/build_site.py · Owner‑reported scores labelled claim; only organizer leaderboard rows are ORGANIZER‑CONFIRMED · <a href="https://github.com/buffedlizard55-lab/GEMSDOE83">Repository</a></div>
 </footer>
 </body>
 </html>
