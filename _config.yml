@@ -1,9 +1,10 @@
 # Existing legacy Pages source is the repository root. Never publish quarantined
 # historical claims or binaries; keep those available only as GitHub audit history.
+# evidence/ and registry/ contain auditable receipts linked from docs/index.html — must be published.
 exclude:
-  - research
-  - evidence
+  - research/quarantine
   - scripts
   - tests
-  - README.md
   - requirements.txt
+# Note: research/ (non-quarantine) contains h84 hypotheses markdown for site building, but not needed for Pages deploy;
+# evidence/ and registry/ are intentionally INCLUDED (they hold receipts linked from the site).

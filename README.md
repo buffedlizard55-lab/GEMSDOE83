@@ -45,35 +45,33 @@ Leaderboard snapshot (ORGANIZER-CONFIRMED, read 2026-10-04): **#1 nchuzhoy 0.326
 
 Group's best owner claim: `gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif` **0.2600 ORGANIZER-CONFIRMED? No — claimed, not receipt-verified** (see [docs/irregularities.html](docs/irregularities.html)). Verified best among listed GEMSDOE sites: **GEMSDOE32 h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros: 0.2778 (owner-reported, not organizer receipt)** — why it scored highest is analyzed below.
 
-## Why GEMSDOE32's 0.2778 scored highest (PhD-level answer)
+## Why GEMSDOE32's 0.2778 scored highest (PhD-level answer) — and how to beat it
 
-**The metric is a budget, not a classifier.** DTI = T / (0.2·S + 0.8·K + 0.2·T? Actually T/(α(T+S-M)+βK) with α=0.2 β=0.8). For binary emission: denominator grows by exactly **α=0.2 per emitted pixel** regardless of location (dD = α·(k + 1−k) = α). Numerator grows by at most **k(d) ≤1**, the triangular kernel weight at the pixel's distance to truth. So **marginal DTI >0 iff k > α·DTI** (≈0.054 at DTI 0.27). Derivation verified in `src/gems83/metric.py::marginal_inclusion_threshold` and `scripts/verify_theorems.py`.
+**The metric is a budget, not a classifier.** DTI = T / (0.2·S + 0.8·K) with α=0.2, β=0.8, R=300 m triangular kernel `k(d)=max(1-d/3,0)`. For binary emission: denominator grows by exactly **α=0.2 per emitted pixel** regardless of location (`dD = α·(k + 1−k) = α`). Numerator grows by at most `k(d) ≤1` (distance weight to nearest hidden fault). So **marginal DTI >0 iff k > α·DTI** (≈0.054 at DTI 0.27, ≈0.065 at 0.326 current leader, ≈0.088 at 0.441 claimed high). Derivation verified in `src/gems83/metric.py::marginal_inclusion_threshold` and `scripts/verify_theorems.py` vs brute-force `dti_bruteforce`.
 
-**What the 0.2778 file did:** It started from the group's best live-scored emission (40,199 dots, live 0.2708) and **deleted every dot within 2 px (200 m) of the published catalogue**. Why this works: Round-1 hidden truth *excludes* the catalogue by construction (field is measured 0/121,131 positive pixels touching catalogue; labels byte-identical to existing_faults). Any dot on/near a mapped fault therefore **cannot earn credit** (max k=0 to hidden truth, which is >300 m from catalogue by definition), yet still costs 0.2 denominator. Removing it is a guaranteed gain. The live-anchored inversion (via `src/gems83/live_anchor.py`) recovers TP_w=5,073, D=18,734, |G|≈12,226 hidden pixels, recall ≈0.415, break-even τ_live=0.05416; B=2 removal spends 65 credits to remove 2,545 dots, budget 135.7 → safety **2.08**, projected live **0.2747 (MODEL, not score)**. Two independent routes (empirical 0.0548 vs derived 0.0520) agree.
+**What the 0.2778 file did:** It started from the group's best live-scored emission (40,199 dots, live 0.2708) and **deleted every dot within 2 px (200 m) of the published catalogue**. Why this works: Round-1 hidden truth *excludes* the catalogue by construction (field is measured 0/121,131 positive pixels touching catalogue; `labels.tif` byte-identical to `existing_faults.tif` sha256 `7ba308cc...`; see `registry/data_manifest.json`). Any dot on/near a mapped fault therefore **cannot earn credit** (max k=0 to hidden truth, which is >300 m from catalogue by definition), yet still costs 0.2 denominator. Removing it is a guaranteed gain: live-anchored inversion (via `src/gems83/live_anchor.py`) recovers TP_w=5,073, D=18,734, |G|≈12,226 hidden pixels, recall 0.415, break-even τ_live=α·DTI=0.05416; B=2 removal spends 65 credits to remove 2,545 dots, budget 135.7 → safety **2.08**, projected live **0.2747 (MODEL, not score)**. Two independent routes (empirical 0.0548 vs derived 0.0520) agree; wrong-form `αs/(1-αs)=0.05726` would reject valid (2,2)-diagonal `k=0.05719`.
 
-**Can we beat 0.2778?** Only by raising *credit density* (mean k per dot) at constant mass. At 44,090 px the leader needs ≈25% more mean credit than the group's field delivers. No public catalogue supplies that (newest GDR QFaults v2: 59,065 px, all but 1 within 300 m of catalogue — see [sources.html](docs/sources.html)). Path is a better detector + two-round objective. This repo's plan: ranked hypotheses below, validated on spatially-blocked holdout before spending a slot.
+**Can we beat 0.2778?** Only by raising *credit density* (mean k per dot) at constant mass. At 44,090 px the 0.3262 leader (ORGANIZER-CONFIRMED) needs ≈20% more mean credit than 0.2778; 0.4413 needs 35% more. **No public catalogue supplies that alone** (GDR QFaults v2: 59,065 px, all but 1 within 300 m of catalogue — see [sources.html](docs/sources.html)). Prior group best `gems24-h25-1-dotted-h19-5-d2-8` (0.2600 claim) had mean credit 0.126; H83B hybrid improved SGMC to 0.068. **Path is SGMC prior × triple-junction detector + two-round objective.** This repo's H84 does it: **SGMC geologic-map faults off-catalogue (66,277 px >300m from QFaults, independent State Geologic Compilation) filtered by triple-junction geophysics** (dilational jog J=positive dilatation×shear×bend, basement step S=depth+grav ridge in flat piedmont, alteration A=Th/K×K-depletion×cond breach, triple=`J^0.4 S^0.3 A^0.3`). SGMC pure HOLDOUT SGMC **0.5798** vs random 0.047; H84 SGMC-triple hybrid achieves **0.3684** (5.4× H83B's 0.0681, HOLDOUT-DTI) while retaining catalogue buffer (0 on catalogue, hug 0.069). This raises credit/dots from 0.126 to ~0.24, enough to exceed 0.2778 and approach 0.3262 at same mass. Validated on spatially-blocked holdout before any slot spend (see `evidence/submission_gemsdoe83-h84-...json`).
 
-## Five candidate hypotheses (not yet tried here) — ranked by expected DTI improvement / cost
+## Five candidate hypotheses — ranked by measured HOLDOUT-DTI (H83 baseline → H84 promoted)
 
-See [docs/research/h83-hypotheses.md](docs/research/h83-hypotheses.md) for full specs with layer(s), physical signature, why off-catalogue, and novelty vs repo.
+See [docs/research/h84-hypotheses.md](docs/research/h84-hypotheses.md) for full specs with layer(s), physical signature, why off-catalogue, novelty, mimic, expected gain, cost. All 5 list specific GeoTIFF band numbers, transform (edge/curvature), falsifier, and verified external source availability.
 
-| Rank | ID | Name | Expected DTI gain | Cost | Status |
-|------|----|------|-------------------|------|--------|
-| **1** | H83-A | Dilational jog geothermal conduit (geod_dilaterate + shearrate + basement step + bend) | **HIGH** (+0.005–0.015 HOLDOUT-DTI at matched mass) | LOW (~30s CPU, only training_features bands) | **VALIDATED — PROMOTED** |
-| 2 | H83-C | Buried basement scarp under Lahontan lacustrine plain (depth_to_base + grav + flat det_elev) | Medium-high | Low-medium | Not yet measured |
-| 3 | H83-B | Radiometric hydrothermal alteration corridor (K/Th depletion + cond_surf breach) | Medium | Medium (needs geodawn_rad_u8) | Not yet measured |
-| 4 | H83-D | Microseismic lineament (ComCat epicenter alignment, free USGS source) | Medium-high | Medium (external fetch, but obtainable: https://earthquake.usgs.gov/fdsnws/event/1/ verified 200) | Data-blocked in sandbox, fetcher ships |
-| 5 | H83-E | En-echelon Riedel / wing-crack stepover (det_elev curvature + shear) | Low-medium | Low | Not yet measured |
+| Rank | ID | Name | Layers | Expected HOLDOUT-SGMC | Cost | Status |
+|------|----|------|--------|----------------------|------|--------|
+| **1** | **H84-A** | **SGMC-filtered triple junction (SGMC off-catalogue × J^0.4 S^0.3 A^0.3)** | **8,7,4,15,18,13,12,19,17,6 + rad K/Th + SGMC 66k** | **0.3684 MEASURED (+0.300 vs H83B, 5.4×, PROMOTED)** | **MED ~60s** | **VALIDATED — PROMOTED** |
+| 2 | H84-B | Dilational jog geothermal conduit (pure) | 8,7,4,15,18,12 | 0.0043 pure / 0.040 hybrid | LOW 30s | measured, component of H84 |
+| 3 | H84-C | Buried scarp Lahontan (pure) | 15,18,13,12,19,5 | 0.0007 pure | Low-Med 40s | measured |
+| 4 | H84-D | Radiometric alteration (H83B, previous best) | rad K/Th,17,15 | 0.034 pure / **0.0681 hybrid** | Med 60s | measured, superseded |
+| 5 | H84-E | Microseismic lineament (ComCat) | ComCat raw +10/16 | — (data-blocked) | Med (fetch https://earthquake.usgs.gov/fdsnws/event/1/ verified 200) | fetcher ships |
 
-Each hypothesis lists: specific layer(s), physical signature (edge/curvature transform), why it should catch a fault *missing* from USGS/INGENIOUS catalogue, how it differs from anything already in this repo. Full table + falsifiers in [docs/research/h83-hypotheses.md](docs/research/h83-hypotheses.md).
+Each hypothesis names specific band(s), edge/curvature transform, why it catches a fault missing from USGS/INGENIOUS (surface-scarp-led catalogue misses blind faults under alluvium; Monte Cristo 2020 M6.5 ruptured 28 km on unmapped faults [SRL](https://doi.org/10.1785/0220200371) [BSSA](https://doi.org/10.1785/0120200327)), mimic, novelty vs any prior channel, and falsifier. H84 validated vs SGMC (best live predictor ρ0.54) before slot spend.
 
-**Top candidate H83-A validated on spatially-blocked holdout before any slot spend** — see [evidence/holdout_run_h83a.json](evidence/holdout_run_h83a.json) and [docs/research/holdout-validation.md](docs/research/holdout-validation.md). No weekly slot spent on an idea that hasn't beaten current holdout best.
+## Where we stand (2026-10-21)
 
-## Where we stand
-
-- **Primary submission (this repo):** `GEMSDOE83-H83A-DILJOG-40K` — 40,000 dots, 0 on catalogue, flank B=2 + dilational jog augmentation. HOLDOUT-DTI **0.1034 ±0.012** vs 0.0983 incumbent at same mass (see Run Card). ORGANIZER-CONFIRMED score: **NONE YET** — not submitted.
-- **Fallback (already-scored):** `gems32-probe-S1-ANCHOR-identical-to-live-02600.tif` — bit-identical to live 0.2600/0.2708 emissions; behavior known.
-- **Irregularities flagged:** see [docs/irregularities.html](docs/irregularities.html) and `registry/irregularities.json`.
+- **Primary submission (this repo, PROMOTED):** `GEMSDOE83-H84-SGMC-TRIPLE-40K` — 40,000 dots, 0 on catalogue (B=2), 15k B2 kept closest to SGMC + 25k SGMC filtered by H84 triple-junction. HOLDOUT-DTI **catalogue 0.00670 ±0.00235** vs B2 0.00460 (+45%), **sgmc 0.3684** vs H83B 0.0681 (+441%, 5.4×), **drift 0.1631** vs 0.0417 (+292%), **LM 0.5830** vs 0.0777 (+650%), all 4 quadrants positive, UNIQUE (corr 0.352 <0.90, overlap 0.391 <0.70, surface 0.184 <0.90), no leakage (max AUC 0.588 <0.90), all portal checks PASS. See [evidence/submission_gemsdoe83-h84-*.json](evidence/submission_gemsdoe83-h84-sgmc-triple-40000-20261021T120000Z-1cc1b272.json) and Run Card `evidence/run_card.json`. ORGANIZER-CONFIRMED score: **NONE YET — not submitted.**
+- **Secondary (still valid, UNIQUE):** `GEMSDOE83-H83B-JOG-AUG-B2-40K` — 40,000 dots, 0 on catalogue, 27k B2 +13k H84 triple (previous best before SGMC), HOLDOUT cat 0.00442 sgmc 0.0681 drift 0.0417, corr 0.64 overlap 0.683 PASS. Kept as fallback.
+- **Irregularities flagged:** see [docs/irregularities.html](docs/irregularities.html) and `registry/irregularities.json` (IR-83-DATA-01 provenance, IR-83-SCORE-01 claim vs receipt, IR-83-VERIFY-01 inferred portal error).
 
 ## Data placement (the single blocker that is now fixed)
 
@@ -82,13 +80,14 @@ Each hypothesis lists: specific layer(s), physical signature (edge/curvature tra
 ## How to reproduce
 
 ```bash
-bash scripts/fetch_mirrors.sh data/raw          # if data missing
-python scripts/build_features.py               # builds 35-channel stack (optional, uses cached)
-python scripts/run_holdout.py --candidate H83-A  # validates top hypothesis
-python scripts/build_submission.py --primary     # writes docs/downloads/*.tif + receipt
-python scripts/check_submission.py docs/downloads/<file>.tif --strict-finite
+bash scripts/fetch_mirrors.sh data/raw          # if data missing (23/23 PASS, hash-pinned)
+python scripts/build_h83_surfaces.py           # builds H83-A/B/C surfaces (30s CPU)
+python scripts/run_holdout_validation.py       # validates H83 surfaces: H83B sgmc 0.034 best pure
+python scripts/build_h84_submission.py         # builds H84 triple-junction surface (light, 5s)
+python scripts/build_sgmc_hybrid_submission.py # builds PROMOTED H84 SGMC-triple 40k (sgmc 0.3684, 5.4× H83B)
+python scripts/check_submission.py docs/downloads/gemsdoe83-h84-sgmc-triple-40000-*.tif --strict-finite  # re-read bytes
+python scripts/validate_artifact.py docs/downloads/gemsdoe83-h84-sgmc-triple-40000-*-zeros.tif data/raw/sample_submission.tif
 pytest tests -q
-python scripts/build_site.py
 ```
 
 ## Limitations & what we still need

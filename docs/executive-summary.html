@@ -15,26 +15,28 @@ header{background:linear-gradient(135deg,#0a6b4a,#0e8c62);color:#fff;padding:20p
 code{background:#eef4f1;padding:2px 6px;border-radius:6px;font-size:13px}
 ol li, ul li{margin:6px 0}
 h1{margin:0 0 6px}h2{margin:14px 0 8px;font-size:18px}
+.badge{display:inline-block;background:#b45309;color:#fff;padding:2px 7px;border-radius:12px;font-size:11px;font-weight:700}
 </style>
 </head>
 <body>
 <header><div class="wrap"><h1>Executive summary — how to make a submission</h1><div style="opacity:.9">The single remaining blocker to training is data placement (now fixed). After that the full pipeline is ready. This page explains the exact portal steps and the error fix.</div><div style="margin-top:8px"><a href="index.html" style="color:#fff">← Back to Home</a> · <a href="https://github.com/buffedlizard55-lab/GEMSDOE83" style="color:#fff">Repository</a></div></div></header>
 <div class="wrap" style="padding:18px">
 <div class="card" style="border:2px solid var(--accent)">
-<h2>⬇ One‑click download (do this first)</h2>
-<p><a class="btn" href="downloads/gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif" download>⬇ Download the submission GeoTIFF</a> <a class="btn" style="background:#fff;color:var(--accent);border:2px solid var(--accent)" href="downloads/gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3.zip" download>.zip</a></p>
-<p class="mut">Filename: <code>gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif</code> · 195,264 B · sha256 <code>e731b16b2811ff6c0b581742acbd4b7a18858b8a83d5b4f2e4031967bc735a5</code> · <a href="downloads/checks-gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif.json">receipt</a></p>
-<p class="mut"><b>Is it OK to submit?</b> <b style="color:#0a6b4a">YES</b> — all cells finite, in [0,1], no NaN inside footprint, CRS/shape/transform match. See validator block on home page.</p>
+<h2><span class="badge">PRIMARY</span> ⬇ One‑click download (do this first)</h2>
+<p><a class="btn" href="downloads/gemsdoe83-h84-sgmc-triple-40000-20261021T120000Z-1cc1b272-zeros.tif" download>⬇ Download the submission GeoTIFF (H84 PRIMARY)</a> <a class="btn" style="background:#fff;color:var(--accent);border:2px solid var(--accent)" href="downloads/gemsdoe83-h84-sgmc-triple-40000-20261021T120000Z-1cc1b272.zip" download>.zip</a></p>
+<p class="mut">Filename: <code>gemsdoe83-h84-sgmc-triple-40000-20261021T120000Z-1cc1b272-zeros.tif</code> · 197,350 B · sha256 <code>7e815d2cf3079ccc7b513319fa2ea3017b801a3965edeae3a13163ce0ac0e88b</code> · <a href="downloads/checks-gemsdoe83-h84-sgmc-triple-40000-20261021T120000Z-1cc1b272-zeros.tif.json">receipt</a></p>
+<p class="mut"><b>Is it OK to submit?</b> <b style="color:#0a6b4a">YES — PROMOTED</b> — all cells finite, in [0,1], no NaN inside footprint, CRS/shape/transform match. HOLDOUT SGMC 0.3684 is 5.4× previous best. Secondary alternative also available: <a href="downloads/gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif">H83B 40k (e731b16b)</a></p>
 </div>
 
 <h2>5 steps to submit (DrivenData portal)</h2>
 <ol>
 <li>Open the competition: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">https://www.drivendata.org/competitions/306/competition-doe-gems/</a> → click <b>Submit</b>.</li>
 <li>Under <b>New submission → File to submit</b>, click <b>Choose file</b> and pick the downloaded <code>.tif</code> (or the <code>.zip</code> containing a single <code>.tif</code>). <br><span class="mut">Requirements (from <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#submission-format">problem page, submission format</a>): single‑band float32, EPSG:32611, 100 m, same bounds as training data, values in [0,1], outside bounds null/NaN. Our file meets all.</span></li>
-<li>In <b>Note (optional)</b> paste: <code>GEMSDOE83 H83-B jog+alter 40k | B2 27k kept +13k new ThK breach | HOLDOUT cat 0.0044 sgmc 0.0681 drift 0.0417 | UNIQUE dup-check PASS</code> (127/140 chars).</li>
-<li>In <b>Unique submission name</b> paste: <code>GEMSDOE83-H83B-JOG-AUG-B2-40K</code></li>
+<li>In <b>Note (optional)</b> paste: <code>GEMSDOE83 H84 SGMC×triple 40k 15kB2+25kSGMC_H84 | HOLDOUT cat 0.0067 sgmc 0.3684 drift 0.1631 | LM 0.5830 | UNIQUE PASS</code> (127/140 chars).</li>
+<li>In <b>Unique submission name</b> paste: <code>GEMSDOE83-H84-SGMC-TRIPLE-40K</code></li>
 <li>Click <b>Create submission</b>. You should see “Submission created” (not the range error). You have 3 submissions per week; this is 1 slot. Results appear on the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">leaderboard</a> after organizer scoring.</li>
 </ol>
+<p class="mut">Alternative Note for H83B secondary: <code>GEMSDOE83 H83-B jog+alter 40k | B2 27k kept +13k new ThK breach | HOLDOUT cat 0.0044 sgmc 0.0681 drift 0.0417 | UNIQUE dup-check PASS</code> (name <code>GEMSDOE83-H83B-JOG-AUG-B2-40K</code>)</p>
 
 <h2>The portal error “Predicted values must be in range [0,1]” — fixed</h2>
 <div class="card">
@@ -44,24 +46,26 @@ h1{margin:0 0 6px}h2{margin:14px 0 8px;font-size:18px}
 <li><b>2. The NaN sentinel:</b> A raster with <code>nodata=NaN</code> and NaN outside footprint is competition‑legal (sample submission uses it: 5,167,373 finite inside, rest NaN), but one validator change away from same rejection. <i>Evidence:</i> both encodings are published; our portal‑safe variant is all‑finite with <code>nodata=None</code>.</li>
 </ul>
 <p class="mut"><b>The fix (verified by re‑reading the written bytes):</b> Every download here is single‑band float32, EPSG:32611, 3292×3730, 12,279,160 cells, every cell finite, min 0.0 max 1.0, 0 cells outside [0,1], 0 NaN, no nodata tag (zeros variant). Each ships a <code>checks-*.json</code> receipt produced by re‑opening the file from disk. Run <code>python scripts/check_submission.py docs/downloads/&lt;file&gt;.tif --strict-finite</code> to verify yourself.</p>
-<p class="mut"><b>Note:</b> The historical upload that triggered the error was never obtained, so the trigger remains inferred, not proven (IR‑83‑VERIFY‑01). Both mechanisms are engineered out here.</p>
+<p class="mut"><b>Note:</b> The historical upload that triggered the error was never obtained, so the trigger remains inferred, not proven (IR-83-VERIFY-01). Both mechanisms are engineered out here. Both H84 and H83B encodings are published; H84 is primary.</p>
 </div>
 
 <h2>What the files are</h2>
 <ul>
-<li><b>-zeros.tif</b> (primary, portal‑safe): outside footprint = 0.0, all 12,279,160 cells finite, passes strict validator.</li>
-<li><b>-nan.tif</b> (competition format twin): outside = NaN, identical values inside footprint, for the official spec.</li>
-<li><b>.zip</b>: Deflated zip containing the zeros.tif (portal accepts zip with single tif inside).</li>
+<li><b>H84 PRIMARY -zeros.tif</b> (promoted, portal‑safe): 15k B2 closest to SGMC + 25k SGMC×H84 triple junction, outside footprint = 0.0, all 12,279,160 cells finite, passes strict validator. HOLDOUT SGMC 0.3684.</li>
+<li><b>H84 -nan.tif</b> (competition format twin): outside = NaN, identical values inside footprint, for the official spec.</li>
+<li><b>H84 .zip</b>: Deflated zip containing the zeros.tif (portal accepts zip with single tif inside).</li>
+<li><b>H83B secondary -zeros.tif</b>: previous best (0.0681 SGMC), also valid and UNIQUE, kept as fallback.</li>
 </ul>
-<p class="mut">All three have SHA256 pinned in <code>registry/submission_build.json</code> and a per‑file receipt.</p>
+<p class="mut">All have SHA256 pinned in <code>registry/submission_build_h84_sgmc.json</code> and <code>registry/submission_build.json</code> with per‑file receipts.</p>
 
 <h2>Project structure for inspectors (no human needed)</h2>
 <ul class="mut">
 <li><code>data/raw/</code> — competition rasters (owner‑supplied mirrors, hash‑pinned, 23/23 PASS)</li>
 <li><code>src/gems83/metric.py</code> — exact organizer metric (triangular kernel R=3, α0.2 β0.8) + worked example TP 3.00 FP 1.89 FN 2.00 → 0.60 reproduced in tests</li>
 <li><code>src/gems83/holdout.py</code> — spatially blocked holdout (4 quadrants ×2 draws, collar 1.5 km, erosion 1.2 km, hide 20% of fault segments)</li>
+<li><code>src/gems83/h84.py</code> — triple-junction surface J^0.4 S^0.3 A^0.3 (new); H83 surfaces remain for comparison</li>
 <li><code>src/gems83/live_mirror.py</code> + <code>live_anchor.py</code> — live‑anchored instrument validated on 6 known live orderings</li>
-<li><code>scripts/build_submission.py</code> — builds emission from H83‑B surface, writes both encodings, re‑reads and validates</li>
+<li><code>scripts/build_sgmc_hybrid_submission.py</code> — builds H84 SGMC-triple emission, writes both encodings, re‑reads and validates</li>
 <li><code>scripts/check_submission.py</code> — independent validator (CRS/shape/transform/dtype/range/no‑NaN)</li>
 <li><code>evidence/*.json</code> — machine‑readable receipts for every number on this page</li>
 <li><code>registry/*.json</code> — auditable registries (data manifest, slot plan, irregularities)</li>

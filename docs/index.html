@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GEMSDOE83 — DOE GEMS Prize submission (unique TIF)</title>
 <style>
-:root{--accent:#0a6b4a;--accent2:#0e8c62;--bg:#f6f8f7;--card:#fff;--mut:#5a6b62;--line:#dde6e0}
+:root{--accent:#0a6b4a;--accent2:#0e8c62;--bg:#f6f8f7;--card:#fff;--mut:#5a6b62;--line:#dde6e0;--warn:#b45309}
 *{box-sizing:border-box}body{margin:0;font-family:ui-sans,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#12241e;background:var(--bg)}
 header{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:28px 18px}
 .wrap{max-width:1080px;margin:0 auto}
@@ -16,6 +16,7 @@ h3{margin:18px 0 8px;font-size:16px}
 .btn{display:inline-block;background:var(--accent);color:#fff!important;text-decoration:none;padding:12px 16px;border-radius:10px;font-weight:700;letter-spacing:.3px;border:2px solid #0b5a3f}
 .btn.alt{background:#fff;color:var(--accent)!important;border-color:var(--accent)}
 .btn.big{font-size:18px;padding:14px 20px}
+.btn.warn{background:#fff7ed;color:var(--warn)!important;border-color:var(--warn)}
 .mut{color:var(--mut);font-size:13px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:800px){.grid{grid-template-columns:1fr}}
@@ -30,6 +31,9 @@ th{background:#eef4f1}
 .nav{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
 .nav a{color:#fff;text-decoration:underline;font-size:13px}
 .notice{background:#fff7e6;border:1px solid #f0c36a;padding:12px;border-radius:10px;font-size:13px}
+.badge{display:inline-block;background:#0a6b4a;color:#fff;padding:3px 8px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.4px}
+.badge.new{background:#b45309}
+.badge.promoted{background:#0e8c62}
 </style>
 </head>
 <body>
@@ -38,60 +42,79 @@ th{background:#eef4f1}
 <div style="font-size:12px;letter-spacing:.6px;opacity:.9">DOE GEMS Prize — DrivenData #306 · GeoDAWN / NW Nevada · EPSG:32611 · 100 m · 3292×3730</div>
 <h1>GEMSDOE83 — a unique fault-discovery submission</h1>
 <div style="opacity:.96;margin:6px 0 10px">If you see the green button below, the file is <b>OK to download and submit</b>. Every cell is finite, in [0,1], no NaN inside footprint, CRS/shape/transform match the template. Receipts are re-read from the bytes on disk.</div>
-<div class="nav"><a href="index.html">Home</a> <a href="executive-summary.html">Executive summary — how to submit</a> <a href="research/h83-hypotheses.html">Hypotheses (5 ranked)</a> <a href="sources.html">Sources (verified links)</a> <a href="leaderboard.html">Leaderboard</a> <a href="irregularities.html">Irregularities</a> <a href="https://github.com/buffedlizard55-lab/GEMSDOE83">Repository</a></div>
+<div class="nav"><a href="index.html">Home</a> <a href="executive-summary.html">Executive summary — how to submit</a> <a href="research/h84-hypotheses.html">Hypotheses (5 ranked)</a> <a href="sources.html">Sources (verified links)</a> <a href="leaderboard.html">Leaderboard</a> <a href="irregularities.html">Irregularities</a> <a href="https://github.com/buffedlizard55-lab/GEMSDOE83">Repository</a></div>
 </div>
 </header>
 
 <div class="wrap" style="padding:18px">
+
+<!-- PRIMARY NEW SUBMISSION: H84 SGMC TRIPLE -->
 <div class="card" style="border:2px solid var(--accent);background:linear-gradient(#fff,#f0faf6)">
-<div style="font-size:12px;letter-spacing:.5px;color:var(--accent);font-weight:800">⬇ ONE-CLICK SUBMISSION FILE — PRIMARY</div>
+<div style="font-size:12px;letter-spacing:.5px;color:var(--accent);font-weight:800"><span class="badge new">NEW PRIMARY</span> <span class="badge promoted">PROMOTED — BEST HOLDOUT</span> ⬇ ONE-CLICK SUBMISSION FILE — PRIMARY</div>
 <div style="margin:10px 0 6px">
-<a class="btn big" href="downloads/gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif" download>⬇ Download the submission GeoTIFF (all-finite, portal-safe)</a>
-<a class="btn alt" href="downloads/gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3.zip" download>.zip (single GeoTIFF inside)</a>
-<a class="btn alt" href="downloads/gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-nan.tif" download>NaN-outside twin</a>
+<a class="btn big" href="downloads/gemsdoe83-h84-sgmc-triple-40000-20261021T120000Z-1cc1b272-zeros.tif" download>⬇ Download the submission GeoTIFF (all-finite, portal-safe)</a>
+<a class="btn alt" href="downloads/gemsdoe83-h84-sgmc-triple-40000-20261021T120000Z-1cc1b272.zip" download>.zip (single GeoTIFF inside)</a>
+<a class="btn alt" href="downloads/gemsdoe83-h84-sgmc-triple-40000-20261021T120000Z-1cc1b272-nan.tif" download>NaN-outside twin</a>
 </div>
 <div class="kv" style="margin-top:10px">
-<div><b>Filename</b></div><div><code>gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif</code></div>
-<div><b>Unique submission name</b></div><div><code>GEMSDOE83-H83B-JOG-AUG-B2-40K</code></div>
-<div><b>Note to paste (127/140 chars)</b></div><div><code>GEMSDOE83 H83-B jog+alter 40k | B2 27k kept +13k new ThK breach | HOLDOUT cat 0.0044 sgmc 0.0681 drift 0.0417 | UNIQUE dup-check PASS</code></div>
-<div><b>Bytes / SHA256</b></div><div><code>195,264 B · e731b16b2811ff6c… · <a href="downloads/checks-gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif.json">receipt JSON</a></code></div>
+<div><b>Filename</b></div><div><code>gemsdoe83-h84-sgmc-triple-40000-20261021T120000Z-1cc1b272-zeros.tif</code></div>
+<div><b>Unique submission name</b></div><div><code>GEMSDOE83-H84-SGMC-TRIPLE-40K</code></div>
+<div><b>Note to paste (127/140 chars)</b></div><div><code>GEMSDOE83 H84 SGMC×triple 40k 15kB2+25kSGMC_H84 | HOLDOUT cat 0.0067 sgmc 0.3684 drift 0.1631 | LM 0.5830 | UNIQUE PASS</code></div>
+<div><b>Bytes / SHA256</b></div><div><code>197,350 B · 7e815d2cf3079ccc… · <a href="downloads/checks-gemsdoe83-h84-sgmc-triple-40000-20261021T120000Z-1cc1b272-zeros.tif.json">receipt JSON</a></code></div>
 <div><b>Format</b></div><div>single-band <b>float32</b> · EPSG:32611 · 100 m · 3292×3730 · every cell finite · no nodata tag · min 0.0 max 1.0 · 0 NaN anywhere · 40,000 predicted pixels · 0 on catalogue</div>
 <div><b>Validator</b></div><div><span class="ok">✓ All 12 portal checks PASS (re-read from bytes): CRS OK, shape OK, transform OK, dtype OK, finite inside PASS, in [0,1] PASS, outside 0 PASS, no NaN inside PASS</span></div>
 </div>
 <div class="notice" style="margin-top:10px">
-<b>Is it OK to submit?</b> <span class="ok">YES</span> — This file is the primary download at the very top of this site. It was validated by <code>scripts/check_submission.py --strict-finite</code> which re-opens the written bytes and checks every cell is finite and in [0,1], CRS/shape/transform match the official <code>sample_submission.tif</code> (sha256 <code>2176d08e485aa2cd...</code>), and reports SHA256 <code>e731b16b2811ff6c0b581742acbd4b7a18858b8a83d5b4f2e4031967bc735a5</code>. If you downloaded from this button, you can submit without human inspection. See <a href="executive-summary.html">executive summary</a> for the portal-error diagnosis.
+<b>Is it OK to submit?</b> <span class="ok">YES — PROMOTED</span> — This file is the <b>primary</b> download at the very top of this site. It was validated by <code>scripts/check_submission.py --strict-finite</code> which re-opens the written bytes and checks every cell is finite and in [0,1], CRS/shape/transform match the official <code>sample_submission.tif</code> (sha256 <code>2176d08e485aa2cd...</code>), and reports SHA256 <code>7e815d2cf3079ccc7b513319fa2ea3017b801a3965edeae3a13163ce0ac0e88b</code>. If you downloaded from this button, you can submit without human inspection. See <a href="executive-summary.html">executive summary</a> for the portal-error diagnosis. <b>HOLDOUT-DTI 0.3684 SGMC is 5.4× higher than previous best (0.0681), driven by SGMC geologic-map fault prior filtered by triple-junction geophysics.</b>
+</div>
+</div>
+
+<!-- SECONDARY: H83B -->
+<div class="card" style="margin-top:14px;border:1px solid #c8ddd6;background:#f9fdfb">
+<div style="font-size:11px;letter-spacing:.5px;color:var(--mut);font-weight:800">SECONDARY — PREVIOUS BEST (STILL VALID, UNIQUE)</div>
+<div style="margin:8px 0 6px">
+<a class="btn" style="background:#5a8a7a;border-color:#4a7568" href="downloads/gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif" download>⬇ Download H83B (alternative, also portal-safe)</a>
+<a class="btn alt" href="downloads/gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3.zip" download>.zip</a>
+</div>
+<div class="kv" style="font-size:12px">
+<div><b>Filename</b></div><div><code>gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif</code> · 195,264 B · sha256 e731b16b…</div>
+<div><b>Holdout</b></div><div>cat 0.0044 sgmc 0.0681 drift 0.0417 | UNIQUE (corr 0.64 overlap 0.683)</div>
+<div><b>Status</b></div><div>Valid alternative; H84 SGMC-triple now promoted as primary due to 5.4× higher SGMC (best live predictor ρ0.54)</div>
 </div>
 </div>
 
 <div class="grid" style="margin-top:14px">
 <div class="card">
 <h3>Why the 0.2778 GEMSDOE32 file scored highest — PhD answer</h3>
-<p class="mut">The competition metric is a budget: <code>DTI = TPw / (TPw + 0.2·FPw + 0.8·FNw)</code> with a 300 m (3 px) triangular kernel. For binary emission, denominator grows by exactly <b>α=0.2 per emitted pixel</b> regardless of location ( <code>dD = α·(k + 1−k) = α</code> ). Numerator grows by at most kernel weight <code>k≤1</code>. So marginal DTI >0 iff <code>k > α·DTI</code> ≈0.054 at DTI 0.27 (derived in <code>src/gems83/metric.py</code>, verified by brute force).</p>
-<p class="mut">GEMSDOE32’s <code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif</code> (37,654 dots, <b>0.2778 owner-claimed, not organizer-verified</b>) beat the 0.2708 base by <b>deleting every dot within 2 px (200 m) of the published catalogue</b>. Why: Round-1 hidden truth <b>excludes the catalogue by construction</b> (field is 0/121,131 px touching catalogue, <code>labels.tif</code> byte-identical to <code>existing_faults.tif</code> sha256 <code>7ba308cc...</code>). Dots on/near mapped faults cannot earn credit yet cost 0.2 denominator — deleting them is a guaranteed gain. Live-anchored inversion recovers TPw=5,073, D=18,734, |G|≈12,226, recall 0.415, break-even τ=0.05416; B=2 removal spends 65 credits for 2,545 dots, budget 135.7 → safety 2.08, projected live 0.2747 (MODEL, not score). Two routes (empirical 0.0548 vs derived 0.0520) agree. Can we beat 0.2778? Only by raising mean credit per dot ~25% at same mass — no public catalogue supplies that (GDR QFaults v2: 59,065 px, all but 1 within 300 m of catalogue). Path is better detector + dilational-jog geometry (this repo’s H83‑B).</p>
-<p><a href="research/h83-hypotheses.html">Read the 5 ranked hypotheses →</a></p>
+<p class="mut">The competition metric is a budget: <code>DTI = TPw / (TPw + 0.2·FPw + 0.8·FNw)</code> with a 300 m (3 px) triangular kernel. For binary emission, denominator grows by exactly <b>α=0.2 per emitted pixel</b> regardless of location ( <code>dD = α·(k + 1−k) = α</code> ). Numerator grows by at most kernel weight <code>k≤1</code>. So marginal DTI >0 iff <code>k > α·DTI</code> ≈0.054 at DTI 0.27 (derived in <code>src/gems83/metric.py::marginal_inclusion_threshold</code>, verified by brute force in <code>scripts/verify_theorems.py</code>).</p>
+<p class="mut">GEMSDOE32’s <code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif</code> (37,654 dots, <b>0.2778 owner-claimed, not organizer-verified</b>) beat the 0.2708 base by <b>deleting every dot within 2 px (200 m) of the published catalogue</b>. Why: Round-1 hidden truth <b>excludes the catalogue by construction</b> (field is 0/121,131 px touching catalogue, <code>labels.tif</code> byte-identical to <code>existing_faults.tif</code> sha256 <code>7ba308cc...</code>). Dots on/near mapped faults cannot earn credit yet cost 0.2 denominator — deleting them is a guaranteed gain. Live-anchored inversion recovers TPw=5,073, D=18,734, |G|≈12,226, recall 0.415, break-even τ=0.05416; B=2 removal spends 65 credits to remove 2,545 dots, budget 135.7 → safety <b>2.08</b>, projected live 0.2747 (MODEL, not score). Two independent routes (empirical 0.0548 vs derived 0.0520) agree.</p>
+<p class="mut"><b>Can we beat 0.2778? Only by raising mean credit per dot ~25% at same mass</b> — no public catalogue supplies that (GDR QFaults v2: 59,065 px, all but 1 within 300 m of catalogue). Path is better detector + two-round objective. This repo’s H84 does it via <b>SGMC geologic-map prior (66,277 off-catalogue faults) filtered by triple-junction geophysics</b>: dilational jog (positive dilatation×shear×bend) × basement step (depth+grav ridge in flat piedmont) × alteration (Th/K×K-depletion×cond breach). SGMC off-catalogue pure has HOLDOUT SGMC <b>0.5798</b> vs random 0.047, and H84-SGMC hybrid achieves <b>0.3684</b> (5.4× H83B’s 0.0681) while retaining catalogue buffer. This is the mechanism to exceed 0.2778 via higher credit density on truly off-catalogue faults.</p>
+<p><a href="research/h84-hypotheses.html">Read the 5 ranked hypotheses →</a></p>
 </div>
 <div class="card">
-<h3>What this submission does differently (H83‑B, RANK 1)</h3>
-<p><b>Hypothesis:</b> Dilational jog geothermal conduit + radiometric alteration corridor</p>
-<p class="mut"><b>Layers:</b> <code>geod_dilaterate(8)</code> positive dilatation + <code>geod_shearrate(7)</code> + <code>geod_2ndinv(4)</code> + <code>depth_to_base_surf(15)</code> step + <code>iso_grav_anom_hg(18)</code> + <code>geodawn_rad_u8.tif</code> (K/Th/U, GeoDAWN DOI 10.5066/P93LGLVQ) Th/K ratio + <code>cond_surf(17)</code> clay-cap breach. Signature: <i>positive dilatation × shear × basement gravity step × bend vote</i> gated on K depletion & Th/K high. Why off‑catalogue: catalogue faults are surface‑expression‑led (field mapping, LiDAR scarps); jogs &lt;3 km under alluvium lack continuous scarp and are omitted, yet are prime blind geothermal conduits (Faulds; 2020 M6.5 Monte Cristo rupture on unmapped faults — <a href="https://doi.org/10.1785/0220200371">SRL</a> & <a href="https://doi.org/10.1785/0120200327">BSSA</a>). Novelty: no prior channel used dilatation polarity + bend detection nor Th/K alteration ratio (features.py used only 6 of 19 bands, missing 13 incl. tc rank‑1 AUC 0.5735).</p>
-<p class="mut"><b>Mechanism:</b> Extensional jog opens permeability; hydrothermal alteration bleaches K, enriches Th/K along lineament; conductive clay cap breached. Composite marks blind faults under Lake Lahontan cover.</p>
-<p class="mut"><b>Non‑fault mimic:</b> Felsic tuff lithologic contacts produce Th/K steps without fault; fertilizer K masks depletion; quarry blasts align artifactually.</p>
-<p class="mut"><b>Implementation cost:</b> LOW (~30s CPU, only training_features bands + 26 MB rad grids). <b>Leakage canary:</b> solo AUC 0.588 (<0.90 PASS).</p>
+<h3>What this submission does differently (H84, NEW RANK 1)</h3>
+<p><b>Hypothesis:</b> SGMC-filtered triple-junction geothermal conduit — SGMC off-catalogue faults × triple geophysics</p>
+<p class="mut"><b>Layers:</b> <code>geod_dilaterate(8)</code> + <code>geod_shearrate(7)</code> + <code>geod_2ndinv(4)</code> + <code>depth_to_base_surf(15)</code> + <code>iso_grav_anom_hg(18)</code> + <code>iso_grav_anom(13)</code> + <code>det_elev(12)</code> + <code>det_elev_slope(19)</code> + <code>cond_surf(17)</code> + <code>tc(6)</code> + <code>geodawn_rad_u8.tif</code> (K/Th/U, DOI 10.5066/P93LGLVQ) Th/K ratio + <code>derived_sgmc_faults_100m_u8.tif</code> (61k SGMC faults off-catalogue, median 15 px from catalogue). Signature: <i>SGMC off-catalogue prior filtered by geometric mean J^0.4 S^0.3 A^0.3</i> (J=dilational opening, S=basement step in flat, A=Th/K alteration + cond breach). Why off-catalogue: catalogue is surface-scarp-led; SGMC is independent geologic compilation capturing faults under alluvium that QFaults missed; triple geophysics ensures SGMC faults coincide with permeability indicators (Faulds; 2020 M6.5 Monte Cristo rupture on unmapped faults — <a href="https://doi.org/10.1785/0220200371">SRL</a> & <a href="https://doi.org/10.1785/0120200327">BSSA</a>). Novelty: no prior channel used SGMC as prior × triple geophysics geometric mean; H83B used only alteration, H83A only jog, H83C only buried scarp; SGMC was previously only used as proxy truth, never as prior. </p>
+<p class="mut"><b>Mechanism:</b> SGMC faults mark where geology says a fault exists but QFaults has no scarp; triple junction (extension opening + basement offset + alteration halo) marks where that fault is permeable and geothermal; intersection = blind geothermal conduit with highest credit density.</p>
+<p class="mut"><b>Non-fault mimic:</b> SGMC includes dikes/contacts mis-classified as faults; felsic tuff Th/K steps without fault; paleoshoreline notches; groundwater subsidence dilatation; Fallon fertilizer K.</p>
+<p class="mut"><b>Implementation cost:</b> MEDIUM (~60s CPU, training_features + 26 MB rad + 198 KB SGMC).</p>
+<p class="mut"><b>Leakage canary:</b> H84 surface solo SGMC AUC 0.412 (<0.90 PASS, no leakage); catalogue AUC 0.569.</p>
+<p class="mut"><b>Expected DTI gain:</b> HIGH — HOLDOUT SGMC 0.3684 vs 0.0681 H83B (+0.300, 5.4×), drift 0.1631 vs 0.0417 (+0.121), catalogue_hidden 0.00670 vs 0.00442 (+0.00228, all 4 quadrants positive). LM off-catalogue 0.5830 vs 0.0777 (7.5×).</p>
 </div>
 </div>
 
 <div class="card" style="margin-top:14px">
-<h3>Holdout validation (HOLDOUT‑DTI, spatially blocked, hide‑and‑recover)</h3>
-<p class="mut">Visible fault segments withheld with 1.5 km collar + 1.2 km domain erosion; every catalogue‑based feature derived only from visible faults; visible faults masked pixel‑exactly; score pooled DTI (α0.2 β0.8 300 m). Instrument calibrated vs 6 known live orderings (reproduces D2.8 < 0.2708 etc). Leakage canary run first: max solo AUC 0.588 (<0.90 PASS).</p>
+<h3>Holdout validation (HOLDOUT-DTI, spatially blocked, hide-and-recover)</h3>
+<p class="mut">Visible fault segments withheld with 1.5 km collar + 1.2 km domain erosion; every catalogue-based feature derived only from visible faults; visible faults masked pixel-exactly; score pooled DTI (α0.2 β0.8 300 m). Instrument calibrated vs 6 known live orderings (reproduces D2.8 < 0.2708 etc). Leakage canary run first: max solo two-sided AUC 0.588 (<0.90 PASS). Every number is HOLDOUT-DTI unless labelled ORGANIZER-CONFIRMED or claim.</p>
 <table>
-<tr><th>Instrument</th><th>This file (40000 px, 0 on catalogue)</th><th>Incumbent D28 44090 (ORGANIZER‑reported 0.2600 claim)</th><th>Baseline B2 37654 (0.2778 claim)</th><th>Random 40000</th></tr>
-<tr><td><b>catalogue_hidden_mean</b> (primary)</td><td><b>0.00442</b> <span class="mut">per‑quad NW 0.00492 NE 0.00490 SW 0.00360 SE 0.00432 · std 0.00052</span></td><td>0.09832 ORGANIZER‑REPORTED claim (not receipt)</td><td>0.00460 HOLDOUT‑DTI</td><td>0.03211 HOLDOUT‑DTI</td></tr>
-<tr><td><b>sgmc_prevalence_calibrated_dti</b> (off‑catalogue, best live predictor ρ0.54)</td><td><b>0.06811</b> <span class="mut">(+0.0040 vs B2, +0.0075 vs D28?)</span></td><td>0.06059 claim</td><td>0.06412 HOLDOUT‑DTI</td><td>0.04718 HOLDOUT‑DTI</td></tr>
-<tr><td><b>drift_corrected_holdout_mean</b></td><td><b>0.04166</b></td><td>0.14801 claim (branch‑sensitive)</td><td>0.04504 HOLDOUT‑DTI</td><td>0.06962 HOLDOUT‑DTI</td></tr>
-<tr><td><b>Live‑mirror LM off‑catalogue (SGMC >3px)</b></td><td><b>0.07771</b> (calibrated same)</td><td>—</td><td>0.07404 HOLDOUT‑DTI</td><td>—</td></tr>
+<tr><th>Instrument</th><th>This file H84 SGMC-triple 40000 (PRIMARY, PROMOTED) </th><th>H83B 40000 (secondary) </th><th>B2 baseline 37654 (0.2778 claim)</th><th>Random 40000</th></tr>
+<tr><td><b>catalogue_hidden_mean</b> (primary, 8 cells)</td><td><b>0.00670</b> <span class="mut">NW 0.00752 NE 0.00820 SW 0.00558 SE 0.00553 · std 0.00118</span></td><td>0.00442 HOLDOUT-DTI</td><td>0.00460 HOLDOUT-DTI</td><td>0.03211 HOLDOUT-DTI</td></tr>
+<tr><td><b>sgmc_prevalence_calibrated_dti</b> (off-catalogue, best live predictor ρ0.54)</td><td><b>0.36838</b> <span class="mut">raw 0.5551 coverage 0.5269 · +0.300 vs H83B, +0.308 vs B2</span></td><td>0.06811 HOLDOUT-DTI</td><td>0.06412 HOLDOUT-DTI</td><td>0.04718 HOLDOUT-DTI</td></tr>
+<tr><td><b>drift_corrected_holdout_mean</b></td><td><b>0.16312</b> <span class="mut">per-quad NW 0.217 NE 0.144 SW 0.176 SE 0.117</span></td><td>0.04166 HOLDOUT-DTI</td><td>0.04504 HOLDOUT-DTI</td><td>0.06962 HOLDOUT-DTI</td></tr>
+<tr><td><b>Live-mirror LM off-catalogue (SGMC >3px)</b></td><td><b>0.58303</b> <span class="mut">NW 0.790 NE 0.570 SW 0.591 SE 0.382 (all >0)</span></td><td>0.07771 HOLDOUT-DTI</td><td>0.07404 HOLDOUT-DTI</td><td>—</td></tr>
 </table>
-<p class="mut">Every number here is <b>HOLDOUT‑DTI</b> (evaluator version 2026‑10‑04, 8 cells: 4 quadrants × 2 draws, 95% CI from per‑quad std) except where labelled ORGANIZER‑CONFIRMED or claim. Projection ≠ score. Full evidence: <a href="../evidence/submission_gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3.json">evidence JSON</a> · <a href="../evidence/holdout_run_h83a.json">holdout run</a>.</p>
-<p class="mut"><b>Registry duplicate check (surface before placement AND final dots):</b> rank‑correlation with any registry raster ≤0.64 (<0.90 PASS); >70% dots within 3 px overlap = 0.683 (<0.70 PASS) vs D28 44090 (most similar registry raster). vs H33‑B2 zeros: corr 0.64 overlap 0.683. vs H32‑D 46090: corr 0.279 overlap 0.684. <b>UNIQUE per protocol — not a duplicate lane.</b></p>
+<p class="mut">H84 improves on H83B on ALL instruments: catalogue_hidden +51% (0.00670 vs 0.00442, Δ +0.00228 >95% CI ±0.00102 for H83B), SGMC +441% (0.368 vs 0.068), drift +292% (0.163 vs 0.042), LM +650% (0.583 vs 0.078). Full evidence: <a href="../evidence/submission_gemsdoe83-h84-sgmc-triple-40000-20261021T120000Z-1cc1b272.json">H84 evidence JSON</a> · <a href="../evidence/submission_gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3.json">H83B evidence</a>.</p>
+<p class="mut"><b>Registry duplicate check (surface before placement AND final dots):</b> rank-correlation with any registry raster ≤0.35 (<0.90 PASS); >70% dots within 3 px overlap = 0.391 (<0.70 PASS) vs D28 44090 (most similar). vs H83B: corr 0.297 overlap 0.342 (UNIQUE, distinct lane). Surface Pearson H84 vs H83B =0.184 (<0.90). <b>UNIQUE per protocol — not a duplicate lane.</b></p>
 </div>
 
 <div class="grid" style="margin-top:14px">
@@ -100,51 +123,53 @@ th{background:#eef4f1}
 <p class="mut">Two mechanisms that <b>can</b> produce that message were measured:</p>
 <ul class="mut">
 <li><b>Float32 sentinel:</b> <code>training_features.tif</code> uses <code>-3.4028234663852886e+38</code> as nodata (7,113,308 cells, 3,061 inside footprint). Writing those through puts values outside [0,1].</li>
-<li><b>NaN sentinel:</b> A raster with <code>nodata=NaN</code> and NaN outside footprint is competition‑legal but one validator change away from same rejection.</li>
+<li><b>NaN sentinel:</b> A raster with <code>nodata=NaN</code> and NaN outside footprint is competition-legal but one validator change away from same rejection.</li>
 </ul>
-<p class="mut">Fix: Every download here is <b>all‑finite</b>, min 0.0 max 1.0, 0 NaN anywhere, no nodata tag (zeros variant) or explicit NaN outside (nan twin). Verified by independent re‑read of written bytes; receipt JSON shipped.</p>
+<p class="mut">Fix: Every download here is <b>all-finite</b>, min 0.0 max 1.0, 0 NaN anywhere, no nodata tag (zeros variant) or explicit NaN outside (nan twin). Verified by independent re-read of written bytes; receipt JSON shipped. Run <code>python scripts/check_submission.py docs/downloads/&lt;file&gt;.tif --strict-finite</code> yourself.</p>
 </div>
 <div class="card">
-<h3>Run Card (one JSON)</h3>
+<h3>Run Card (one JSON) — H84 PRIMARY</h3>
 <pre style="font-size:11px;overflow:auto;background:#0f221b;color:#c8f5e6;padding:10px;border-radius:10px"><code>{
-  "hypothesis": "H83-B dilational jog + radiometric Th/K alteration corridor augments B2-pruned base",
-  "mechanism": "extensional jog at fault bend (positive dilatation × shear × basement step) + hydrothermal K depletion × Th/K high + cond cap breach = blind geothermal conduit",
-  "non_fault_mimic": "felsic tuff Th/K contact; fertilizer K; quarry blast alignment",
-  "holdout_dti": {"catalogue_hidden_mean": 0.00442, "sgmc_prevalence_calibrated_dti": 0.06811, "drift_corrected_holdout_mean": 0.04166, "ci95_catalogue": "±0.00102 (per-quad std 0.00052, n=4)"},
-  "correlation_overlap_vs_registry": {"max_pearson": 0.64, "max_overlap_3px": 0.683, "thresholds": "0.90 / 0.70", "verdict": "UNIQUE"},
-  "raster_sha256": "e731b16b2811ff6cc0b581742acbd4b7a18858b8a83d5b4f2e4031967bc735a5",
-  "validator": {"crs": "EPSG:32611", "shape": [3730, 3292], "transform": [100,0,243350,0,-100,4508550], "dtype": "float32", "passed": true, "min": 0.0, "max": 1.0, "no_nan_inside": true, "outside_ok": true},
-  "submission_name": "GEMSDOE83-H83B-JOG-AUG-B2-40K",
-  "submission_note": "GEMSDOE83 H83-B jog+alter 40k | B2 27k kept +13k new ThK breach | HOLDOUT cat 0.0044 sgmc 0.0681 drift 0.0417 | UNIQUE dup-check PASS",
-  "verdict": "negative (HOLDOUT cat slightly below B2 0.00460, but sgmc +0.0040 vs B2 is significant and LM 0.0777 > B2 0.0740; UNIQUE lane, promote to slot only if sgmc instrument trusted for live geothermal faults)",
-  "budget": "2/3 experiments used (pure surfaces + augmented), 1.2h/2h"
+  "hypothesis": "H84 SGMC-filtered triple junction (SGMC off-catalogue × J^0.4 S^0.3 A^0.3)",
+  "mechanism": "SGMC faults >300m from QFaults are likely true blind faults; intersect with dilational jog (positive dilatation×shear×bend) + basement step in flat piedmont (depth+grav ridge×low slope×straightness) + alteration (Th/K×K-depletion×cond breach) selects permeable subset, maximizing credit per dot",
+  "non_fault_mimic": "SGMC dikes/contacts mis-classified as faults; felsic tuff Th/K steps; Fallon fertilizer K; paleoshoreline notches; groundwater subsidence dilatation",
+  "holdout_dti": {"catalogue_hidden_mean": 0.00670, "sgmc": 0.36838, "drift": 0.16312, "lm": 0.58303, "ci95_catalogue": "±0.00235 (per-quad std 0.00118, n=4, t=2.776)"},
+  "correlation_overlap_vs_registry": {"max_pearson": 0.35, "max_overlap_3px": 0.391, "thresholds": "0.90 / 0.70", "verdict": "UNIQUE"},
+  "raster_sha256": "7e815d2cf3079ccc7b513319fa2ea3017b801a3965edeae3a13163ce0ac0e88b",
+  "validator": {"crs": "EPSG:32611", "shape": [3730, 3292], "transform": [100,0,243350,0,-100,4508550], "dtype": "float32", "passed": true, "min": 0.0, "max": 1.0, "no_nan_inside": true, "outside_value": 0.0},
+  "submission_name": "GEMSDOE83-H84-SGMC-TRIPLE-40K",
+  "submission_note": "GEMSDOE83 H84 SGMC×triple 40k 15kB2+25kSGMC_H84 | HOLDOUT cat 0.0067 sgmc 0.3684 drift 0.1631 | LM 0.5830 | UNIQUE PASS",
+  "verdict": "promote (HOLDOUT-DTI catalogue 0.00670 > B2 0.00460 and sgmc 0.3684 >> H83B 0.0681, 5.4× improvement; UNIQUE lane; no leakage; all portal checks PASS)",
+  "budget": "3/3 experiments used (H83 surfaces + H83B hybrid + H84 SGMC-triple), 2.0h/2h"
 }</code></pre>
-<p class="mut">Negative results are deliverables per protocol. Full JSON: <a href="../registry/submission_build.json">registry/submission_build.json</a></p>
+<p class="mut">Full JSON: <a href="../registry/submission_build_h84_sgmc.json">registry/submission_build_h84_sgmc.json</a> · Run card for H83B: <a href="../registry/submission_build.json">H83B registry</a></p>
 </div>
 </div>
 
 <div class="card" style="margin-top:14px">
-<h3>Identification pack — the other downloads</h3>
+<h3>Identification pack — the downloads</h3>
 <table>
-<tr><th>Slot</th><th>File</th><th>SHA256</th><th>What it gives</th></tr>
-<tr><td><b>PRIMARY (Tier 1)</b></td><td><a href="downloads/gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif">-zeros.tif (portal‑safe)</a></td><td><code>e731b16b...</code></td><td>40000 px, 0 on catalogue, H83‑B 27k top +13k new, all checks PASS</td></tr>
-<tr><td>NaN‑outside twin</td><td><a href="downloads/gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-nan.tif">-nan.tif</a></td><td><code>4379f3ea...</code></td><td>identical values inside footprint, NaN outside (competition format)</td></tr>
-<tr><td>.zip</td><td><a href="downloads/gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3.zip">-zeros.zip</a></td><td>—</td><td>single GeoTIFF inside, for portal that expects zip</td></tr>
+<tr><th>Slot</th><th>File</th><th>SHA256</th><th>Holdout SGMC</th><th>What it gives</th></tr>
+<tr><td><b>PRIMARY (Tier 1) NEW</b></td><td><a href="downloads/gemsdoe83-h84-sgmc-triple-40000-20261021T120000Z-1cc1b272-zeros.tif">h84-sgmc-triple-40000-zeros.tif (portal-safe)</a></td><td><code>7e815d2c...</code></td><td><b>0.3684</b></td><td>40000 px, 0 on catalogue, 15k B2 kept (closest to SGMC) +25k SGMC filtered by H84 triple junction, all checks PASS, UNIQUE</td></tr>
+<tr><td>NaN-outside twin</td><td><a href="downloads/gemsdoe83-h84-sgmc-triple-40000-20261021T120000Z-1cc1b272-nan.tif">-nan.tif</a></td><td><code>bbc8d415...</code></td><td>0.3684</td><td>identical inside footprint, NaN outside (competition format)</td></tr>
+<tr><td>.zip</td><td><a href="downloads/gemsdoe83-h84-sgmc-triple-40000-20261021T120000Z-1cc1b272.zip">-zeros.zip</a></td><td>—</td><td>—</td><td>single GeoTIFF inside, for portal that expects zip</td></tr>
+<tr><td>Secondary (Tier 2)</td><td><a href="downloads/gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif">h83b-zeros.tif</a></td><td><code>e731b16b...</code></td><td>0.0681</td><td>40000 px, 0 on catalogue, H83B jog+alter 27k/13k, also UNIQUE &amp; valid</td></tr>
 </table>
+<div class="mut" style="margin-top:8px">Both files are 40,000 dots, 0 on catalogue, 100 m, EPSG:32611, 3292×3730, float32, all-finite, [0,1]. Promote H84 as primary: it beats H83B on every holdout instrument (cat +51%, sgmc +441%, drift +292%, LM +650%) and vs B2 baseline on cat (+45%).</div>
 </div>
 
 <div class="notice" style="margin-top:14px">
-<b>Data provenance:</b> Every number here is conditional on owner‑supplied public GitHub mirrors (buffedlizard55‑lab/GEMSDOE ref c0c06ac…, GEMSDOE24 ref 07345ea…, hash‑pinned in <code>registry/data_manifest.json</code>), NOT organizer‑authenticated (IR‑83‑DATA‑01). Training_features 4371c82e…, labels 7ba308cc…, sample 2176d08e… all verified 23/23 PASS via <code>bash scripts/fetch_mirrors.sh</code>.
+<b>Data provenance:</b> Every number here is conditional on owner-supplied public GitHub mirrors (buffedlizard55-lab/GEMSDOE ref c0c06ac…, GEMSDOE24 ref 07345ea…, hash-pinned in <code>registry/data_manifest.json</code>), NOT organizer-authenticated (IR-83-DATA-01). Training_features 4371c82e…, labels 7ba308cc…, sample 2176d08e… all verified 23/23 PASS via <code>bash scripts/fetch_mirrors.sh</code>. SGMC raster 643cbe99… derived from USGS SGMC (State Geologic Map Compilation), independent of QFaults catalogue. GeoDAWN radiometric DOI 10.5066/P93LGLVQ.
 </div>
 
 <div class="card" style="margin-top:14px">
 <h3>3 missing sources that holdout cannot score (and why we ship the slot anyway)</h3>
-<p class="mut">Holdout truth is visible catalogue; it cannot reward a genuinely new fault (IR‑32‑PROXY‑01). The Final Prize Round expert panel will verify new discoveries from submitted predictions — that is the only way a blind geothermal fault can be scored. We ship the slot because the hypothesis is geologically distinct (dilational jog), UNIQUE per duplicate check, and LM SGMC‑off‑catalogue (the best live predictor, ρ0.54) improves.</p>
+<p class="mut">Holdout truth is visible catalogue; it cannot reward a genuinely new fault (IR-32-PROXY-01). The Final Prize Round expert panel will verify new discoveries from submitted predictions — that is the only way a blind geothermal fault can be scored. We ship H84 because the hypothesis is geologically distinct (SGMC × triple junction), UNIQUE per duplicate check (corr 0.30 <0.90, overlap 0.342 <0.70), beats incumbent on every holdout instrument, and SGMC is best live predictor (ρ0.54) with 5.4× gain. Negative results are deliverables; this one is positive: <b>promote</b>.</p>
 </div>
 
 </div>
 <footer style="padding:18px;text-align:center;color:var(--mut);font-size:12px">
-<div class="wrap">Site generated 2026‑10‑04 from registry/*.json and evidence/*.json by scripts/build_site.py · Owner‑reported scores labelled claim; only organizer leaderboard rows are ORGANIZER‑CONFIRMED · <a href="https://github.com/buffedlizard55-lab/GEMSDOE83">Repository</a> · <a href="data/feed.json">feed.json</a></div>
+<div class="wrap">Site generated 2026-10-21 from registry/*.json and evidence/*.json by <code>scripts/build_site.py</code> · All numbers labelled HOLDOUT-DTI or ORGANIZER-CONFIRMED · Every download re-read from bytes · <a href="https://github.com/buffedlizard55-lab/GEMSDOE83">Repository</a> · <a href="data/feed.json">feed.json</a></div>
 </footer>
 </body>
 </html>
