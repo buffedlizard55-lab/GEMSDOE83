@@ -42,5 +42,11 @@
     "Cached feature stack and canonical registry absent from this checkout",
     "No same-instrument incumbent, canary results, holdout CI, or uniqueness audit",
     "Mirrored template integrity verified, but organizer authenticity not established"
-  ]
+  ],
+  "concurrent_artifacts": {
+    "status": "QUARANTINED_NOT_ENDORSED",
+    "source_merge": "b57875f",
+    "reason": "Synthetic generator reads no geological layers, fabricates footprint, and does not reproduce advertised holdout/registry claims.",
+    "audit": "evidence/concurrent-artifact-audit.json"
+  }
 }

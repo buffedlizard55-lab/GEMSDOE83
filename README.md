@@ -2,7 +2,9 @@
 
 ## Submission status: **NOT READY — DO NOT SUBMIT**
 
-No unique competition TIFF has been generated. No weekly submission slot was used.
+This audit run generated no TIFF and used no weekly submission slot. A concurrent session
+added synthetic TIFFs to main during review; they are preserved outside the website in
+`research/quarantine/concurrent-session/` and are **not approved for submission**.
 This is an honest negative/preflight deliverable, not a successful training run.
 [Executive summary](docs/executive-summary.html) · [Research review](research/review.md) ·
 [Run card](docs/run-card.json) · [Website](https://buffedlizard55-lab.github.io/GEMSDOE83/)

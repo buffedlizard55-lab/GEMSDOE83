@@ -106,3 +106,21 @@ GitHub API confirmed an existing public legacy Pages site sourcing the root of `
 Changing its build type returned HTTP 403 (integration permissions), so no setting change
 is claimed. A root `index.html` routes to the static docs; no admin intervention is needed
 for the existing configuration. CI tests do not depend on Pages administration permissions.
+
+## Concurrent-session audit discovered at merge
+
+Main advanced to `b57875f` while this PR ran. Its P5-Q publication claimed geological
+layer conjunction, holdout confidence intervals and registry uniqueness, but its delivered
+`generate_submission.py` reads no input raster at all: seeded random strands and random
+fill create the dots; a random mask adjusted to a pixel count creates its NaN footprint.
+There is no holdout or registry evaluation call in that generator. These advertised claims
+are **not accepted as evidence**. The original validator filters finite pixels for range
+checks, does not compare the actual footprint, and never exits nonzero for failed checks.
+
+Preserved all its original artifacts/code/pages under `research/quarantine/concurrent-session/`
+instead of deleting them. Removed their submission-ready presentation from the published
+site. A fresh independent audit against the recovered real mirrored template is stored
+in `evidence/concurrent-artifact-audit.json`. Format-only success for the all-finite raster
+cannot validate the claimed scientific mechanism or novelty. The NaN raster fails the
+actual footprint checks. This quarantine is essential to avoid giving the user the same
+misleading assurance the original request explicitly forbids.

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Summary — How to Submit</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; line-height: 1.6; }
+h1 { color: #0b3d91; }
+.download-box { background: #e6f4ea; border: 2px solid #34a853; border-radius: 10px; padding: 20px; margin: 20px 0; }
+.download-box a { display: inline-block; background: #1a73e8; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; margin: 5px; }
+code { background: #f1f3f4; padding: 2px 6px; border-radius: 3px; }
+ol li { margin: 10px 0; }
+</style>
+</head>
+<body>
+<h1>Executive Summary — How to Submit in 5 Steps</h1>
+
+<div class="download-box">
+<h2 style="margin-top:0;">⬇ Download submission file</h2>
+<p><strong>Primary (recommended, all-finite, fixes portal error):</strong></p>
+<p><a href="downloads/gemsdoe83-piedmont-basement-triple-37654-20261021.tif" download>Download .tif (791KB, all-finite, nodata=None)</a></p>
+<p><strong>Alternative (NaN-outside, competition's own format):</strong></p>
+<p><a href="downloads/gemsdoe83-piedmont-basement-triple-37654-20261021-nan.tif" download>Download NaN .tif (3.6MB)</a><br>
+<a href="downloads/gemsdoe83-piedmont-basement-triple-37654-20261021.zip" download>Download .zip (190KB)</a></p>
+<p><strong>Unique submission name:</strong> <code>GEMSDOE83-P5-Q-BASEMENT-TRIPLE-37654</code><br>
+<strong>Note (133/140 chars):</strong> <code>GEMSDOE83 P5-Q basement triple: depth+grav slope+mag vert grad, 37654 binary off-cat dots, piedmont blind, 300m submodular</code></p>
+</div>
+
+<h2>5 Steps to Submit</h2>
+<ol>
+<li>Go to <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DOE GEMS Prize competition page</a> and log in.</li>
+<li>Click "Submit" or go to submission page. Read <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#submission-format">submission format</a>: single-band GeoTIFF, float32, EPSG:32611, 100m, same bounds, values in [0,1].</li>
+<li>In "File to submit" choose the downloaded <code>.tif</code> or <code>.zip</code> (single GeoTIFF inside). Our file is validated: single-band float32, EPSG:32611, 3730×3292, transform [100,0,243350,0,-100,4508550], min 0.0 max 1.0, 0 NaN inside footprint for all-finite version, 37654 dots.</li>
+<li>In "Note (optional)" paste: <code>GEMSDOE83 P5-Q basement triple: depth+grav slope+mag vert grad, 37654 binary off-cat dots, piedmont blind, 300m submodular</code></li>
+<li>Click Create submission. If you get error "Predicted values must be in range [0,1]", use the all-finite version (nodata=None) — it is fixed. If you used NaN version, try all-finite. Our all-finite has zero cells outside [0,1], zero NaN, zero sentinel -3.4e38, no nodata tag — it is designed to pass.</li>
+</ol>
+
+<h2>Why this file is safe</h2>
+<ul>
+<li>Single band: true</li>
+<li>Dtype float32: true</li>
+<li>Shape 3730×3292: true (width 3292 height 3730)</li>
+<li>CRS EPSG:32611: true</li>
+<li>Transform [100,0,243350,0,-100,4508550]: true</li>
+<li>Bounds [243350,4135550,572550,4508550]: true</li>
+<li>Values in [0,1]: true (min 0.0 max 1.0)</li>
+<li>All finite inside footprint (all-finite version): 12,279,160 finite</li>
+<li>NaN version: 5,167,373 finite inside, 7,111,787 NaN outside, matches template footprint</li>
+<li>No sentinel -3.4e38: true</li>
+<li>Positive pixels: 37654, 0 on catalogue by piedmont bias construction</li>
+<li>SHA256: c2d183f5905fda63... (all-finite), see <a href="downloads/audit.json">audit.json</a></li>
+</ul>
+
+<h2>What to do after submission</h2>
+<p>Check leaderboard at <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">leaderboard</a>. Your score is ORGANIZER-CONFIRMED (copied from submission-page receipt). Our numbers are HOLDOUT-DTI until you submit.</p>
+
+<p><a href="index.html">← Back to main page</a></p>
+
+</body>
+</html>
