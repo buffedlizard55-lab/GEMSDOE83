@@ -1,0 +1,320 @@
+{
+  "experiment": "EXP-83-1",
+  "evidence_class": "LEAKAGE-CANARY",
+  "evaluator_version": "gems57-pooled-hide-v2",
+  "gate_ceiling_symmetric_auc": 0.9,
+  "all_seeds_passed": true,
+  "n_total_channels": 82,
+  "n_physical_channels": 60,
+  "n_structural_and_coupling_channels": 22,
+  "seeds": {
+    "30": {
+      "withheld_positive_pixels": 11342,
+      "negative_pixels_sampled": 160000,
+      "n_features_tested": 82,
+      "max_symmetric_auc": 0.802429,
+      "max_feature": "ns_logdist",
+      "all_below_090": true,
+      "top_15_features": [
+        {
+          "feature": "ns_logdist",
+          "symmetric_auc": 0.802429
+        },
+        {
+          "feature": "ns_cont",
+          "symmetric_auc": 0.797422
+        },
+        {
+          "feature": "ns_cont_max",
+          "symmetric_auc": 0.796513
+        },
+        {
+          "feature": "ns_den12",
+          "symmetric_auc": 0.775482
+        },
+        {
+          "feature": "net_ann_near",
+          "symmetric_auc": 0.772949
+        },
+        {
+          "feature": "net_beam_long",
+          "symmetric_auc": 0.770283
+        },
+        {
+          "feature": "net_bridge_long",
+          "symmetric_auc": 0.766696
+        },
+        {
+          "feature": "net_beam_med",
+          "symmetric_auc": 0.763781
+        },
+        {
+          "feature": "ns_den4",
+          "symmetric_auc": 0.761923
+        },
+        {
+          "feature": "net_tip_ray",
+          "symmetric_auc": 0.758746
+        },
+        {
+          "feature": "ns_den32",
+          "symmetric_auc": 0.751692
+        },
+        {
+          "feature": "ns_gap",
+          "symmetric_auc": 0.746607
+        },
+        {
+          "feature": "net_beam_short",
+          "symmetric_auc": 0.742157
+        },
+        {
+          "feature": "net_bridge_med",
+          "symmetric_auc": 0.730565
+        },
+        {
+          "feature": "ns_sib",
+          "symmetric_auc": 0.688497
+        }
+      ],
+      "per_feature_symmetric_auc": {
+        "z_mag_anomaly_deviation": 0.50039,
+        "z_mag_reduced_to_pole": 0.504558,
+        "z_tmi_horizontal_gradient": 0.509035,
+        "z_geodetic_second_invariant": 0.569457,
+        "z_iso_gravity_slope": 0.572086,
+        "z_tilt_angle_total_curvature": 0.551589,
+        "z_geodetic_shear_rate": 0.575577,
+        "z_geodetic_dilatation_rate": 0.517199,
+        "z_tmi_vertical_gradient": 0.500624,
+        "z_distance_to_earthquake": 0.55194,
+        "z_iso_gravity_vertical_gradient": 0.547042,
+        "z_detrended_elevation": 0.526048,
+        "z_iso_gravity_anomaly": 0.534268,
+        "z_total_magnetic_intensity": 0.505177,
+        "z_depth_to_basement": 0.533621,
+        "z_earthquake_density": 0.567968,
+        "z_conductivity_surface": 0.519746,
+        "z_iso_gravity_horizontal_gradient": 0.520948,
+        "z_detrended_elevation_slope": 0.542464,
+        "grad_mag_reduced_to_pole": 0.510892,
+        "grad_tilt_angle_total_curvature": 0.513074,
+        "grad_detrended_elevation": 0.548076,
+        "grad_iso_gravity_anomaly": 0.573943,
+        "grad_total_magnetic_intensity": 0.509137,
+        "grad_depth_to_basement": 0.559707,
+        "grad_conductivity_surface": 0.500237,
+        "grad_detrended_elevation_slope": 0.560327,
+        "lap_tilt_angle_total_curvature": 0.512501,
+        "lap_detrended_elevation": 0.532748,
+        "lap_iso_gravity_anomaly": 0.503343,
+        "lap_total_magnetic_intensity": 0.505039,
+        "lap_depth_to_basement": 0.508396,
+        "lap_conductivity_surface": 0.506744,
+        "ridge_mag_reduced_to_pole": 0.503964,
+        "ridge_tilt_angle_total_curvature": 0.511755,
+        "ridge_detrended_elevation": 0.532901,
+        "ridge_iso_gravity_anomaly": 0.502564,
+        "ridge_total_magnetic_intensity": 0.504892,
+        "ridge_depth_to_basement": 0.507655,
+        "ridge_conductivity_surface": 0.506535,
+        "ridge_detrended_elevation_slope": 0.507948,
+        "std5_tilt_angle_total_curvature": 0.518819,
+        "std5_detrended_elevation": 0.551515,
+        "std5_total_magnetic_intensity": 0.511081,
+        "std5_conductivity_surface": 0.51183,
+        "x_couple_tmi_dem": 0.541902,
+        "x_couple_tmi_grav": 0.526181,
+        "x_ridge_dem_slope": 0.52524,
+        "x_strain_transtension": 0.562212,
+        "geotherm_vent_plume_s6": 0.506131,
+        "geotherm_vent_plume_s18": 0.522946,
+        "geotherm_reservoir_enthalpy": 0.517381,
+        "geotherm_claycap_conduit": 0.51983,
+        "rad_k_metasomatism": 0.506734,
+        "rad_u_redox_halo": 0.54084,
+        "rad_tc_grad": 0.510907,
+        "mag_shallow_residual": 0.502961,
+        "mag_shallow_ridge": 0.500947,
+        "lidar_relief_norm_scarp": 0.550047,
+        "lidar_scarp_coherence": 0.542174,
+        "ns_logdist": 0.802429,
+        "ns_den4": 0.761923,
+        "ns_den12": 0.775482,
+        "ns_den32": 0.751692,
+        "ns_cont": 0.797422,
+        "ns_gap": 0.746607,
+        "ns_sib": 0.688497,
+        "ns_cont_max": 0.796513,
+        "ns_sib_max": 0.684004,
+        "ns_coh": 0.537076,
+        "net_beam_short": 0.742157,
+        "net_beam_med": 0.763781,
+        "net_beam_long": 0.770283,
+        "net_bridge_med": 0.730565,
+        "net_bridge_long": 0.766696,
+        "net_tip_ray": 0.758746,
+        "net_ann_near": 0.772949,
+        "net_ann_far": 0.642747,
+        "coup_geotherm_tip": 0.620333,
+        "coup_geotherm_gap": 0.625171,
+        "coup_lidar_cont": 0.632132,
+        "coup_strain_sib": 0.628139
+      }
+    },
+    "20": {
+      "withheld_positive_pixels": 11321,
+      "negative_pixels_sampled": 160000,
+      "n_features_tested": 82,
+      "max_symmetric_auc": 0.805359,
+      "max_feature": "ns_logdist",
+      "all_below_090": true,
+      "top_15_features": [
+        {
+          "feature": "ns_logdist",
+          "symmetric_auc": 0.805359
+        },
+        {
+          "feature": "ns_cont",
+          "symmetric_auc": 0.787149
+        },
+        {
+          "feature": "ns_cont_max",
+          "symmetric_auc": 0.785901
+        },
+        {
+          "feature": "ns_den12",
+          "symmetric_auc": 0.78304
+        },
+        {
+          "feature": "net_ann_near",
+          "symmetric_auc": 0.780095
+        },
+        {
+          "feature": "net_bridge_long",
+          "symmetric_auc": 0.779915
+        },
+        {
+          "feature": "net_beam_long",
+          "symmetric_auc": 0.777089
+        },
+        {
+          "feature": "net_beam_med",
+          "symmetric_auc": 0.774166
+        },
+        {
+          "feature": "net_tip_ray",
+          "symmetric_auc": 0.770627
+        },
+        {
+          "feature": "ns_den4",
+          "symmetric_auc": 0.767029
+        },
+        {
+          "feature": "ns_den32",
+          "symmetric_auc": 0.753747
+        },
+        {
+          "feature": "net_beam_short",
+          "symmetric_auc": 0.747118
+        },
+        {
+          "feature": "net_bridge_med",
+          "symmetric_auc": 0.741066
+        },
+        {
+          "feature": "ns_gap",
+          "symmetric_auc": 0.734225
+        },
+        {
+          "feature": "ns_sib",
+          "symmetric_auc": 0.703729
+        }
+      ],
+      "per_feature_symmetric_auc": {
+        "z_mag_anomaly_deviation": 0.512068,
+        "z_mag_reduced_to_pole": 0.519611,
+        "z_tmi_horizontal_gradient": 0.531759,
+        "z_geodetic_second_invariant": 0.569928,
+        "z_iso_gravity_slope": 0.522842,
+        "z_tilt_angle_total_curvature": 0.534316,
+        "z_geodetic_shear_rate": 0.569701,
+        "z_geodetic_dilatation_rate": 0.516736,
+        "z_tmi_vertical_gradient": 0.51274,
+        "z_distance_to_earthquake": 0.54089,
+        "z_iso_gravity_vertical_gradient": 0.518209,
+        "z_detrended_elevation": 0.513655,
+        "z_iso_gravity_anomaly": 0.540754,
+        "z_total_magnetic_intensity": 0.511107,
+        "z_depth_to_basement": 0.525085,
+        "z_earthquake_density": 0.545397,
+        "z_conductivity_surface": 0.520951,
+        "z_iso_gravity_horizontal_gradient": 0.508749,
+        "z_detrended_elevation_slope": 0.567762,
+        "grad_mag_reduced_to_pole": 0.537985,
+        "grad_tilt_angle_total_curvature": 0.501138,
+        "grad_detrended_elevation": 0.572302,
+        "grad_iso_gravity_anomaly": 0.527239,
+        "grad_total_magnetic_intensity": 0.531903,
+        "grad_depth_to_basement": 0.5396,
+        "grad_conductivity_surface": 0.515895,
+        "grad_detrended_elevation_slope": 0.585837,
+        "lap_tilt_angle_total_curvature": 0.511504,
+        "lap_detrended_elevation": 0.537579,
+        "lap_iso_gravity_anomaly": 0.503558,
+        "lap_total_magnetic_intensity": 0.521454,
+        "lap_depth_to_basement": 0.501087,
+        "lap_conductivity_surface": 0.504472,
+        "ridge_mag_reduced_to_pole": 0.518897,
+        "ridge_tilt_angle_total_curvature": 0.511825,
+        "ridge_detrended_elevation": 0.538403,
+        "ridge_iso_gravity_anomaly": 0.502285,
+        "ridge_total_magnetic_intensity": 0.521698,
+        "ridge_depth_to_basement": 0.500499,
+        "ridge_conductivity_surface": 0.503188,
+        "ridge_detrended_elevation_slope": 0.508153,
+        "std5_tilt_angle_total_curvature": 0.506165,
+        "std5_detrended_elevation": 0.574442,
+        "std5_total_magnetic_intensity": 0.532347,
+        "std5_conductivity_surface": 0.513973,
+        "x_couple_tmi_dem": 0.529214,
+        "x_couple_tmi_grav": 0.513364,
+        "x_ridge_dem_slope": 0.532471,
+        "x_strain_transtension": 0.549173,
+        "geotherm_vent_plume_s6": 0.517882,
+        "geotherm_vent_plume_s18": 0.516457,
+        "geotherm_reservoir_enthalpy": 0.505594,
+        "geotherm_claycap_conduit": 0.517275,
+        "rad_k_metasomatism": 0.522689,
+        "rad_u_redox_halo": 0.513226,
+        "rad_tc_grad": 0.500809,
+        "mag_shallow_residual": 0.502448,
+        "mag_shallow_ridge": 0.501997,
+        "lidar_relief_norm_scarp": 0.582096,
+        "lidar_scarp_coherence": 0.570144,
+        "ns_logdist": 0.805359,
+        "ns_den4": 0.767029,
+        "ns_den12": 0.78304,
+        "ns_den32": 0.753747,
+        "ns_cont": 0.787149,
+        "ns_gap": 0.734225,
+        "ns_sib": 0.703729,
+        "ns_cont_max": 0.785901,
+        "ns_sib_max": 0.697995,
+        "ns_coh": 0.541118,
+        "net_beam_short": 0.747118,
+        "net_beam_med": 0.774166,
+        "net_beam_long": 0.777089,
+        "net_bridge_med": 0.741066,
+        "net_bridge_long": 0.779915,
+        "net_tip_ray": 0.770627,
+        "net_ann_near": 0.780095,
+        "net_ann_far": 0.633581,
+        "coup_geotherm_tip": 0.604485,
+        "coup_geotherm_gap": 0.609492,
+        "coup_lidar_cont": 0.647294,
+        "coup_strain_sib": 0.619511
+      }
+    }
+  }
+}

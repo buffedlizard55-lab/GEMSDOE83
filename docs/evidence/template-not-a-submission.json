@@ -1,0 +1,21 @@
+{
+  "schema": "gems83-format-audit-v1",
+  "candidate": "data/sample_submission.tif",
+  "template": "data/sample_submission.tif",
+  "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+  "checks": {
+    "single_band": true,
+    "shape_match": true,
+    "crs_match": true,
+    "transform_match": true,
+    "nonempty_footprint": true,
+    "no_nan_inside_footprint": true,
+    "no_masked_predictions_inside_footprint": true,
+    "all_pixels_finite": false,
+    "all_values_in_0_1": false,
+    "real_numeric_dtype": true
+  },
+  "format_valid": false,
+  "submission_ready": false,
+  "scope": "Format only. No holdout, uniqueness, official template authentication, or slot authorization implied."
+}
