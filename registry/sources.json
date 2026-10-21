@@ -1,0 +1,18 @@
+[
+  {"id": "competition", "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/", "role": "competition home", "status": "verified 2026-10-04"},
+  {"id": "problem", "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/", "role": "metric + format, DTI formula and worked example TP3.00 FP1.89 FN2.00 ->0.60 reproduced", "status": "verified 2026-10-04"},
+  {"id": "leaderboard", "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/", "role": "live scores", "status": "verified 2026-10-04 #1 nchuzhoy 0.3262"},
+  {"id": "rules_pdf", "url": "https://docs.nlr.gov/docs/fy26osti/96647.pdf", "role": "rules, 3 submissions/week", "status": "verified 200 sha256 50d854b1e0239fe6..."},
+  {"id": "reference_solution", "url": "https://github.com/drivendataorg/gems-prize-reference-solution", "role": "U-Net baseline", "status": "verified cloned"},
+  {"id": "geodawn", "url": "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and", "role": "magnetic/radiometric source, DOI 10.5066/P93LGLVQ", "status": "verified 200"},
+  {"id": "sciencebase_area", "url": "https://www.sciencebase.gov/catalog/item/657e1d85d34e23d3533209f7", "role": "survey extent", "status": "verified 200"},
+  {"id": "gbcge", "url": "https://gbcge.org/current-projects/ingenious/", "role": "INGENIOUS faults", "status": "verified 200"},
+  {"id": "mcre_srl", "url": "https://doi.org/10.1785/0220200371", "role": "2020 M6.5 unmapped rupture 28 km", "status": "verified via USGS Pubs 70217872"},
+  {"id": "mcre_bssa", "url": "https://doi.org/10.1785/0120200327", "role": "same", "status": "verified"},
+  {"id": "usgs_qfaults", "url": "https://www.usgs.gov/natural-hazards/earthquake-hazards/faults", "role": "catalogue origin", "status": "verified 200"},
+  {"id": "gdr1391", "url": "https://gdr.openei.org/submissions/1391", "role": "wellsprings 2,146 pts, DOI 10.15121/1881483 CC BY 4.0", "status": "verified 200"},
+  {"id": "3dep", "url": "https://apps.nationalmap.gov/downloader/", "role": "1 m DEM", "status": "verified mirrored"},
+  {"id": "comcat", "url": "https://earthquake.usgs.gov/fdsnws/event/1/", "role": "H83-D seismic, free official", "status": "verified 200 from CI, sandbox 000 so fetcher ships"},
+  {"id": "epsg32611", "url": "https://epsg.io/32611", "role": "CRS UTM 11N", "status": "verified"},
+  {"id": "tversky", "url": "https://en.wikipedia.org/wiki/Tversky_index", "role": "metric family", "status": "verified"}
+]

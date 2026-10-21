@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "items": [
+    {
+      "id": "IR-83-DATA-01",
+      "severity": "high",
+      "statement": "Competition rasters are owner-supplied public GitHub mirrors (buffedlizard55-lab/GEMSDOE ref c0c06ac..., GEMSDOE24 ref 07345ea...), integrity-pinned by sha256 (training_features 4371c82e..., labels 7ba308cc...) but NOT organizer-authenticated. All numbers conditional on that provenance.",
+      "mitigation": "hash-pinned manifest + re-hash on every fetch (23/23 PASS)"
+    },
+    {
+      "id": "IR-83-SCORE-01",
+      "severity": "high",
+      "statement": "Every live score in group ledger (0.2778, 0.2708, 0.2600) is owner/leaderboard-row report, not organizer receipt linking bytes to row. Only public leaderboard rows for other teams (nchuzhoy 0.3262) are observed.",
+      "mitigation": "registry keeps claim vs verified separate; site labels every number"
+    },
+    {
+      "id": "IR-83-PROXY-01",
+      "severity": "medium",
+      "statement": "Blocked holdout truth is visible catalogue — cannot reward genuinely new fault.",
+      "mitigation": "report per-fold pairs, label proxy, gate via live-anchor + LM off-catalogue"
+    },
+    {
+      "id": "IR-83-LEAK-01",
+      "severity": "high",
+      "statement": "Distance-to-catalogue feature AUC 1.0 on visible labels.",
+      "mitigation": "features exclude it; verified no channel contains it"
+    },
+    {
+      "id": "IR-83-VERIFY-01",
+      "severity": "open",
+      "statement": "Historical DrivenData rejection 'Predicted values must be in range [0,1]' cannot be reproduced from shipped files — all 12 checks PASS.",
+      "mitigation": "Both mechanisms measured and engineered out; both encodings published"
+    },
+    {
+      "id": "IR-83-H83-01",
+      "severity": "informational",
+      "statement": "H83-A/C pure surfaces scored below random on catalogue-hidden (0.001-0.002 vs 0.032 random) and below incumbent on SGMC — falsified as standalone emitters.",
+      "mitigation": "retained as negative result; augmentation recovers SGMC +0.0040"
+    }
+  ]
+}
