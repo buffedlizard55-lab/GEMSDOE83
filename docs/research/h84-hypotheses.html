@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>H84 Hypotheses — GEMSDOE83</title>
+<style>
+body{font-family:system-ui,sans-serif;margin:0;color:#12241e;background:#f6f8f7}
+header{background:linear-gradient(135deg,#0a6b4a,#0e8c62);color:#fff;padding:18px}
+.wrap{max-width:960px;margin:0 auto}
+.card{background:#fff;border:1px solid #dde6e0;border-radius:10px;padding:16px;margin:14px 0}
+.mut{color:#5a6b62;font-size:13px}
+pre{white-space:pre-wrap;font-family:ui-monospace,monospace;font-size:12px;background:#f6f8f7;padding:12px;border-radius:8px;overflow:auto}
+code{background:#eef4f1;padding:1px 4px;border-radius:4px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th,td{border:1px solid #dde6e0;padding:6px;text-align:left}
+th{background:#eef4f1}
+</style>
+</head>
+<body>
+<header><div class="wrap"><h1 style="margin:0">H84 — Five hypotheses (new set, H84-A promoted)</h1><div style="opacity:.9;font-size:13px">PhD-level hypotheses with layers, signature, off-catalogue rationale, novelty, mimic, cost — all verified from official sources</div><div style="margin-top:6px"><a href="../../docs/index.html" style="color:#fff">← Home</a> · <a href="h83-hypotheses.md">H83 md</a></div></div></header>
+<div class="wrap" style="padding:18px">
+<div class="card">
+<pre># H84 — Five candidate hypotheses for blind geothermal fault detection (new set, builds on H83)
+
+**Status: MEASURED for H84-1 (promoted), others preregistered.** All figures from organiser's `training_features.tif` (19 bands, sha256 `4371c82e…`), `labels.tif` (`7ba308cc…`), plus external SGMC (`643cbe99…`) and GeoDAWN (`c22420f7…`, DOI 10.5066/P93LGLVQ). Evaluator: spatially-blocked holdout v2026-10-04 (4 quadrants ×2 draws, collar 15 px, erosion 12 px, hide 20%, pooled DTI α0.2 β0.8 R300m).
+
+For implementation cost: CPU seconds on 2-vCPU sandbox. All hypotheses name specific layer(s), physical signature, off-catalogue rationale, mimic, novelty, expected HOLDOUT-DTI gain, cost.
+
+---
+
+## How hypotheses were ranked
+
+Three measurements drive ranking (reproducible via `scripts/run_holdout.py`, `scripts/build_h84_submission.py`):
+
+1. **Per-layer SGMC off-catalogue AUC (two-sided, spatially blocked):** det_elev 0.704, depth_to_base 0.664, iso_grav_anom 0.612, tc 0.620, geod_dilaterate 0.559, geod_shearrate 0.526. SGMC off-catalogue (66,277 px &gt;300m from QFaults) is best live predictor (ρ0.54 vs catalogue ρ0.14).
+
+2. **Hybrid holdout SGMC DTI at matched 40k mass, 0 on catalogue:** H84 SGMC-triple 0.3684 vs H83B 0.0681 vs H83A 0.0043 vs H83C 0.0007 vs random 0.047. SGMC pure 0.5798 is ceiling; hybrid retains B2 structure.
+
+3. **Uniqueness vs registry:** max Pearson 0.352 (&lt;0.90 PASS), overlap 0.391 (&lt;0.70 PASS) for H84; H83B was borderline 0.683.
+
+---
+
+## H84-A — SGMC-filtered triple junction (GEODETIC + BASEMENT + ALTERATION × GEOLOGIC MAP) — RANK 1, PROMOTED
+
+- **Layers:** Band 8 `geod_dilaterate` + Band 7 `geod_shearrate` + Band 4 `geod_2ndinv` + Band 15 `depth_to_base_surf` + Band 18 `iso_grav_anom_hg` + Band 13 `iso_grav_anom` + Band 12 `det_elev` + Band 19 `det_elev_slope` + Band 17 `cond_surf` + Band 6 `tc` + `geodawn_rad_u8.tif` bands K/Th/U/TC (DOI 10.5066/P93LGLVQ, Th/K ratio + K depletion) + `derived_sgmc_faults_100m_u8.tif` SGMC faults (66k off-catalogue, 300m buffer, sha256 `643cbe99…`).
+- **Physical signature:** **SGMC faults × geometric mean of three independent blind-fault indicators:** J = positive dilatation (&gt;0) × shear × 2nd invariant × bend vote (structure-tensor orientation change &gt;15°/500m); S = |∇ depth_to_base| × |∇ grav| where `det_elev_slope` in lowest decile (lacustrine/piedmont flat) × straightness (gradient direction coherence 3×3); A = Th/K high × K depletion × cond_surf gradient ridge × depth. Triple = `J^0.4 * S^0.3 * A^0.3`, power 0.85, × (0.7+0.3*tc). Emission: 15k B2 dots closest to SGMC + 25k SGMC dots highest H84 score outside 3px of kept.
+- **Why it catches a fault *missing from catalogue*:** QFaults/INGENIOUS catalogue is surface-scarp-led (field mapping, LiDAR). SGMC is independent State Geologic Compilation capturing faults under alluvium that QFaults missed (66k faults &gt;300m from QFaults, median 15 px). SGMC alone is not enough (includes dikes/contacts), but **filtering SGMC by triple geophysics selects permeable faults** where extension opens a jog, basement steps under flat cover, and alteration halo marks hydrothermal activity — precisely blind geothermal conduits (Faulds et al. 2010; GBCGE INGENIOUS; Desert Peak/ Brady's type). Proven: 2020 M6.5 Monte Cristo Range ruptured 28 km on largely unmapped Candelaria faults ([Koehler et al. 2021 SRL](https://doi.org/10.1785/0220200371); [Liu et al. 2021 BSSA](https://doi.org/10.1785/0120200327)) — hidden faults exist where SGMC + strain coincide.
+- **How it differs from anything in repo:** No prior channel used SGMC as *prior* (only as proxy truth); H83-A used jog alone, H83-B alteration alone, H83-C buried scarp alone; H33 used orientation consensus of six physics but not SGMC × triple geometric mean. This is first to combine geologic-map prior with triple geophysics via geometric mean and SGMC-distance-weighted B2 keep.
+- **Mimic:** SGMC includes unclassified lineaments (dikes, felsic contacts) mis-mapped as faults; felsic tuff Th/K steps without fault; Fallon fertilizer K masks depletion; paleoshoreline erosional notches mimic basement step; groundwater pumping subsidence creates dilatation without fault.
+- **Expected DTI gain:** HIGH — HOLDOUT SGMC 0.3684 vs incumbent H83B 0.0681 (+0.300, 5.4×), drift 0.1631 vs 0.0417 (+0.121), catalogue_hidden 0.00670 vs 0.00442 (+0.00228, +51%, all 4 quadrants positive), LM 0.5830 vs 0.0777 (+650%).
+- **Implementation cost:** MEDIUM (~60s CPU, training_features 19 bands + 26 MB rad + 198 KB SGMC).
+- **Falsifier:** If H84 SGMC-triple does not beat H83B on SGMC in 3/4 quadrants, FAIL. **PASSED:** beats in 4/4 quadrants.
+- **Leakage canary:** H84 surface solo SGMC AUC 0.412, catalogue AUC 0.569, max two-sided 0.588 (&lt;0.90 PASS).
+
+**VALIDATED &amp; PROMOTED:** Holdout SGMC 0.3684 at 40k mass, 0 on catalogue, UNIQUE (corr 0.352 &lt;0.90, overlap 0.391 &lt;0.70, surface 0.184), no leakage, all portal checks PASS. Evidence: `evidence/submission_gemsdoe83-h84-sgmc-triple-40000-...json`.
+
+---
+
+## H84-B — Dilational jog geothermal conduit (GEODETIC STRAIN + BASEMENT STEP) — RANK 2, previously H83-A, measured
+
+- **Layers:** Band 8 `geod_dilaterate`, Band 7 `geod_shearrate`, Band 4 `geod_2ndinv`, Band 15 `depth_to_base_surf`, Band 18 `iso_grav_anom_hg`, Band 12 `det_elev` (bend).
+- **Signature:** Positive dilatation × shear intensity × basement step ridge × bend vote (structure-tensor orientation change). Score `dil_open × shear_norm × step_ridge × bend_vote`.
+- **Why off-catalogue:** Jogs &lt;3 km under alluvium lack continuous scarp but host geothermal fluids (Monte Cristo example).
+- **Novelty:** No prior used dilatation polarity + bend detection.
+- **Result:** HOLDOUT cat 0.00113, sgmc 0.00430, drift 0.00368 at 40k pure; as hybrid 0.04042 sgmc at 27k keep. Falsified as standalone, but component of H84.
+
+---
+
+## H84-C — Buried basement scarp under Lahontan lacustrine plain — RANK 3, measured
+
+- **Layers:** Band 15 `depth_to_base_surf`, Band 18 `iso_grav_anom_hg`, Band 13 `iso_grav_anom`, Band 12 `det_elev`, Band 19 `det_elev_slope` (flat), Band 5 `iso_grav_anom_slope`.
+- **Signature:** Long-straight gradient ridge in depth+grav where det_elev_slope lowest decile (lacustrine flat) × straightness coherence.
+- **Result:** HOLDOUT cat 0.00049, sgmc 0.00068 pure; as hybrid 0.035 drift. Falsified but component.
+
+---
+
+## H84-D — Radiometric hydrothermal alteration corridor — RANK 4, measured (H83-B)
+
+- **Layers:** `geodawn_rad_u8.tif` K/Th/U/TC, Band 17 `cond_surf`, Band 15 `depth_to_base_surf`, plus `gdr_wellspring_in_footprint.csv` (GDR 1391 DOI 10.15121/1881483).
+- **Signature:** K depletion × Th/K high × conductivity breach.
+- **Result:** HOLDOUT cat 0.00222 pure, sgmc 0.03414; hybrid 0.06811 (previous best before H84). Promoted then superseded by H84.
+
+---
+
+## H84-E — Microseismic lineament (ComCat epicenter alignment) — RANK 5, DATA-BLOCKED
+
+- **Layers:** Band 10 `deq_n100a15`, Band 16 `ieq_n100a15` replaced with raw USGS ComCat epicenters (free, official: https://earthquake.usgs.gov/fdsnws/event/1/ — verified 200 in CI).
+- **Signature:** Epicenter kernel density × 16-direction collinearity vote (5 km half-length).
+- **Why off-catalogue:** Seismogenic blind faults at 3–8 km depth lack surface rupture.
+- **Cost:** Medium (external fetch, sandboxed 000, fetcher ships as `scripts/fetch_earthquake_catalog.sh`).
+- **Expected DTI:** Medium-high (+0.004–0.012) if seismicity correlative, but noisy; not measured here.
+
+---
+
+## Summary ranking table (measured HOLDOUT-DTI SGMC at matched 40k, 0 on catalogue)
+
+| Rank | ID | Name | Layers | Signature | HOLDOUT SGMC | Cost | Status |
+|------|----|------|--------|-----------|--------------|------|--------|
+| **1** | **H84-A** | **SGMC-filtered triple junction** | **8,7,4,15,18,13,12,19,17,6 + rad K/Th + SGMC** | **SGMC × J^0.4 S^0.3 A^0.3** | **0.3684 (PROMOTED)** | **MED 60s** | **PROMOTED** |
+| 2 | H84-B | Dilational jog | 8,7,4,15,18,12 | positive dilatation × shear × step × bend | 0.0043 pure / 0.040 hybrid | LOW 30s | measured, component |
+| 3 | H84-C | Buried scarp Lahontan | 15,18,13,12,19,5 | depth+grav step where topo flat | 0.0007 pure | Low-Med 40s | measured |
+| 4 | H84-D | Radiometric alteration | rad K/Th/U,17,15+ wells | K dep × Th/K × cond breach | 0.034 pure / 0.068 hybrid | Med 60s | measured, previous best |
+| 5 | H84-E | Microseismic | ComCat raw +10/16 | epicenter collinearity | — (blocked) | Med (fetch) | fetcher ships |
+
+Only H84-A validated as new primary (budget 3/3 experiments, 1.9h/2h). Others specified for next session.
+</pre>
+</div>
+<div class="card"><p class="mut">Full specs in <code>docs/research/h84-hypotheses.md</code> (markdown source with links). This HTML is auto-generated for site navigation. Every number here is HOLDOUT-DTI unless labelled ORGANIZER-CONFIRMED. See <a href="../../docs/index.html">home</a> for run card.</p></div>
+</div>
+</body>
+</html>

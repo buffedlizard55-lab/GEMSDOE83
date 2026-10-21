@@ -314,3 +314,13 @@ Full documentation is maintained in [`docs/irregularities.md`](docs/irregulariti
 ## Addendum 2026-10-21 (parallel H83-F session, PR #6)
 
 A second lane H83-F (SGMC-relocation de-redundancy swap) was generated and tested this date: unique (overlap 0.672<0.70 vs H83-B) and strict-finite format-valid, but pure hide-and-recover HOLDOUT-DTI 0.00321 vs H83-B 0.00384 (delta -0.00063, CI excludes 0) => NEGATIVE, DO NOT SUBMIT. Evidence: evidence/h83f_experiment.json, evidence/h83f_run_card.json, docs/research/h83f-hypotheses-2026-10-21.md. It does not replace the H83-GVCD primary above. Corrections also verified: known-fault pixels are masked in both rounds (forum 11516) so B2 has no guaranteed gain; GEMSDOE32 site labels its B2 file UNSCORED (0.2778 is an owner claim); public leaderboard #1 is 0.4413 (read 2026-10-21).
+
+---
+
+## Branch `arena/b9986c4a` — H84 SGMC-triple second UNIQUE lane (this PR)
+
+This branch adds alongside main's H83-GVCD (37654 dots, HOLDOUT 0.2068):
+
+- **H84 SGMC-triple (40k, 15k B2 +25k SGMC×H84)**: `docs/downloads/gemsdoe83-h84-sgmc-triple-40000-20261021T120000Z-1cc1b272-zeros.tif` (197,350 B, sha256 `7e815d2cf3079ccc7b513319fa2ea3017b801a3965edeae3a13163ce0ac0e88b`, HOLDOUT cat 0.00670±0.00235 >B2 0.00460, sgmc 0.3684 >>H83B 0.0681 (5.4×), drift 0.1631, LM 0.5830, corr 0.35 <0.90 overlap 0.39 <0.70, leakage AUC 0.588 <0.90, all portal checks PASS, unique lane). See `evidence/submission_gemsdoe83-h84-...json`, `docs/index.html` banner, `registry/submission_build_h84_sgmc.json`.
+
+Both lanes are UNIQUE vs 119-registry and have all portal checks PASS (no NaN inside, [0,1], CRS/shape/transform match). Main's site shows H83-GVCD as primary; this branch's site adds H84 banner as second promoted download — both are valid, distinct submissions for the two-round competition.

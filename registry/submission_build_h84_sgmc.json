@@ -1,0 +1,268 @@
+{
+  "candidate_id": "gemsdoe83-h84-sgmc-triple-40000-20261021T120000Z-1cc1b272",
+  "slug": "h84-sgmc-triple-40000",
+  "digest8": "1cc1b272",
+  "timestamp": "20261021T120000Z",
+  "emitted_pixels": 40000,
+  "on_catalogue": 0,
+  "hypothesis": "H84 SGMC-filtered triple junction (SGMC off-catalogue \u00d7 J^0.4 S^0.3 A^0.3): SGMC geologic-map faults off-catalogue filtered by dilational jog + basement step + Th/K alteration geometric mean",
+  "mechanism": "SGMC faults beyond 300 m of QFaults catalogue are most likely to be true blind faults; intersecting with extensional jog (dilatation\u00d7shear\u00d7bend), basement step in flat piedmont (depth+grav ridge \u00d7 low slope \u00d7 straightness), and hydrothermal alteration (Th/K\u00d7K-depletion\u00d7cond breach) selects those SGMC faults that coincide with permeability indicators, maximizing credit per dot.",
+  "non_fault_mimic": "SGMC includes unclassified lineaments (dikes, contacts) that mimic faults; felsic tuff Th/K contacts; Fallon fertilizer K; paleoshoreline steps; groundwater subsidence dilatation",
+  "surface_stats": {
+    "h84_min": 0.0,
+    "h84_max": 1.0,
+    "h84_mean": 0.34386152029037476,
+    "sgmc_off": 66277
+  },
+  "validation_zeros": {
+    "crs": "EPSG:32611",
+    "width": 3292,
+    "height": 3730,
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "finite_inside": 5167373,
+    "min_in": 0.0,
+    "max_in": 1.0,
+    "outside_ok": true,
+    "no_nan_inside": true,
+    "in_range": true,
+    "crs_ok": true,
+    "shape_ok": true,
+    "transform_ok": true,
+    "passed": true,
+    "sha256": "7e815d2cf3079ccc7b513319fa2ea3017b801a3965edeae3a13163ce0ac0e88b",
+    "bytes": 197350,
+    "positive_px": 40000,
+    "on_catalogue": 0
+  },
+  "validation_nan": {
+    "crs": "EPSG:32611",
+    "width": 3292,
+    "height": 3730,
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "dtype": "float32",
+    "nodata": NaN,
+    "finite_inside": 5167373,
+    "min_in": 0.0,
+    "max_in": 1.0,
+    "outside_ok": true,
+    "no_nan_inside": true,
+    "in_range": true,
+    "crs_ok": true,
+    "shape_ok": true,
+    "transform_ok": true,
+    "passed": true,
+    "sha256": "bbc8d415470dcb105a45c6711469c084c4467d73a2e2780db7286f5cb72a3362",
+    "bytes": 330006,
+    "positive_px": 40000,
+    "on_catalogue": 0
+  },
+  "holdout": {
+    "candidate_id": "H84_SGMC_15k_25k",
+    "name": "H84_SGMC_15k_25k",
+    "emitted_pixels": 40000,
+    "share_of_footprint": 0.007740877231041769,
+    "on_catalogue_pixels": 0,
+    "on_catalogue_emitted_px": 0,
+    "on_catalogue_waste_frac": 0.0,
+    "hug_share": 0.069325,
+    "catalogue_hidden_mean": 0.006704910968833993,
+    "catalogue_hidden_std": 0.0011773402971075864,
+    "catalogue_hidden_per_draw": {
+      "draw20": 0.007059269663200769,
+      "draw21": 0.006350552274467217
+    },
+    "catalogue_hidden_per_quadrant": {
+      "NW": 0.007519733361281712,
+      "NE": 0.00819553502593803,
+      "SW": 0.005575462451860788,
+      "SE": 0.005528913036255443
+    },
+    "catalogue_hidden_folds": {
+      "draw20_fold0": {
+        "dti": 0.007594859862086876,
+        "coverage": 0.01264887704312807,
+        "tp": 24.172004029417742,
+        "fp": 8245.224996278022,
+        "n_truth": 1911,
+        "emitted": 8265
+      },
+      "draw20_fold1": {
+        "dti": 0.007927402328900124,
+        "coverage": 0.016084688221320743,
+        "tp": 37.81510200832506,
+        "fp": 14409.063432607221,
+        "n_truth": 2351,
+        "emitted": 14441
+      },
+      "draw20_fold2": {
+        "dti": 0.0057071118155806325,
+        "coverage": 0.006943144140456523,
+        "tp": 25.585486157582288,
+        "fp": 7649.8559703536885,
+        "n_truth": 3685,
+        "emitted": 7670
+      },
+      "draw20_fold3": {
+        "dti": 0.0070077046462354445,
+        "coverage": 0.0088425562757218,
+        "tp": 28.517243989202804,
+        "fp": 7418.547471789254,
+        "n_truth": 3225,
+        "emitted": 7443
+      },
+      "draw21_fold0": {
+        "dti": 0.007444606860476547,
+        "coverage": 0.011787861536836242,
+        "tp": 24.884175704261306,
+        "fp": 8244.003536588181,
+        "n_truth": 2111,
+        "emitted": 8265
+      },
+      "draw21_fold1": {
+        "dti": 0.008463667722975934,
+        "coverage": 0.0175671666662898,
+        "tp": 39.7896324991464,
+        "fp": 14406.350850267729,
+        "n_truth": 2265,
+        "emitted": 14441
+      },
+      "draw21_fold2": {
+        "dti": 0.005443813088140945,
+        "coverage": 0.0066862973657402435,
+        "tp": 23.963689758813032,
+        "fp": 7650.05885401353,
+        "n_truth": 3584,
+        "emitted": 7670
+      },
+      "draw21_fold3": {
+        "dti": 0.004050121426275442,
+        "coverage": 0.00518553423776521,
+        "tp": 16.07515613707215,
+        "fp": 7429.201620978123,
+        "n_truth": 3100,
+        "emitted": 7443
+      }
+    },
+    "debiased_catalogue_hidden_mean": 0.03869967558602539,
+    "sgmc_off_catalogue_raw_dti": 0.5550691612325127,
+    "sgmc_off_catalogue_coverage": 0.5269202771105003,
+    "sgmc_prevalence_calibrated_dti": 0.3683809239791854,
+    "drift_corrected_holdout_mean": 0.16311636837273216,
+    "drift_corrected_holdout_std": 0.03732274235344707,
+    "drift_corrected_per_quadrant": {
+      "NW": 0.21669839713078334,
+      "NE": 0.14376371763457618,
+      "SW": 0.17550222453478997,
+      "SE": 0.11650113419077927
+    }
+  },
+  "live_mirror": {
+    "candidate_id": "H84_SGMC_15k_25k",
+    "lm_mean": 0.5830308792444749,
+    "lm_std": 0.14444425672784322,
+    "lm_per_fold": {
+      "foldNW": 0.7896145384484334,
+      "foldNE": 0.5701470103299275,
+      "foldSW": 0.5907131956406407,
+      "foldSE": 0.3816487725588982
+    },
+    "lm_min_fold": 0.3816487725588982,
+    "lm_folds_positive": 4,
+    "lm_calibrated_mean": 0.5830308792444749,
+    "lm_calibrated_std": 0.14444425672784322,
+    "lm_calibrated_per_fold": {
+      "foldNW": 0.7896145384484334,
+      "foldNE": 0.5701470103299275,
+      "foldSW": 0.5907131956406407,
+      "foldSE": 0.3816487725588982
+    },
+    "lm_calibrated_min_fold": 0.3816487725588982,
+    "emitted_pixels": 40000,
+    "emitted_pixels_before_flank_policy": 40000,
+    "on_catalogue_pixels": 0,
+    "fold_detail": {
+      "foldNW": {
+        "dti": 0.7896145384484334,
+        "tp_w": 6251.096677870823,
+        "tp_p": 6764.819589661729,
+        "tp_g": 5737.373766079918,
+        "n_p": 8265,
+        "n_g": 8857
+      },
+      "foldNE": {
+        "dti": 0.5701470103299275,
+        "tp_w": 11418.998784705465,
+        "tp_p": 13106.520234857831,
+        "tp_g": 9731.477334553098,
+        "n_p": 14441,
+        "n_g": 24800
+      },
+      "foldSW": {
+        "dti": 0.5907131956406407,
+        "tp_w": 5203.667826463634,
+        "tp_p": 5697.213170564433,
+        "tp_g": 4710.1224823628345,
+        "n_p": 7670,
+        "n_g": 10081
+      },
+      "foldSE": {
+        "dti": 0.3816487725588982,
+        "tp_w": 5216.5197790748025,
+        "tp_p": 5751.158377587755,
+        "tp_g": 4681.881180561851,
+        "n_p": 7443,
+        "n_g": 16294
+      }
+    }
+  },
+  "leakage_canary": {
+    "sgmc_auc": 0.412115820508229,
+    "catalogue_auc": 0.5690997453664894,
+    "max_two_sided": 0.5878841794917711,
+    "threshold": 0.9,
+    "pass": true
+  },
+  "registry_checks": [
+    {
+      "path": "gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif",
+      "pearson": 0.29743654252869706,
+      "overlap_3px": 0.3421,
+      "reg_dots": 40000
+    },
+    {
+      "path": "gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+      "pearson": 0.35191982596113247,
+      "overlap_3px": 0.390825,
+      "reg_dots": 44090
+    },
+    {
+      "path": "gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+      "pearson": 0.19334495391915416,
+      "overlap_3px": 0.40915,
+      "reg_dots": 61328
+    },
+    {
+      "path": "H84_surface_vs_H83B_surface",
+      "pearson_surface": 0.18421126666220325
+    }
+  ],
+  "h83b_surface_corr": 0.18421126666220325,
+  "unique_name": "GEMSDOE83-H84-SGMC-TRIPLE-40K",
+  "submission_note": "GEMSDOE83 H84 SGMC\u00d7triple 40k 15kB2+25kSGMC_H84 | HOLDOUT cat 0.0067 sgmc 0.3684 drift 0.1631 | LM 0.5830 | UNIQUE PASS"
+}
