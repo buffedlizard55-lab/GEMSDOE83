@@ -39,6 +39,9 @@ def main():
             assert target.is_relative_to(ROOT / 'docs'), f'Outside published site: {link}'
             assert target.exists(), f'Broken target in {file.name}: {link}'
             assert target.suffix.lower() not in ('.tif', '.tiff', '.zip'), 'No validated candidate is available'
+    landing = (ROOT / 'index.html').read_text()
+    assert 'url=docs/index.html' in landing
+    assert 'NOT READY' in landing
     assert not list((ROOT / 'docs').rglob('*.tif'))
     print('PASS: local site links, no unvalidated TIFF download, negative status contract')
 

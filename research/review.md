@@ -99,3 +99,10 @@ a nearby hidden segment could still receive distance credit. We do **not** adopt
 as an official metric fact. This is why the conditional false-positive pruning explanation above
 is weaker than a claim of a proven mechanism. Verify the official scorer before transferring
 its optimization assumptions.
+
+### Hosting permission irregularity
+
+GitHub API confirmed an existing public legacy Pages site sourcing the root of `main`.
+Changing its build type returned HTTP 403 (integration permissions), so no setting change
+is claimed. A root `index.html` routes to the static docs; no admin intervention is needed
+for the existing configuration. CI tests do not depend on Pages administration permissions.

@@ -73,6 +73,8 @@ and the required holdout; compare with the incumbent using paired segment/block 
 perform both uniqueness checks; write and validate a genuinely new TIFF; publish its exact hash,
 unique name and short note. Only a separate selector can spend a weekly slot.
 
-CI runs tests and website consistency checks. Pages deployment is configured for `main` via
-GitHub Actions; deployment success must be verified, not assumed from the presence of YAML.
+CI runs tests and website consistency checks. The repository already has legacy GitHub Pages
+configured for the root of `main` (verified via GitHub API). The root landing page routes to
+`docs/index.html`. Updating Pages settings was denied by integration permissions; the existing
+legacy configuration is retained. Deployment success must be verified separately.
 No automatically refreshed leaderboard feed or organizer submission integration is implemented.
