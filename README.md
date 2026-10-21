@@ -1,16 +1,35 @@
-# GEMSDOE83 — Unique TIF submission for the DOE GEMS Prize (DrivenData 306)
+# `GEMSDOE83` · Lane `H83-GVCD` — Geothermal-Vent & Structural-Relay Counterfactual Dinkelbach Submodular Fusion
 
-**Competition:** [DOE GEMS Prize — overview](https://www.drivendata.org/competitions/306/competition-doe-gems/) · 
-**Problem description, metric and submission format:** [page 967](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/) · 
-**Rules PDF (NLR 96647):** [https://docs.nlr.gov/docs/fy26osti/96647.pdf](https://docs.nlr.gov/docs/fy26osti/96647.pdf) · 
-**Reference solution:** [https://github.com/drivendataorg/gems-prize-reference-solution](https://github.com/drivendataorg/gems-prize-reference-solution) · 
-**GeoDAWN:** [https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and](https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and) · 
-**GBCGE INGENIOUS:** [https://gbcge.org/current-projects/ingenious/](https://gbcge.org/current-projects/ingenious/) · 
-**EPSG 32611:** [https://epsg.io/32611](https://epsg.io/32611) · 
-**Tversky index:** [https://en.wikipedia.org/wiki/Tversky_index](https://en.wikipedia.org/wiki/Tversky_index)
+> ## ✅ OK TO DOWNLOAD AND SUBMIT · ALL AUTOMATED GATES PASSED
+>
+> - **Promoted Submission GeoTIFF (`.tif`)**: [`docs/downloads/gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros.tif`](docs/downloads/gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros.tif) (also in [`submissions/gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros.tif`](submissions/gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros.tif))
+>   - **TIFF Size / SHA-256**: `144,047` bytes · `79f14dc84cd7760cb44645bc090ed2d33dbcfe789cec844fd83753fcff1082a2`
+> - **Single-TIFF Portal Archive (`.zip`)**: [`docs/downloads/gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros.zip`](docs/downloads/gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros.zip)
+>   - **ZIP Size / SHA-256**: `110,287` bytes · `4a556307f06e31edadb5e9b73366998c7efb5857d88db51ecb70f2850e5b460e`
+> - **Executive Summary & Step-by-Step Portal Submission Guide**: [`executive-summary.html`](executive-summary.html) · [`docs/executive-summary.html`](docs/executive-summary.html)
+> - **Main Interactive Research & Audit Hub**: [`index.html`](index.html) · [`docs/index.html`](docs/index.html)
+> - **DrivenData Portal Submission Note (130 / 140 chars)**:
+>   ```text
+>   H83-GVCD geothermal-vent & structural-relay counterfactual Dinkelbach 300m submodular; 37654 dots >3px off cat; HOLDOUT-DTI 0.2068
+>   ```
+> - **Automated Format & `[0, 1]` Range Preflight (`vendor/gems57/validate.py`)**: **PASS** (`single-band float32`, `EPSG:32611`, `3730 x 3292`, `transform = (100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0)`, `min = 0.0`, `max = 1.0`, `n_nan = 0`, `n_infinite = 0`, `outside_footprint = 0.0` — completely eliminating the `"Predicted values must be in range [0, 1]"` portal rejection, `37,654` binary positive pixels, `0` pixels on mapped catalogue, `min_distance_to_catalogue = 3.1623 px = 316.2 m`).
+> - **Spatially-Blocked Dual-Seed Holdout (`HOLDOUT-DTI`, `gems57-pooled-hide-v2`, $\alpha=0.2, \beta=0.8$, 300 m kernel, 2,000 paired block bootstrap draws, 37,654 dots)**:
+>   - **Dual-Seed Pooled (`22,663` withheld positive pixels across 8 spatial quadrants)**: **`0.206817`** (`95% CI [0.192711, 0.219822]`)
+>   - **Seed 30 (`11,342` withheld positive pixels)**: **`0.213755`** (`95% CI [0.196240, 0.230530]`)
+>   - **Seed 20 (`11,321` withheld positive pixels)**: **`0.199862`** (`95% CI [0.184146, 0.214649]`)
+>   - Beats all prior repository lanes at the same `37,654`-dot budget: `H77-Step` (`0.152718` Seed 20), `H83-NETSIB` (`0.153825` Seed 20 / `0.163700` Seed 30), `H77-VDS` (`0.160795` Seed 20 / `0.171625` Seed 30), and `H85-EDTI` (`0.182804` dual-seed pooled).
+> - **82-Channel Single-Feature Leakage Canary (`EXP-83-1`)**: **PASS** (`max symmetric AUC = 0.802429` on Seed 30, `0.805359` on Seed 20 $\le 0.90$ ceiling).
+> - **119-Raster Registry Uniqueness Gate (`EXP-83-3`, `vendor/gems57/uniqueness.py`)**: **PASS** (Pre-placement surface max `|Spearman rho| = 0.124304 <= 0.90`, overlap `0.583728 <= 0.70`; Final emitted dots max `|Spearman rho| = 0.050499 <= 0.90`, binding forward 3-px overlap `0.649997 <= 0.70` across all 115 discriminating priors).
+> - **Weekly Submission Slots Used**: `0`.
 
-> **ONE-CLICK SUBMISSION:** Go to [**docs/index.html**](docs/index.html) — the download button is at the very top. It is green, says “⬇ Download the submission GeoTIFF”, and ships a receipt JSON proving every validator check passes. **If you see that button, the file is OK to submit.**
+![H83-GVCD 3-Panel Diagnostic Map and Holdout Progression](docs/figures/h83_gvcd_surface_and_dots.png)
 
+---
+
+
+> **This branch (`arena/b9986c4a`) adds a second UNIQUE lane — H84 SGMC-triple (40k, sgmc 0.3684, cat 0.00670, UNIQUE 0.35/0.39) — as an alternative promoted submission. Main's lane H83-GVCD (37654 dots, HOLDOUT 0.2068) remains in `docs/downloads/gems83-h83-gvcd-...` and is part of the registry for duplicate checks. Both lanes are UNIQUE vs registry and have all portal checks PASS.**
+
+---
 ## Executive summary — how to submit
 
 1. Open [docs/index.html](docs/index.html) (GitHub Pages site).
