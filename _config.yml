@@ -1,0 +1,9 @@
+# Existing legacy Pages source is the repository root. Never publish quarantined
+# historical claims or binaries; keep those available only as GitHub audit history.
+exclude:
+  - research
+  - evidence
+  - scripts
+  - tests
+  - README.md
+  - requirements.txt

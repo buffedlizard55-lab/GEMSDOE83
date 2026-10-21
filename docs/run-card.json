@@ -1,0 +1,52 @@
+{
+  "schema": "gems83-run-card-v1",
+  "as_of": "2026-10-21",
+  "hypothesis": "No lane supplied. Highest-ranked conditional proposal: cross-contact magnetic phase displacement.",
+  "mechanism": "Match lateral displacement across independent gravity edges; not implemented or evaluated.",
+  "non_fault_mimic": "Intrusive contact geometry or survey stitching",
+  "holdout": {
+    "label": "HOLDOUT-DTI",
+    "status": "NOT_RUN",
+    "evaluator_version": null,
+    "withheld_positives": null,
+    "dti": null,
+    "ci95": null,
+    "incumbent_same_instrument": null
+  },
+  "registry": {
+    "status": "BLOCKED_MISSING_CANONICAL_REGISTRY",
+    "surface_max_rank_correlation": null,
+    "final_max_rank_correlation": null,
+    "surface_dot_overlap_within_3px": null,
+    "final_dot_overlap_within_3px": null,
+    "unique_verified": false
+  },
+  "raster_sha256": null,
+  "validator": {
+    "status": "NOT_RUN_NO_CANDIDATE",
+    "no_nan_inside_footprint": null,
+    "values_in_0_1": null,
+    "crs_match": null,
+    "shape_match": null,
+    "transform_match": null
+  },
+  "submission_name": null,
+  "note": "Blocked: no assigned lane, canonical shared template or registry. No TIFF generated; no weekly slot used.",
+  "verdict": "negative",
+  "submission_ready": false,
+  "experiments_run": 0,
+  "weekly_slots_used": 0,
+  "blockers": [
+    "Assigned single method paragraph not identified in supplied prompt",
+    "Canonical shared evaluate_holdout.py and submission_writer.py absent",
+    "Cached feature stack and canonical registry absent from this checkout",
+    "No same-instrument incumbent, canary results, holdout CI, or uniqueness audit",
+    "Mirrored template integrity verified, but organizer authenticity not established"
+  ],
+  "concurrent_artifacts": {
+    "status": "QUARANTINED_NOT_ENDORSED",
+    "source_merge": "b57875f",
+    "reason": "Synthetic generator reads no geological layers, fabricates footprint, and does not reproduce advertised holdout/registry claims.",
+    "audit": "evidence/concurrent-artifact-audit.json"
+  }
+}

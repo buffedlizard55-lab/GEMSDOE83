@@ -1,0 +1,21 @@
+{
+  "reviewed_at": "2026-10-21",
+  "gems32_commit": "f62038b54dcb7767d4d997f80b033cdc3d42bef9",
+  "official_reference_commit": "aebe92f7c8a990f0e3443451b7a825d9afd6336b",
+  "note": "GitHub retrieved content, not organizer score receipts. Source code stored for educational review only, not executed or used as predictions.",
+  "files": {
+    "evidence/upstream/scripts__restore_data.py": "feb203ce7b024dc3117dbca6be548c4cef1b6fd57fd354fad2ab0a74e6f54803",
+    "evidence/upstream/registry__data_manifest.json": "f08f96e534cf91dbb02d7655a4e6d661837235ebb88b2e5eabdc0b3cc7bcee21",
+    "evidence/upstream/docs__research__h33-hypotheses.md": "b0a214f6bc0f1ff02211360529d96fb0e2719ee2b9eaf9f7355ed714ef25bf92",
+    "evidence/upstream/evidence__h33_holdout.json": "45d3e86ecbc3caa98b5a29a4ae0dd1702d55950df117802bd6e4d3066bddca7b",
+    "evidence/upstream/evidence__h33_validation.json": "74d416a733cddbb3bc841680bb5d01270fd7958b18cba710786484c0e397348a",
+    "evidence/upstream/src__gems32__h33.py": "e478a6f4cb5beb6dd79f711cde43b77748010154d73d1e11b33cf3df47301516",
+    "evidence/upstream/docs__score-ledger.csv": "8eba2f703360d3826ff16f64086c1e7411a9abe74f6094eabd909f9c593c28f2",
+    "evidence/upstream/scripts__fetch_mirrors.sh": "5239fba477ed91c3a510d85b9791c970f7a0702f13ce4d884befe1dd6ff5008b",
+    "evidence/upstream/official-reference-README.md": "cfa4d55559c9128313beb9417eae7e0a94c31677132afb1120f9e86222804239",
+    "evidence/upstream/scripts__run_h33.py": "579cd97304b0fe9e0185dc5a9ef5afb8e903996d1f9813e65bf3b66c661484f6",
+    "evidence/upstream/scripts__build_h33_candidates.py": "624986e243da63576ace5ec8af63f08c4551c4093cda2acdbbc02c8fe6ab5f40",
+    "evidence/upstream/src__gems32__hypotheses33.py": "ce700d84171db395e5a17b9cc4d72aad5fdeed1504bf9e88faaebd8b50aff58b"
+  },
+  "pinned_contents_verified": true
+}
