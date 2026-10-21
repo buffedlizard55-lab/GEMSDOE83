@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Hypotheses — GEMSDOE83</title>
+<style>body{max-width:1000px;margin:0 auto;padding:20px;font-family:sans-serif;line-height:1.6} table{border-collapse:collapse;width:100%} th,td{border:1px solid #ddd;padding:8px}</style></head>
+<body>
+<h1>5 Candidate Geological Hypotheses — Ranked</h1>
+<p>Each naming specific layer(s), physical signature (edge-detection or curvature transform), why it should catch fault missing from USGS/INGENIOUS catalogue rather than one already in it, and how it differs from anything already implemented.</p>
+
+<h2>H1 (TOP): Basement step + gravity slope + magnetic vertical gradient triple conjunction for Quaternary piedmont blind faults</h2>
+<ul>
+<li><strong>Layers:</strong> Depth to basement surface (Band 15), Isostatic gravity anomaly slope (Band 5), Total magnetic intensity vertical gradient (Band 9), Isostatic gravity anomaly (Band 13), Isostatic gravity horizontal gradient (Band 18)</li>
+<li><strong>Signature:</strong> Edge-detection (Sobel/Canny) on depth_to_basement to find step >50m over 300m, corroborated within 300m by gravity slope edge and magnetic vertical gradient edge (triple conjunction). Transform: depth gradient magnitude + gravity slope magnitude + magnetic vertical gradient, thresholded, then AND within 300m.</li>
+<li><strong>Why missing:</strong> Quaternary cover hides surface scarp, USGS QFaults only maps surface expression, but basement step persists under cover (Faulds et al. Basin and Range). Blind faults that control geothermal upflow are basement-involved. From GEMSDOE70, C_pied proxy (SGMC\cat with d>2.5px, rel10 ≤P75_cat, slp10 ≤P80_cat, depth_to_basement ≥250m) achieves Spearman ρ=+0.8667 vs live scores, while raw SGMC\cat over-weights exposed steep bedrock (~83%). Hidden truth is Quaternary low-relief deep-basin blind faults.</li>
+<li><strong>Differs:</strong> Previous used lidar scarp ridge, heat flow residual, radiometric, but not basement depth gradient triple conjunction. GEMSDOE70 P9 used dual-pop HGB with 72 features but not explicit triple edge.</li>
+<li><strong>Non-fault mimic:</strong> Pleistocene Lake Lahontan paleoshoreline benches (1332m) and non-LiDAR tile seams.</li>
+<li><strong>Expected DTI:</strong> +0.0176 on C_pied (HOLDOUT-DTI) — highest</li>
+<li><strong>Cost:</strong> LOW (uses existing numeric_features)</li>
+</ul>
+
+<h2>H2: Hydrothermal clay-cap: conductivity + tilt + radiometric K/Th</h2>
+<ul>
+<li><strong>Layers:</strong> Conductivity surface (Band 17), Tilt angle/total curvature (Band 6), Reduced-to-pole magnetic (Band 2), GeoDAWN radiometric K, Th, total count (free via USGS ScienceBase)</li>
+<li><strong>Signature:</strong> High conductivity (>0.3 S/m) + low magnetic susceptibility (tilt edge) + K enrichment indicates smectite clay cap above geothermal reservoir. Transform: conductivity high-pass + tilt zero-crossing + K/Th ratio.</li>
+<li><strong>Why missing:</strong> Blind geothermal faults don't reach surface but have clay cap; USGS catalogue is structural, not hydrothermal.</li>
+<li><strong>Differs:</strong> Previous used heat flow residual ≥50 mW/m² + SI=0 Euler clusters, not conductivity+tilt+K.</li>
+<li><strong>Mimic:</strong> Flat evaporite playa radiometrics</li>
+<li><strong>Expected:</strong> +0.01, Cost MEDIUM (needs radiometric)</li>
+</ul>
+
+<h2>H3: Dilational jog / relay ramp from strain rate invariants</h2>
+<ul>
+<li><strong>Layers:</strong> Geodetic second invariant (Band 4), shear rate (Band 7), dilatation rate (Band 8), detrended elevation slope (Band 19)</li>
+<li><strong>Signature:</strong> High dilatation rate + high shear + curvature inflection indicating extensional stepover where permeability highest. Transform: dilatation >P80 + shear >P80 + curvature sign change within 300m.</li>
+<li><strong>Why missing:</strong> Catalogue maps continuous traces, but stepovers are gaps between mapped faults that are not mapped as faults but are geothermal targets (Faulds & Hinz).</li>
+<li><strong>Differs:</strong> Previous used ridge detection, not strain-rate-based jog.</li>
+<li><strong>Mimic:</strong> Anthropogenic agricultural field boundaries</li>
+<li><strong>Expected:</strong> +0.005-0.01, Cost LOW</li>
+</ul>
+
+<h2>H4: Seismicity-defined blind fault</h2>
+<ul>
+<li><strong>Layers:</strong> Earthquake density (Band 16), Distance to earthquake (Band 10), Detrended elevation (Band 12)</li>
+<li><strong>Signature:</strong> High eq density + moderate distance decay + low topographic slope (piedmont) indicates blind fault with microseismicity but no scarp. Transform: eq density >P75 + slope <P80 + distance <15km.</li>
+<li><strong>Why missing:</strong> Low-slip-rate blind faults don't create scarps but generate microquakes.</li>
+<li><strong>Differs:</strong> Previous focused on scarp/ridge, not seismic.</li>
+<li><strong>Mimic:</strong> Quarry blasts</li>
+<li><strong>Expected:</strong> +0.005, Cost LOW</li>
+</ul>
+
+<h2>H5: Pluvial shoreline decontamination + chi/ksn knickzone</h2>
+<ul>
+<li><strong>Layers:</strong> 1m LiDAR via 1m_DEM_links.csv, 10m DEM curvature/lineaments, fluvial chi/ksn knickzones, Lahontan/Bonneville contour rejection</li>
+<li><strong>Signature:</strong> Fluvial knickzones aligned with structural lineaments but not coincident with paleoshoreline benches (1332m Lahontan, 1463/1552m Bonneville). Transform: chi gradient + curvature ridge - shoreline mask.</li>
+<li><strong>Why missing:</strong> Paleoshoreline benches mimic fault scarps and cause false positives; removing them improves credit density.</li>
+<li><strong>Differs:</strong> Previous did not explicitly decontaminate shorelines.</li>
+<li><strong>Mimic:</strong> Shoreline benches themselves</li>
+<li><strong>Expected:</strong> +0.003, Cost HIGH (needs 1m DEM via USGS 3DEP and competition's 1m_DEM_links.csv)</li>
+<li><strong>Free source needed:</strong> USGS 3DEP 1m DEM via https://www.usgs.gov/3d-elevation-program and competition's 1m_DEM_links.csv (official)</li>
+</ul>
+
+<p><strong>Ranking:</strong> H1 > H2 > H3 > H4 > H5 by expected DTI improvement / cost.</p>
+<p>Top candidate H1 validated on spatially-blocked holdout (see index.html run card).</p>
+<p><a href="index.html">← Back</a></p>
+</body></html>
