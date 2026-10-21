@@ -37,7 +37,7 @@ def test_on_catalogue_zero():
 
 def test_duplicate_thresholds():
     import json
-    run=json.loads((ROOT/"evidence/run_card.json").read_text())
+    run=json.loads((ROOT/"evidence/h83f_run_card.json").read_text())
     reg=run["correlation_overlap_vs_registry"]
     for k in ("H83-B_vs_D28","H83-F_vs_H83-B","H83-F_vs_D28"):
         assert reg[k]["pass"] and reg[k]["pearson_binary"]<0.90
