@@ -317,10 +317,10 @@ A second lane H83-F (SGMC-relocation de-redundancy swap) was generated and teste
 
 ---
 
-## This branch: H84 SGMC-triple lane (alternative UNIQUE submission)
+## Branch `arena/b9986c4a` — H84 SGMC-triple second UNIQUE lane (this PR)
 
-This branch `arena/b9986c4a` adds a **second UNIQUE lane** alongside main's H83-GVCD:
+This branch adds alongside main's H83-GVCD (37654 dots, HOLDOUT 0.2068):
 
-- **H84 SGMC-triple (40k, 15k B2 +25k SGMC×H84)**: `docs/downloads/gemsdoe83-h84-sgmc-triple-40000-20261021T120000Z-1cc1b272-zeros.tif` (197,350 B, sha256 7e815d2c, HOLDOUT cat 0.00670±0.00235 >B2 0.00460, sgmc 0.3684 >>H83B 0.0681 (5.4×), drift 0.1631, LM 0.5830, corr 0.35 <0.90 overlap 0.39 <0.70, leakage AUC 0.588 <0.90, all portal checks PASS). See `evidence/submission_gemsdoe83-h84-...json` and `docs/index.html` (this branch's site) for the promoted primary download.
+- **H84 SGMC-triple (40k, 15k B2 +25k SGMC×H84)**: `docs/downloads/gemsdoe83-h84-sgmc-triple-40000-20261021T120000Z-1cc1b272-zeros.tif` (197,350 B, sha256 `7e815d2cf3079ccc7b513319fa2ea3017b801a3965edeae3a13163ce0ac0e88b`, HOLDOUT cat 0.00670±0.00235 >B2 0.00460, sgmc 0.3684 >>H83B 0.0681 (5.4×), drift 0.1631, LM 0.5830, corr 0.35 <0.90 overlap 0.39 <0.70, leakage AUC 0.588 <0.90, all portal checks PASS, unique lane). See `evidence/submission_gemsdoe83-h84-...json`, `docs/index.html` banner, `registry/submission_build_h84_sgmc.json`.
 
-Both lanes (H83-GVCD 37654 dots HOLDOUT 0.2068 and H84 40k SGMC 0.3684) are UNIQUE vs registry (mutual corr 0.29 <0.90) and have no leakage. Main's site (`docs/index.html` on main) shows H83-GVCD as primary; this branch's site shows H84 as primary for the SGMC lane — both are valid, distinct lanes for the two-round competition.
+Both lanes are UNIQUE vs 119-registry and have all portal checks PASS (no NaN inside, [0,1], CRS/shape/transform match). Main's site shows H83-GVCD as primary; this branch's site adds H84 banner as second promoted download — both are valid, distinct submissions for the two-round competition.
