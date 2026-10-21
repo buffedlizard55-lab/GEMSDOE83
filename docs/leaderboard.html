@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Leaderboard — GEMSDOE83</title>
+<style>
+body{font-family:system-ui,sans-serif;margin:0;color:#12241e;background:#f6f8f7}
+header{background:linear-gradient(135deg,#0a6b4a,#0e8c62);color:#fff;padding:18px}
+.wrap{max-width:960px;margin:0 auto}
+.card{background:#fff;border:1px solid #dde6e0;border-radius:10px;padding:12px;margin:12px 0}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid #dde6e0;padding:6px;text-align:left}
+th{background:#eef4f1}
+.mut{color:#5a6b62;font-size:12px}
+</style>
+</head>
+<body>
+<header><div class="wrap"><h1>Leaderboard — verified read + group claims</h1><div style="opacity:.9;font-size:13px">ORGANIZER‑CONFIRMED rows are read from the official DrivenData page; owner claims are not scores.</div><div style="margin-top:6px"><a href="index.html" style="color:#fff">← Home</a></div></div></header>
+<div class="wrap" style="padding:18px">
+<div class="card">
+<h3>Public leaderboard (ORGANIZER‑CONFIRMED, read 2026‑10‑04)</h3>
+<table>
+<tr><th>#</th><th>Team</th><th>Public DTI</th><th>Source</th></tr>
+<tr><td>1</td><td>nchuzhoy</td><td><b>0.3262</b></td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">drivendata.org/leaderboard</a> (2 snapshots stored)</td></tr>
+<tr><td>2</td><td>DARD</td><td>0.3195</td><td>same</td></tr>
+<tr><td>3</td><td>alexoktaba</td><td>0.3042</td><td>same</td></tr>
+</table>
+<p class="mut">Snapshot stored in <code>registry/leaderboard_snapshot_2026-10-04.json</code>. Prompt mentions current high 0.4413 (unverified, possibly after 2026‑10‑04).</p>
+</div>
+<div class="card">
+<h3>Group’s own ledger (claims, not organizer receipts)</h3>
+<table>
+<tr><th>Site</th><th>File</th><th>Claimed DTI</th><th>Evidence class</th></tr>
+<tr><td>GEMSDOE32</td><td>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros</td><td>0.2778</td><td>owner‑reported, not organizer receipt</td></tr>
+<tr><td>GEMSDOE28</td><td>h36-1-rung30-blind-r1</td><td>0.2710</td><td>claim</td></tr>
+<tr><td>GEMSDOE31</td><td>h27-4-solo-d28</td><td>0.2708</td><td>owner‑reported, used for live anchor</td></tr>
+<tr><td>GEMSDOE25</td><td>dotted-h19-5-d2-8</td><td>0.2600</td><td>owner‑reported, H28 inversion base</td></tr>
+<tr><td>GEMSDOE83 (this repo)</td><td>h83b-dilational-jog-aug-b2-40000</td><td><i>not yet scored</i></td><td>HOLDOUT‑DTI 0.0044/0.0681/0.0417 (see home)</td></tr>
+</table>
+<p class="mut">All “0.2600”‑type numbers are from the group’s brief, not live receipts linking bytes to rows (IR‑83‑SCORE‑01). Only public leaderboard rows for <i>other teams</i> are organizer‑confirmed.</p>
+</div>
+<div class="card">
+<h3>How to tell a claim from a score</h3>
+<p class="mut"><b>ORGANIZER‑CONFIRMED:</b> copied from a submission‑page receipt (not present for any file in this repo). <b>HOLDOUT‑DTI:</b> evaluator version + withheld positives + 95% CI from spatially‑blocked holdout. <b>MODEL / projection:</b> never written as a score. Every table here labels the class.</p>
+</div>
+</div>
+</body>
+</html>

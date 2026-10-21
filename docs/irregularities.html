@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Irregularities — GEMSDOE83</title>
+<style>
+body{font-family:system-ui,sans-serif;margin:0;color:#12241e;background:#f6f8f7}
+header{background:linear-gradient(135deg,#8b1a1a,#b23a3a);color:#fff;padding:18px}
+.wrap{max-width:960px;margin:0 auto}
+.card{background:#fff;border:1px solid #e0caca;border-radius:10px;padding:12px;margin:12px 0}
+.mut{color:#6a5a5a;font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th,td{border:1px solid #e0caca;padding:6px;text-align:left}
+th{background:#fbecec}
+code{background:#fef0f0;padding:1px 4px;border-radius:4px}
+</style>
+</head>
+<body>
+<header><div class="wrap"><h1>Irregularities flagged for review</h1><div style="opacity:.95">Every irregularity is on the record; negative results are deliverables.</div><div style="margin-top:6px"><a href="index.html" style="color:#fff">← Home</a></div></div></header>
+<div class="wrap" style="padding:18px">
+<div class="card">
+<table>
+<tr><th>ID</th><th>Severity</th><th>Statement</th><th>Mitigation</th></tr>
+<tr><td>IR‑83‑DATA‑01</td><td>high</td><td>Competition rasters are owner‑supplied public GitHub mirrors (buffedlizard55‑lab/GEMSDOE c0c06ac…, GEMSDOE24 07345ea…), hash‑pinned but NOT organizer‑authenticated. All numbers conditional on that provenance.</td><td>hash‑pinned manifest + re‑hash on every fetch (registry/data_manifest.json, 23/23 PASS)</td></tr>
+<tr><td>IR‑83‑SCORE‑01</td><td>high</td><td>Every live score in group’s ledger (0.2778, 0.2708, 0.2600…) is owner/leaderboard‑row report, not organizer receipt linking bytes to row. Only public leaderboard rows for other teams (nchuzhoy 0.3262) are observed.</td><td>registry keeps claim vs verified separate; site labels every number</td></tr>
+<tr><td>IR‑83‑PROXY‑01</td><td>medium</td><td>Blocked holdout truth is visible catalogue — cannot reward a genuinely new fault.</td><td>report per‑fold pairs, label proxy, gate slots via live‑anchor + LM off‑catalogue</td></tr>
+<tr><td>IR‑83‑LEAK‑01</td><td>high</td><td>Distance‑to‑catalogue feature AUC 1.0 on visible labels (group measured).</td><td>features exclude it; tested, no channel contains it</td></tr>
+<tr><td>IR‑83‑VERIFY‑01</td><td>open</td><td>Historical DrivenData rejection “Predicted values must be in …” cannot be reproduced from shipped files — all 12 checks PASS on re‑read.</td><td>Both mechanisms that can cause it measured and engineered out; both encodings published</td></tr>
+<tr><td>IR‑83‑INSTR‑01</td><td>high (quantified)</td><td>drift_corrected_holdout_mean discontinuous: +1 dot on catalogue 0.14801→0.07831 (‑47%) while other instruments unchanged.</td><td>slot decisions require on_catalogue==0 AND agreement with cat/SGMC (registry/slot_plan.json)</td></tr>
+<tr><td>IR‑83‑INSTR‑02</td><td>medium</td><td>Cross‑repo contradiction: catalogue_hidden ρ +0.14 vs sibling +0.709.</td><td>both published, LOO MAE 0.053, not significant at n=12 (p≈0.09)</td></tr>
+<tr><td>IR‑83‑H83‑01</td><td>informational</td><td>H83‑A/C pure surfaces scored below random on catalogue‑hidden (0.001–0.002 vs 0.032 random) and below incumbent on SGMC — falsified as standalone emitters.</td><td>retained as negative result; augmentation strategy (B2+ jog) recovers SGMC +0.0040</td></tr>
+</table>
+<p class="mut">Full registry: <code>registry/irregularities.json</code> · Report: <a href="https://github.com/buffedlizard55-lab/GEMSDOE83/issues">GitHub issues</a></p>
+</div>
+</div>
+</body>
+</html>

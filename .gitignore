@@ -1,5 +1,16 @@
-.venv/
+# Large data raw is intentionally not committed (fetch via mirrors)
+data/raw/training_features.tif
+data/raw/*.tif.part-*
+data/raw/external/
+data/raw/scored/
+data/processed/
+# Keep downloads tifs
+!docs/downloads/*.tif
+!docs/downloads/*.zip
 __pycache__/
+*.pyc
 .pytest_cache/
+.venv/
+.cache/
 data/
 *.partial
