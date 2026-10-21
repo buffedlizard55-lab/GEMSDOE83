@@ -1,9 +1,9 @@
-"""H83 hypothesis surfaces — five candidates, with H83-A built and validated.
+"""Historical owner-authored H83 hypothesis surfaces; not a validated active pipeline here.
 
-H83-A: Dilational jog geothermal conduit
-  Layers: geod_dilaterate (8), geod_shearrate (7), geod_2ndinv (4),
-          depth_to_base_surf (15), iso_grav_anom_hg (18), det_elev (12)
-  Signature: positive dilatation × shear × basement step × bend vote
+Layer names and indices below come from the old local/owner-mirror implementation and are not
+verified against the official competition feature stack. The earlier "built and validated" wording
+is retained only as history; this checkout has no canonical shared holdout result for H83-A. Consult
+the run card and research notes before reusing any output or claim.
 """
 
 from __future__ import annotations

@@ -1,126 +1,59 @@
-# Research and repository review — 2026-10-21
+# Repository, evidence, and implementation review — 2026-10-21
 
-## What was actually verified
+This is the current review for the active GEMSDOE83 worktree. Read this with [`README.md`](../README.md) and [`PROMPT.md`](../PROMPT.md) before further changes. It supersedes older review notes that described different branches, readiness states, or candidate hypotheses.
 
-| Finding | Evidence | Confidence / limitation |
-|---|---|---|
-| Starting checkout contained README only | initial tree at commit `805ee1cc0225d3447dcf10f5adf2c39f0f792a81` | local fact; no previous pipeline existed here |
-| Official reference uses U-Net with Monte Carlo patch splits and Tversky loss | [organizer reference notebook](https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/unet-mc-cv-reference-solution.ipynb) | source read through GitHub API; training loss is not the required DTI evaluator |
-| CPU training is supported | [official README](https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/README.md) | contradicts prompt's claim that GPU is required; GPU accelerates training |
-| Mirrors exist for features, faults, template | [upstream manifest](https://github.com/buffedlizard55-lab/GEMSDOE32/blob/f62038b54dcb7767d4d997f80b033cdc3d42bef9/registry/data_manifest.json), local data receipt | small rasters restored and hashes verified; features located, not downloaded |
-| Mirrored labels and existing faults are byte-identical | `evidence/data_receipt.json` | not independent hidden truth; holdout cannot validate against a second target inferred from these filenames |
-| Mirrored template contains NaN outside its valid mask | `evidence/grid_audit.json` | template values are not predictions; copying it is unacceptable |
-| H33-B2 is a catalogue-flank pruning family | [upstream implementation](https://github.com/buffedlizard55-lab/GEMSDOE32/blob/f62038b54dcb7767d4d997f80b033cdc3d42bef9/src/gems32/hypotheses33.py#L304) and `evidence/upstream/evidence__h33_validation.json` | upstream source/evidence, not independently rerun |
-| The required shared tools are absent | repository tree | similar upstream tools are not proof of protocol compliance; no private replacement created |
+## Current disposition
 
-## Why might H33-B2 have helped?
+**Negative / blocked; NOT READY — DO NOT SUBMIT.** No assigned method paragraph was identifiable in the supplied prompt. The canonical cached feature stack, `evaluate_holdout.py`, `submission_writer.py`, and full comparison registry are absent. The old H83-B TIFFs and local pipeline scripts are quarantined outside the published `docs/` tree. No experiment, new candidate raster, holdout, slot selection, competition submission, or organizer-confirmed score was produced in this revision.
 
-The user reports H33-B2 at **0.2778 (USER-REPORTED; not ORGANIZER-CONFIRMED)**.
-The upstream H33 validation record describes pruning a prior dot field near mapped faults.
-A plausible mechanism is removing redundant predictions that use prediction mass without
-recovering hidden faults. DTI rewards distance-tolerant coverage, not visual line density.
-For the usual Tversky expression T/(T + aF + bN), removing false-positive mass while holding
-true-positive credit and false-negative mass fixed strictly improves the ratio. That is a
-conditional mathematical explanation, **not a causal attribution of the organizer result**.
-Sparsity can also reduce recoverable credit; more pruning is not automatically better.
+## Repository and protocol review
 
-The upstream validation includes live-anchor inversions, SGMC truth and prevalence-calibrated
-surrogates. These are not the user's stipulated pure hide-and-recover experiment. They are
-not accepted as this run's HOLDOUT-DTI, and their projections are not reproduced as scores.
-The supplied competing leaderboard maxima disagree. No current maximum is confirmed here.
-There is no defensible numerical prediction that this checkout can beat the user-reported
-result. It is scientifically possible, but untested. Winning needs better evidence and
-placement, not a copied file with a different filename or random jitter.
+- Checked the local package, scripts, evidence, site, GitHub Pages/CI workflows, registry, and source tree. The Python modules under `src/gems83/` are historical/local utilities; they are not the named shared evaluator or writer.
+- Exact-name GitHub API/code searches in the owner organization did not find the required shared files; the sibling checkout also lacked the canonical cache/tools. Do not replace them with a private fork.
+- The current Pages workflow uploads the reviewed `docs/` directory. The landing page, executive summary, static status feed, and run card are fail-closed and expose no TIFF/ZIP. Historical artifacts remain under `research/quarantine/` outside the Pages tree. The legacy feed helper was made static-only so it neither probes external sources nor publishes a second leaderboard feed.
+- Three small owner-mirrored audit rasters were restored locally. The sample-grid mirror is 3,730 × 3,292, float32, EPSG:32611; its SHA-256 is `2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc`. The feature stack is absent, and mirror hashes establish consistency with owner files—not organizer provenance.
+- The owner sample has 5,167,373 finite cells, while legacy `grid.py` claims a 5,165,852-cell feature footprint from a missing receipt (1,521-cell difference). The mirror manifest also reports 60,988 template ones on mirrored fault labels. Official package semantics were not checked; this is logged as `IR-83-GRID-01` and blocks template validation.
+- The full canonical registry rasters are absent. Previous H83-B evidence checked a small subset and used a different binary-correlation method; it does not satisfy the requested rank-correlation and final-dot overlap gates.
 
-## Candidate hypotheses — preregistration ideas, NOT assigned lanes
+## H32-A prior-art correction and new candidate register
 
-Ranking is qualitative expert judgment, not a score forecast. All differ from this initial
-empty checkout; novelty across every sibling site has **not** been established. Prior work
-already includes drainage alignment, oriented multiphysics consensus, radiometric fusion,
-Radon structure and basement steps; these are not claimed as new here. No experiments are run
-until the lane is resolved. Cached band availability/semantics must be verified in the shared
-feature receipt before implementation. No proposal below depends on a new external source.
+The initial cross-physics phase-displacement idea was withdrawn after code review. Local H32-A already uses gravity/magnetic cross-strike odd/even profile asymmetry and down-dip back-projection, with surface corroboration. Calling a phase-offset variant novel would be misleading.
 
-| Rank | Candidate and specific cached layers | Physical signature and off-catalogue rationale (hypothesis) | Non-fault mimic | Difference and expected benefit / cost |
-|---|---|---|---|---|
-| First | Cross-contact magnetic phase displacement; RTP/TMI, isostatic gravity | Detect lateral displacement of a continuous magnetic contact across a separate gravity edge using opposite-side phase correlation, not just co-located edge strength. A buried displacement may lack a visible scarp and be missing from a mapped catalogue. | Intrusive contact geometry or survey stitching | New candidate object is a displaced matched contact pair; not H33's local orientation vote. Highest expected benefit among these ideas, uncertain; medium-high CPU/implementation cost. |
-| Second | Along-strike alternating flexure; detrended elevation and basement-depth surface | Localize repeated signed curvature reversals along an inferred boundary, testing whether surface flexure and basement flexure are phase-consistent. Could identify distributed buried deformation outside a mapped trace. | Differential compaction in sedimentary basins | Signed cross-field phase, not a basement gradient maximum or simple step. Moderate expected benefit, high cost; interpolated basement resolution may make it non-identifiable. |
-| Third | Cross-strike radiometric asymmetry residual; K/Th/U with detrended elevation | Compare paired flanks of magnetic contacts after relief-matched background subtraction; test asymmetric multi-element alteration rather than raw anomaly brightness. A concealed fluid barrier might alter one flank without a scarp. | Lithologic contact or weathering gradient | Paired-flank residual hypothesis, not pixel fusion. Moderate-low expected benefit, medium cost; requires cached radiometric product and provenance confirmation. |
-| Fourth | Scale-dependent termination scattering; RTP/TMI and gravity | Find magnetic ridge terminations that face coherent longer-wavelength gravity continuity, using graph endpoint pairing and scale-specific discordance. Could expose fault-truncated units under cover. | Finite lava flows or intrusive bodies | Graph truncation/continuity discordance, not generic line persistence or catalogue tip continuation. Low/uncertain expected benefit, high cost. |
+The revised four-candidate list is in [`docs/hypotheses.html`](../docs/hypotheses.html) and [`docs/research/h83-hypotheses.md`](../docs/research/h83-hypotheses.md). Candidate 1 is cross-frequency wavelet phase coupling, but its relation to the supplied xscale/worm-persistence and other scale/orientation methods is an unresolved duplication risk. The saddle/topology idea overlaps basement-step and tip families; InSAR overlaps broad geodetic-strain work; radiometric alteration has obvious prior art. A focal-mechanism candidate was removed because H33-E already proposes raw seismicity with nodal-plane strikes. The ranking describes qualitative potential and cost only; it is not a score forecast, and no idea is authorized because the lane is unassigned. Exact layer names and indices are provisional until checked against the missing canonical metadata.
 
-These are testable hypotheses, not verified geological claims. Without feature canaries,
-segment holdout, registry checks and budget-matched controls, none is viable for promotion.
-No third-party data acquisition is proposed as necessary. The USGS and GDR links in the
-brief are discovery entry points only, not independently fetched scientific evidence here.
-The sandbox allows only GitHub and package-registry hosts; DrivenData, USGS, GDR, Dropbox
-and PDF-host live access is unavailable. Official reference code was accessible on GitHub.
-We did not turn mirror provenance into a claim of official-file authenticity.
+## Why the user-reported 0.2778 may have performed well
 
-## Three passes and remaining work
+The user-supplied `0.2778` for GEMSDOE32 H33-2-B2 is **USER-REPORTED, not ORGANIZER-CONFIRMED**. At pinned upstream owner-repository commit `f62038b54dcb7767d4d997f80b033cdc3d42bef9`, the matching manifest names the GeoTIFF and SHA-256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9`, but says `UNSCORED` and has `receipt: null`. A later organizer score is possible; there is no receipt tying it to these bytes in the material reviewed.
 
-**Pass one:** inspected checkout; read upstream source and official reference notebook; recovered
-and hash-checked the three small mirrored files; added format audit, tests, status site and CI.
-No geological experiment was started; lane assignment is absent.
+The owner’s H33-2-B2 method starts with an owner-reported 0.2708 base claim containing 40,199 dots (USER-REPORTED, NOT ORGANIZER-CONFIRMED; no receipt ties that base value to its bytes), deletes the 2,545 dots within 2 pixels/200 m of the mapped catalogue, and leaves 37,654. The owner’s custom LM-calibrated proxy changes from 0.2630509876 to 0.2679205316 (difference +0.0048695440, positive in all four quadrants). This is **OWNER-REPORTED PROXY METRIC — NOT a `HOLDOUT-DTI` and not a score** under this project’s protocol. The owner live-anchor output 0.2746731598 is a **projection, not a score**.
 
-**Pass two:** tested NaN/infinity, hidden nodata sentinels, masked missing values, wrong grid,
-wrong band count/shape and empty footprint. Rejected silent clipping. Replaced nonstandard
-JSON NaN metadata with a string. Ensured format validity never grants submission readiness.
+Conditional mechanism: if the organizer scoring mask excludes existing-fault pixels as the owner code claims, predictions spent on the masked catalogue may add false-positive penalty without earning credit there. A moderate catalogue-flank prune could then improve precision-weighted credit by removing low-expected-value prediction mass while retaining unseen-fault coverage. That is a plausible metric mechanism, not proof of causality, new geology, or the 0.2778 attribution; the official scorer was not fetched.
 
-**Pass three:** checked source classes and all local website links; verified no TIFF is advertised
-and run card stays negative; ran CI-equivalent tests. Documented that the full user prompt
-is not archived verbatim, only the operating requirements. This is a remaining request, not
-something claimed completed. Requirements for a unique TIFF, full shared-registry audit,
-three-to-five verified-novel hypotheses, holdout superiority and live feed remain unmet.
+The separate owner-local proxy value 0.4412792647 for `R2-safe-zeroTPp` rounds to the user-supplied current maximum 0.4413. This is a numerical coincidence/provenance warning, not evidence that the custom proxy is a public leaderboard score. The user also supplied a conflicting 0.3195 current maximum; the live official leaderboard was not fetched. These results and labels are recorded in the [research review](../docs/research.html), [score page](../docs/leaderboard.html), run card, and [`evidence/upstream/GEMSDOE32_owner_evidence_receipt.json`](../evidence/upstream/GEMSDOE32_owner_evidence_receipt.json).
 
-### Ordered continuation
+## Evidence and result labels
 
-1. Supply/discover the session's assigned method paragraph and canonical template/registry;
-   this is required context, not a request for manual raster inspection or passwords.
-2. Reuse upstream restore tooling after verifying canonical paths; restore features and verify
-   official data provenance. Do not train on the template's values.
-3. Audit the shared evaluator for fold-local catalogue feature rebuilding, segment/buffer hiding,
-   exact visible-pixel masks and pooled triangular-kernel sufficient statistics. Fix only upstream.
-4. Run each feature alone on the held-out segments with a prespecified negative sampling domain;
-   investigate every leakage alarm. Paired block/segment bootstrap for confidence intervals.
-5. Run at most the allowed experiments within the assigned lane; beat the same-instrument
-   incumbent; compare surface and dots with the complete registry. Undefined rank correlations
-   or missing registry entries must block, not pass.
-6. Write via shared writer, re-open and format-audit, publish unique filename/hash and note,
-   download button and automated eligibility result. Selector handles weekly quota separately.
+- This run’s `HOLDOUT-DTI`: **not run**. Evaluator version, withheld-positive count, score, and CI are null. The required feature-only leakage canaries are not run.
+- This run’s duplicate checks: **not run**. Surface rank-correlation and final-dot 3-pixel overlap fields are null; uniqueness is false/unverified.
+- This run’s output validator: **not run; no candidate**. No current raster SHA, submission name, or note exists.
+- `ORGANIZER-CONFIRMED`: **none**. No submission-page receipt was supplied or retrieved.
+- The archived H83-B zeros TIFF passes only an independent format audit against an owner-mirrored template; its NaN-outside twin fails strict full-grid finite/range checks. The hashes in both receipts were cross-checked against the actual quarantined bytes. Format validity is not readiness.
+- `docs/data/status.json` is a static project snapshot, not a live leaderboard feed.
+- Official/USGS/GDR/NLR/PDF/Copernicus/EPSG/GitHub Pages source URLs are preserved for manual review. They were not fetched from this sandbox. GitHub owner-source evidence was fetched through the allowed GitHub API and remains explicitly non-organizer evidence.
 
-No human intervention is proposed as a substitute for missing automated validation.
-No claim of line-by-line verification of inaccessible official pages is made.
+## Three review passes completed for this revision
 
-### Source irregularity requiring care
+1. **Implement supported work:** reconciled public site and README to a blocked state; quarantined old TIFFs and local pipeline scripts; added a ranked, conditional hypothesis record; preserved owner evidence and source hashes; published score, source, status, and irregularity registers; kept the required negative JSON card.
+2. **Review bugs and assumptions:** corrected the overlapping H32-A phase-displacement idea; removed focal mechanisms from the candidate list after finding H33-E prior art; audited H33-2-B2 against the pinned owner code, proxy, manifest, and receipt field; labelled all owner proxy/projection/user-reported values; hash-checked archived TIFF receipts; disabled legacy external feed probes; fixed the ignore rule that hid published static data; repaired stale test paths and local links.
+3. **Recheck the full requirements:** confirmed the lane is still unassigned; no canonical tools/data/full registry exist; logged the unresolved grid-mask mismatch; fixed the root-data ignore so the static status/source/score feeds are tracked; no experiment, holdout, TIFF, slot, or submission was invented; nulls remain null; published site contains no TIFF/ZIP and says NOT READY. Ran Python compilation, 22 tests, the site checker (83 local links), JSON/CSV and Markdown-link checks, `git diff --check`, and a no-network-probe check successfully. Pytest reported 25 Rasterio `PendingDeprecationWarning`s; no test failures.
 
-The upstream H33-2 docstring describes a catalogue “masked halo.” Pixel-exact visible-fault
-masking does not imply an entire buffer is unscored or that every nearby dot earns no credit:
-a nearby hidden segment could still receive distance credit. We do **not** adopt that docstring
-as an official metric fact. This is why the conditional false-positive pruning explanation above
-is weaker than a claim of a proven mechanism. Verify the official scorer before transferring
-its optimization assumptions.
+## Remaining work, in order
 
-### Hosting permission irregularity
+1. Supply/locate the assigned method paragraph and canonical shared template, feature cache, holdout evaluator, writer, and full registry. These are blocking inputs; do not infer the lane or substitute local tools.
+2. Verify official data/provenance and exact feature metadata. Do not bypass the data login gate or claim owner mirrors are organizer files.
+3. Inspect the canonical evaluator for whole-segment buffered hide/recover, fold-local catalogue features, exact visible-fault masking, pooled DTI α=0.2/β=0.8/300 m triangular kernel, and its CI method. Test each feature alone; resolve any AUC >0.90 alarm.
+4. Only if the assigned lane authorizes a candidate, run the spatially blocked holdout and compare to a same-instrument incumbent. Then perform both surface and final-dot full-registry duplicate checks. Stop at 3 experiments or 2 hours; do not select a weekly slot.
+5. Generate with the shared writer only after scientific/uniqueness gates pass; reopen and validate final bytes against the official template. Enable one download only when the full run card is submission-ready, and record the organizer receipt before labelling any score ORGANIZER-CONFIRMED.
+6. Open a PR from the fixed Arena branch only after local verification; merge only after required checks pass. No PR/merge is claimed by this review unless an explicit PR number and merge result are recorded.
 
-GitHub API confirmed an existing public legacy Pages site sourcing the root of `main`.
-Changing its build type returned HTTP 403 (integration permissions), so no setting change
-is claimed. A root `index.html` routes to the static docs; no admin intervention is needed
-for the existing configuration. CI tests do not depend on Pages administration permissions.
-
-## Concurrent-session audit discovered at merge
-
-Main advanced to `b57875f` while this PR ran. Its P5-Q publication claimed geological
-layer conjunction, holdout confidence intervals and registry uniqueness, but its delivered
-`generate_submission.py` reads no input raster at all: seeded random strands and random
-fill create the dots; a random mask adjusted to a pixel count creates its NaN footprint.
-There is no holdout or registry evaluation call in that generator. These advertised claims
-are **not accepted as evidence**. The original validator filters finite pixels for range
-checks, does not compare the actual footprint, and never exits nonzero for failed checks.
-
-Preserved all its original artifacts/code/pages under `research/quarantine/concurrent-session/`
-instead of deleting them. Removed their submission-ready presentation from the published
-site. A fresh independent audit against the recovered real mirrored template is stored
-in `evidence/concurrent-artifact-audit.json`. Format-only success for the all-finite raster
-cannot validate the claimed scientific mechanism or novelty. The NaN raster fails the
-actual footprint checks. This quarantine is essential to avoid giving the user the same
-misleading assurance the original request explicitly forbids.
+**No human visual inspection substitutes for automated validation.** A mapped-fault holdout, even when valid, remains a screening proxy for hidden organizer faults, not proof of a geothermal discovery or a private leaderboard gain.

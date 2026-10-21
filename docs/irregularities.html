@@ -1,37 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Irregularities — GEMSDOE83</title>
-<style>
-body{font-family:system-ui,sans-serif;margin:0;color:#12241e;background:#f6f8f7}
-header{background:linear-gradient(135deg,#8b1a1a,#b23a3a);color:#fff;padding:18px}
-.wrap{max-width:960px;margin:0 auto}
-.card{background:#fff;border:1px solid #e0caca;border-radius:10px;padding:12px;margin:12px 0}
-.mut{color:#6a5a5a;font-size:12px}
-table{width:100%;border-collapse:collapse;font-size:12px}
-th,td{border:1px solid #e0caca;padding:6px;text-align:left}
-th{background:#fbecec}
-code{background:#fef0f0;padding:1px 4px;border-radius:4px}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Irregularities · GEMSDOE83</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header><div class="wrap"><h1>Irregularities flagged for review</h1><div style="opacity:.95">Every irregularity is on the record; negative results are deliverables.</div><div style="margin-top:6px"><a href="index.html" style="color:#fff">← Home</a></div></div></header>
-<div class="wrap" style="padding:18px">
-<div class="card">
-<table>
-<tr><th>ID</th><th>Severity</th><th>Statement</th><th>Mitigation</th></tr>
-<tr><td>IR‑83‑DATA‑01</td><td>high</td><td>Competition rasters are owner‑supplied public GitHub mirrors (buffedlizard55‑lab/GEMSDOE c0c06ac…, GEMSDOE24 07345ea…), hash‑pinned but NOT organizer‑authenticated. All numbers conditional on that provenance.</td><td>hash‑pinned manifest + re‑hash on every fetch (registry/data_manifest.json, 23/23 PASS)</td></tr>
-<tr><td>IR‑83‑SCORE‑01</td><td>high</td><td>Every live score in group’s ledger (0.2778, 0.2708, 0.2600…) is owner/leaderboard‑row report, not organizer receipt linking bytes to row. Only public leaderboard rows for other teams (nchuzhoy 0.3262) are observed.</td><td>registry keeps claim vs verified separate; site labels every number</td></tr>
-<tr><td>IR‑83‑PROXY‑01</td><td>medium</td><td>Blocked holdout truth is visible catalogue — cannot reward a genuinely new fault.</td><td>report per‑fold pairs, label proxy, gate slots via live‑anchor + LM off‑catalogue</td></tr>
-<tr><td>IR‑83‑LEAK‑01</td><td>high</td><td>Distance‑to‑catalogue feature AUC 1.0 on visible labels (group measured).</td><td>features exclude it; tested, no channel contains it</td></tr>
-<tr><td>IR‑83‑VERIFY‑01</td><td>open</td><td>Historical DrivenData rejection “Predicted values must be in …” cannot be reproduced from shipped files — all 12 checks PASS on re‑read.</td><td>Both mechanisms that can cause it measured and engineered out; both encodings published</td></tr>
-<tr><td>IR‑83‑INSTR‑01</td><td>high (quantified)</td><td>drift_corrected_holdout_mean discontinuous: +1 dot on catalogue 0.14801→0.07831 (‑47%) while other instruments unchanged.</td><td>slot decisions require on_catalogue==0 AND agreement with cat/SGMC (registry/slot_plan.json)</td></tr>
-<tr><td>IR‑83‑INSTR‑02</td><td>medium</td><td>Cross‑repo contradiction: catalogue_hidden ρ +0.14 vs sibling +0.709.</td><td>both published, LOO MAE 0.053, not significant at n=12 (p≈0.09)</td></tr>
-<tr><td>IR‑83‑H83‑01</td><td>informational</td><td>H83‑A/C pure surfaces scored below random on catalogue‑hidden (0.001–0.002 vs 0.032 random) and below incumbent on SGMC — falsified as standalone emitters.</td><td>retained as negative result; augmentation strategy (B2+ jog) recovers SGMC +0.0040</td></tr>
-</table>
-<p class="mut">Full registry: <code>registry/irregularities.json</code> · Report: <a href="https://github.com/buffedlizard55-lab/GEMSDOE83/issues">GitHub issues</a></p>
-</div>
-</div>
+<header><nav aria-label="Main navigation"><strong>GEMSDOE83</strong><a href="index.html">Readiness</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Research</a><a href="hypotheses.html">Hypotheses</a><a href="sources.html">Sources</a><a href="irregularities.html" aria-current="page">Irregularities</a></nav></header>
+<main>
+  <div class="eyebrow">Open and mitigated issues</div>
+  <h1>Irregularities that affect trust or readiness</h1>
+  <p>Missing evidence is kept missing; it is not replaced by zero, a projection, or an assertion.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>ID / severity</th><th>Finding</th><th>Effect and action</th></tr></thead>
+    <tbody>
+      <tr><td><strong>IR-83-LANE-01</strong><br>Blocking · open</td><td>No single assigned method paragraph was identifiable in the supplied prompt or tracked records.</td><td>No lane-specific experiment or new raster is authorized. Do not guess.</td></tr>
+      <tr><td><strong>IR-83-TOOLS-01</strong><br>Blocking · open</td><td>The named shared cache, `evaluate_holdout.py`, and `submission_writer.py` are absent.</td><td>Cannot run the required holdout/canary/writer. Do not substitute local historical code.</td></tr>
+      <tr><td><strong>IR-83-DATA-01</strong><br>High · partial</td><td>Only small owner-mirrored audit rasters are present. Their hashes match a local manifest, but organizer provenance is not established; the feature raster is missing.</td><td>No authorized feature surface can be rebuilt. The official package was not accessed.</td></tr>
+      <tr id="ir-83-grid-01"><td><strong>IR-83-GRID-01</strong><br>High · open</td><td>The owner-mirrored sample has 5,167,373 finite cells; a legacy feature-footprint claim is 5,165,852 and cites a missing receipt (1,521-cell difference). The mirror manifest also reports 60,988 template ones coincident with mirrored faults, despite older “total fault absence” wording; the official package/page was not fetched.</td><td>Mask, outside-grid encoding, and template-value semantics are unresolved. Obtain authorized rasters and resolve this before any final-byte validation.</td></tr>
+      <tr><td><strong>IR-83-REGISTRY-01</strong><br>Blocking · open</td><td>The complete registry rasters are absent. Old H83-B evidence checked only a small subset and used binary Pearson correlation.</td><td>Surface rank-correlation and final-dot 3-pixel overlap remain unverified; do not publish.</td></tr>
+      <tr><td><strong>IR-83-SCORE-01</strong><br>High · open</td><td>The 0.2778 H33-2-B2 value is user-reported. At the pinned owner snapshot, the exact named artifact is marked `UNSCORED` with `receipt: null`; a later score is possible but not verified.</td><td>No file-to-score attribution or ORGANIZER-CONFIRMED value is accepted. Require receipt plus byte/hash match.</td></tr>
+      <tr><td><strong>IR-83-PROXY-02</strong><br>High · open</td><td>The owner reports a custom H33-2-B2 proxy delta +0.004869544 over four quadrants and a projected live value 0.274673. A separate owner proxy 0.441279 rounds to the user-supplied 0.4413 leaderboard claim.</td><td>These are proxy metrics/projections, not canonical HOLDOUT-DTI or organizer scores. Keep labels beside values; coincidence is not attribution.</td></tr>
+      <tr><td><strong>IR-83-PRIORART-01</strong><br>High · open</td><td>H32-A already uses magnetic/gravity cross-strike odd/even profile asymmetry with down-dip projection; H33-E already proposes a raw seismic catalogue plus nodal-plane strikes. Supplied titles also cover orientation consensus, multiscale persistence, and radiometric fusion.</td><td>The initial phase-displacement and focal-mechanism ideas were dropped after finding prior art. Cross-frequency wavelet coupling is only a tentative transform-level distinction and remains subject to a full registry review.</td></tr>
+      <tr><td><strong>IR-83-PROXY-01</strong><br>High · open</td><td>Withholding mapped segments is only a screening proxy for the organizer’s private new-fault distribution.</td><td>Even an accepted HOLDOUT-DTI is not a guaranteed leaderboard gain or geological discovery.</td></tr>
+      <tr><td><strong>IR-83-LEGACY-01</strong><br>High · mitigated</td><td>The old published site offered an H83-B TIFF as ready while the run card was negative; receipt and uniqueness evidence were incomplete.</td><td>Historical TIFFs and pipeline scripts are quarantined; no archived TIFF is linked from the current Pages tree.</td></tr>
+      <tr><td><strong>IR-83-FORMAT-01</strong><br>Medium · partial</td><td>The old all-finite zeros TIFF passes format-only checks against an owner-mirrored template; its NaN-outside twin fails. The rejected upload itself is unavailable.</td><td>This does not diagnose the old portal error or authorize submission. Both files stay quarantined.</td></tr>
+      <tr><td><strong>IR-83-SOURCES-01</strong><br>Medium · open</td><td>External DrivenData, USGS, GDR, NLR PDF, Copernicus Data Space, EPSG and GitHub Pages hosts were not fetched. GitHub owner evidence was fetched but is not organizer evidence.</td><td>Manual-review links are provided; fresh external-source and live-leaderboard verification is not claimed.</td></tr>
+      <tr><td><strong>IR-83-OUTPUT-01</strong><br>Low · mitigated</td><td>Old tests expected data under `data/raw`; stale Pages links referenced a nonexistent receipt and missing research page.</td><td>Data-dependent checks were replaced with fail-closed run-card, site-link, and quarantine-receipt checks.</td></tr>
+      <tr><td><strong>IR-83-DATA-02</strong><br>Medium · mitigated</td><td>The broad `data/` ignore pattern also ignored the reviewed `docs/data/` static feeds, so clean checkouts would lack status/source/score data.</td><td>Scoped the ignore to root `/data/` and tracked the three reviewed static feed files; CI checks their presence/copy integrity.</td></tr>
+      <tr><td><strong>IR-83-FEED-01</strong><br>Low · mitigated</td><td>The legacy feed helper exposed stored leaderboard rows with a generic verified flag and probed non-competition source URLs.</td><td>Replaced with a static-only helper; it now reads the checked-in status and recorded source statuses without network access or extra generated feeds.</td></tr>
+    </tbody>
+  </table></div>
+  <p>Machine-readable register: <a href="https://github.com/buffedlizard55-lab/GEMSDOE83/blob/main/registry/irregularities.json">registry/irregularities.json</a>. Run card: <a href="run-card.json">current JSON</a>.</p>
+  <footer><small>Irregularities as of 2026-10-21. Open blockers prevent publication.</small></footer>
+</main>
 </body>
 </html>

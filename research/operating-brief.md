@@ -1,53 +1,21 @@
-# Starting brief — condensed from the supplied user prompt
+# Operating brief — 2026-10-21
 
-This is a requirements digest, not a verbatim transcript. Read it and README before work.
+This is a condensed index, not a verbatim prompt. The complete standing requirements are in [`PROMPT.md`](../PROMPT.md); the current evidence/repository review is [`review.md`](review.md); the project guide is [`README.md`](../README.md). User-supplied submission names and score transcriptions are in [`registry/user_supplied_score_ledger.csv`](../registry/user_supplied_score_ledger.csv).
 
-- Review the repository and prior-session work first. Create a unique GeoTIFF, never a copied
-  old submission. Make download and submit readiness obvious at the beginning of the website.
-- Stay in the single assigned method lane. Stop and log duplicate if surface rank correlation
-  exceeds 0.90 or more than 70% of dots are within 3 px of registry dots. Check before and after placement.
-- Reuse cached features and the shared `evaluate_holdout.py` and `submission_writer.py`. Do not fork
-  a broken shared tool: fix it in the template once and report the change.
-- Holdout: hide whole fault segments with a buffer; compute every catalogue-derived feature
-  from visible faults only; mask visible faults pixel-exactly; pooled DTI, alpha 0.2, beta 0.8,
-  triangular kernel of radius 300 m. Run every feature alone; AUC above 0.90 is a leakage alarm.
-- Generate and rank three to five candidate geological hypotheses before implementation. Name
-  layers, physical transform, off-catalogue rationale, novelty, confounder and cost. Verify
-  availability of any new official free data before calling an idea viable.
-- At most three experiments or two hours. A candidate must beat the current same-instrument
-  holdout best before a separate selector may promote it to a weekly slot.
-- Label actual results HOLDOUT-DTI (version, positives, 95% CI) or ORGANIZER-CONFIRMED
-  (submission-page receipt). Never pass a projection off as a score.
-- End with one JSON run card: hypothesis, mechanism, non-fault mimic, holdout and CI,
-  registry correlation/overlap, raster hash, validator, submission name, short note, verdict.
-  A negative is a deliverable, and missing measurements must remain null, not zero.
-- Range must be [0,1], finite inside the footprint, single-band TIFF, exact template CRS,
-  shape and transform. Provide a unique name, note no longer than 140 characters, and an
-  executive-summary subpage explaining submission. No inspection-only claim of readiness.
-- Use official verified sources, auditable tables and manual-review links. Flag contradictions
-  and access limitations. No fabricated data, scores, geological discoveries, or assurances.
-- Clean GitHub Pages UI. Three passes: implement/test; review edge cases/fix;
-  check against all original requirements. Open and merge a pull request.
-- Keep Maximize P(Win) and Own the Outcome central. Focus on fault mapping that can inform
-  geothermal exploration, not claims that the model has directly discovered geothermal vents.
+## Current decision
 
-## User-supplied source entry points (not all reachable/verified)
+**NOT READY — DO NOT SUBMIT.** The assigned lane is not identifiable. The canonical feature stack, `evaluate_holdout.py`, `submission_writer.py`, and complete registry rasters are absent. The owner-mirrored sample/feature footprint counts differ by 1,521 cells and the official template semantics are unresolved. No experiment, candidate TIFF, holdout, slot selection, or submission was made. The negative run card is [`docs/run-card.json`](../docs/run-card.json).
 
-- https://www.drivendata.org/competitions/306/competition-doe-gems/
-- https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/
-- https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/
-- https://www.drivendata.org/competitions/306/competition-doe-gems/data/
-- https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/
-- https://github.com/drivendataorg/gems-prize-reference-solution
-- https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html
-- https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and
-- https://gbcge.org/current-projects/ingenious/
-- https://epsg.io/32611
-- https://en.wikipedia.org/wiki/Tversky_index
-- https://docs.nlr.gov/docs/fy26osti/96647.pdf
-- https://gdr.openei.org/submissions/1391
+## Requirements at a glance
 
-The supplied sibling-site score list is a user-report, not a set of organizer receipts.
-An upstream historical version is preserved in `evidence/upstream/docs__score-ledger.csv`;
-it is not the full, current user-prompt list. Conflicting supplied leaderboard values cannot
-all be described as current. No leaderboard maximum has been independently confirmed.
+- Stay within the assigned single-method lane; do not guess it.
+- Reuse the canonical cached feature stack, evaluator, and writer; do not substitute local historical code.
+- Hide whole fault segments with a buffer; derive catalogue features from visible faults only; mask visible faults pixel-exactly; evaluate pooled DTI with α=0.2, β=0.8, and a 300 m triangular kernel.
+- Test each feature alone; AUC >0.90 is a leakage alarm until resolved.
+- Compare the candidate surface against every registry raster and final dots within 3 pixels. Rank correlation >0.90 or overlap >70% is a duplicate stop.
+- Label accepted results only as `HOLDOUT-DTI` with evaluator version, withheld-positive count, and 95% CI, or `ORGANIZER-CONFIRMED` from a submission-page receipt. User reports, owner proxy metrics, and projections are separate evidence classes.
+- Stop at 3 experiments or 2 hours. Do not select a weekly slot; an independent selector owns that decision.
+- Create a unique, automatically validated GeoTIFF only if scientific, uniqueness, provenance, and exact-grid format checks pass. Otherwise keep the landing page negative and fail closed.
+- Preserve sources, hashes, limitations, irregularities, and three implementation/review passes. Keep **Maximize P(Win)** and **Own the Outcome** central.
+
+Official/manual-review URLs, including the proposed Copernicus source, and their fetch statuses are in [`registry/sources.json`](../registry/sources.json). Current external source availability was not verified except GitHub owner sources; the live official leaderboard was not fetched. Conflicting user-supplied current maximum claims remain unverified.

@@ -1,41 +1,126 @@
 {
-  "schema": 1,
+  "schema": "gemsdoe83-irregularities-v3",
+  "reviewed_on": "2026-10-21",
   "items": [
+    {
+      "id": "IR-83-LANE-01",
+      "severity": "blocking",
+      "status": "open",
+      "statement": "The parallel-run protocol refers to a single assigned method paragraph, but none is identifiable in the supplied prompt or tracked project records.",
+      "impact": "Choosing a method lane would be an unsupported assumption; no experiment or new candidate raster is authorized.",
+      "action": "Remain negative until the assigned lane is available in project context. No weekly slot used."
+    },
+    {
+      "id": "IR-83-TOOLS-01",
+      "severity": "blocking",
+      "status": "open",
+      "statement": "Canonical evaluate_holdout.py, submission_writer.py, and the cached feature stack are absent. Similar repository-local utilities are not accepted substitutes.",
+      "impact": "The requested holdout, leakage workflow, and canonical writer cannot be run without violating the reuse rule.",
+      "action": "Locate/pin the shared canonical template; do not run the quarantined local pipeline as a substitute."
+    },
     {
       "id": "IR-83-DATA-01",
       "severity": "high",
-      "statement": "Competition rasters are owner-supplied public GitHub mirrors (buffedlizard55-lab/GEMSDOE ref c0c06ac..., GEMSDOE24 ref 07345ea...), integrity-pinned by sha256 (training_features 4371c82e..., labels 7ba308cc...) but NOT organizer-authenticated. All numbers conditional on that provenance.",
-      "mitigation": "hash-pinned manifest + re-hash on every fetch (23/23 PASS)"
+      "status": "partially-audited",
+      "statement": "The official competition feature raster is absent. Three small input rasters were restored from owner-supplied GitHub mirrors and hash-match the local manifest, but this does not authenticate them as organizer files.",
+      "impact": "No authorized feature surface can be built; official provenance remains unproven.",
+      "action": "Use only the authorized competition package when available; do not bypass a login gate."
+    },
+    {
+      "id": "IR-83-REGISTRY-01",
+      "severity": "blocking",
+      "status": "open",
+      "statement": "The complete registry of comparison rasters is absent. Historical H83-B evidence sampled an arbitrary subset and used binary Pearson correlation rather than the specified full-registry rank-correlation audit.",
+      "impact": "Uniqueness before placement and final-dot overlap are unverified.",
+      "action": "Obtain the canonical registry and run both duplicate screens before publication."
     },
     {
       "id": "IR-83-SCORE-01",
       "severity": "high",
-      "statement": "Every live score in group ledger (0.2778, 0.2708, 0.2600) is owner/leaderboard-row report, not organizer receipt linking bytes to row. Only public leaderboard rows for other teams (nchuzhoy 0.3262) are observed.",
-      "mitigation": "registry keeps claim vs verified separate; site labels every number"
+      "status": "open",
+      "statement": "The user-reported 0.2778 H33-2-B2 value has no submission-page receipt in the material reviewed. At pinned owner-repository snapshot f62038b54dcb7767d4d997f80b033cdc3d42bef9, the matching artifact manifest says UNSCORED and its receipt field is null; a later organizer score is possible but unverified here.",
+      "impact": "No file-to-score attribution or ORGANIZER-CONFIRMED value is accepted.",
+      "action": "Keep the report user-labelled and require the organizer submission-page receipt plus byte/hash match before confirming it."
+    },
+    {
+      "id": "IR-83-PROXY-02",
+      "severity": "high",
+      "status": "open",
+      "statement": "Owner code records a custom LM-calibrated proxy delta of +0.004869544 for H33-2-B2, four positive quadrants, and a projected live value of 0.274673; another owner proxy is 0.4412792647, which rounds to the user-provided current leaderboard claim 0.4413.",
+      "impact": "These are owner proxy metrics/projections, not the required canonical HOLDOUT-DTI or organizer leaderboard scores. The rounded match creates a risk of conflating unlike evidence.",
+      "action": "Expose the evidence class beside each number; never convert a proxy or projection to a score claim. Re-evaluate only with the canonical evaluator and organizer receipt."
     },
     {
       "id": "IR-83-PROXY-01",
-      "severity": "medium",
-      "statement": "Blocked holdout truth is visible catalogue — cannot reward genuinely new fault.",
-      "mitigation": "report per-fold pairs, label proxy, gate via live-anchor + LM off-catalogue"
-    },
-    {
-      "id": "IR-83-LEAK-01",
       "severity": "high",
-      "statement": "Distance-to-catalogue feature AUC 1.0 on visible labels.",
-      "mitigation": "features exclude it; verified no channel contains it"
+      "status": "open",
+      "statement": "A spatially blocked hide-and-recover test on mapped fault segments is a screening proxy for the organizer's private set of new faults.",
+      "impact": "Even a valid HOLDOUT-DTI improvement is not a guaranteed public/private leaderboard gain or verified geothermal discovery.",
+      "action": "Report target population, evaluator, withheld positives, and uncertainty; do not equate a proxy with organizer truth."
     },
     {
-      "id": "IR-83-VERIFY-01",
-      "severity": "open",
-      "statement": "Historical DrivenData rejection 'Predicted values must be in range [0,1]' cannot be reproduced from shipped files — all 12 checks PASS.",
-      "mitigation": "Both mechanisms measured and engineered out; both encodings published"
+      "id": "IR-83-PRIORART-01",
+      "severity": "high",
+      "status": "open",
+      "statement": "H32-A already combines gravity/magnetic cross-strike odd/even profile asymmetry with down-dip projection; H33-E already proposes a raw seismic catalogue plus nodal-plane strikes. Other project families cover oriented multi-physics consensus, structural tips, wavelet/scale persistence, and radiometric fusion.",
+      "impact": "The initial phase-displacement and focal-mechanism ideas overlap prior art and have been withdrawn from the ranked candidates. Candidate wavelet phase coupling remains a tentative transform-level distinction, unreviewed against the complete sibling registry.",
+      "action": "Use the revised candidate comparison, make no novelty claim beyond checked code/titles, and require full registry review before implementation."
     },
     {
-      "id": "IR-83-H83-01",
-      "severity": "informational",
-      "statement": "H83-A/C pure surfaces scored below random on catalogue-hidden (0.001-0.002 vs 0.032 random) and below incumbent on SGMC — falsified as standalone emitters.",
-      "mitigation": "retained as negative result; augmentation recovers SGMC +0.0040"
+      "id": "IR-83-LEGACY-01",
+      "severity": "high",
+      "status": "mitigated",
+      "statement": "The previous published home and executive summary offered an H83-B TIFF as ready while the current card was negative; the receipt and uniqueness evidence were incomplete.",
+      "impact": "A visitor could mistake a format pass for scientific and protocol readiness.",
+      "action": "Moved the old files and local pipeline scripts into research/quarantine/prior-h83b; no archived TIFF is linked from the Pages site."
+    },
+    {
+      "id": "IR-83-FORMAT-01",
+      "severity": "medium",
+      "status": "partially-audited",
+      "statement": "The archived all-finite H83-B zeros raster passes independent format checks against an owner-mirrored template; its NaN-outside twin fails whole-grid finite/range checks. The rejected upload itself is unavailable.",
+      "impact": "The historical portal range error cannot be causally diagnosed; format correctness is only one gate.",
+      "action": "Keep both artifacts quarantined. Validate any future candidate from reopened final bytes against the authorized template."
+    },
+    {
+      "id": "IR-83-SOURCES-01",
+      "severity": "medium",
+      "status": "open",
+      "statement": "DrivenData, USGS, GDR, NLR PDF, Copernicus Data Space, EPSG and GitHub Pages hosts were not fetched in this session. GitHub owner-source snapshots were fetched and are explicitly non-organizer evidence.",
+      "impact": "Fresh external-source verification and current live-leaderboard status are not established.",
+      "action": "Use the manual-review links and keep source/provenance class beside each claim."
+    },
+    {
+      "id": "IR-83-OUTPUT-01",
+      "severity": "low",
+      "status": "mitigated",
+      "statement": "Legacy tests expected mirror files under data/raw although the restore tool writes under data; stale site links also referenced a missing receipt/page.",
+      "impact": "CI and the published site disagreed with the checkout and run card.",
+      "action": "Replace data-dependent legacy submission tests with fail-closed run-card, site-link, and quarantine-receipt regression checks."
+    },
+    {
+      "id": "IR-83-FEED-01",
+      "severity": "low",
+      "status": "mitigated",
+      "statement": "The legacy local feed helper exposed the latest stored leaderboard rows with a generic verified flag and probed non-competition source URLs; that output could be mistaken for a current status feed.",
+      "impact": "A generated second feed could blur historical public-page snapshots, live availability, and organizer-confirmed submission receipts.",
+      "action": "Replaced it with a static-only compatibility helper that reads docs/data/status.json, returns registered source statuses without network requests, and writes no feed/source-health files."
+    },
+    {
+      "id": "IR-83-GRID-01",
+      "severity": "high",
+      "status": "open",
+      "statement": "The owner-mirrored sample_submission.tif has 5,167,373 finite cells; a legacy feature-footprint count of 5,165,852 references a missing receipt, a 1,521-cell discrepancy. The mirror manifest also records 60,988 template pixels equal to 1 coincident with mirrored fault labels, despite older competition-description wording about total fault absence; the official package/page was not fetched.",
+      "impact": "The valid mask, outside-grid encoding, and semantics of template values are unresolved. A local format pass against this mirror cannot certify the official submission grid or footprint.",
+      "action": "Obtain the authorized feature/template rasters, resolve the footprint and 1-valued-cell behavior against official documentation, then validate reopened final bytes with the shared writer. Do not rely on the stale local footprint constant."
+    },
+    {
+      "id": "IR-83-DATA-02",
+      "severity": "medium",
+      "status": "mitigated",
+      "statement": "The broad `data/` ignore pattern also ignored the reviewed `docs/data/` status, source, and user-score feeds, so these files were present only in the working tree and would be absent from a clean checkout.",
+      "impact": "A clean Pages build or CI run could omit the static status and evidence registers or fail its site checks.",
+      "action": "Scoped the ignore to root `/data/` and added the three reviewed `docs/data/` files to version control; clean-checkout tests validate them."
     }
   ]
 }

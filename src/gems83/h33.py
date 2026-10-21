@@ -1,47 +1,11 @@
-"""H33 — five untried geological hypotheses, expressed as *label-free* physical surfaces.
+"""Historical owner-authored H33 proposals and surfaces; not canonical or validated here.
 
-Every surface in this module is computed from the 19 official bands, the USGS 3DEP 1 m LiDAR
-scarp products and the GeoDAWN radiometric grids.  No surface reads ``labels.tif``,
-``existing_faults.tif`` or any scored submission, so each one is safe to evaluate on a spatial
-holdout without retrospective leakage.
-
-The five hypotheses
--------------------
-H33-A  **Multi-physics oriented-lineament consensus.**  A fault is a *curvilinear* feature, and a
-       fault that experts can only find by eye is normally one that shows up in *more than one*
-       physical field with the *same* strike.  Each physics (magnetics, gravity, topography,
-       magnetotellurics, radiometrics, 1 m LiDAR scarps) is reduced to a scale-normalised
-       Hessian *line* response plus a local orientation; the surface is the product of (i) the
-       orientation order parameter of the ensemble (do the physics agree on a strike?) and
-       (ii) the OR-fusion of the individual responses (does any physics respond at all?).
-       NEW: the repository's 35 channels contain per-band ridge responses and *pixel-wise* products
-       (H32-A/B/C), but no channel requires independent physics to agree on an *orientation*.
-
-H33-B  **Aligned drainage-valley chains.**  Faults deflect and align channels; a single straight
-       valley segment is a stream, a *chain of collinear valley segments across several drainages*
-       is a structure.  The surface is a valley-skeleton (NMS ridge on ``-det_elev``) multiplied by
-       a 9-pixel, 8-direction collinearity vote.  NEW: the repository's DEM channels are all local
-       (curvature, ridge, relief, top-hat) and never aggregate evidence *along* a candidate line.
-
-H33-C  **En-echelon scarplet chain vote (1 m LiDAR).**  A single scarplet in the 3DEP-derived
-       product is noise; expert mappers accept a fault when scarplets are collinear over hundreds
-       of metres.  Same collinearity vote, applied to the LiDAR scarp composite.
-       NEW: the repository uses the LiDAR product only as a per-pixel corroboration weight.
-
-H33-D  **Long-straight conductive/basement structural boundary.**  A fault in a conductivity or
-       basement-depth volume is a *straight* gradient ridge: large gradient magnitude **and**
-       orientation coherence over a long window.  NEW: the repository uses ``cond_surf`` and
-       ``depth_to_base_surf`` as scalars / plain gradient magnitudes.
-
-H33-E  **Sub-kilometre seismicity lineaments (data upgrade).**  The two supplied seismic bands are
-       computed on a 100 km radius: measured here, ``ieq`` is 0.9935-correlated with itself at
-       3 km lag, i.e. it carries no information at the fault scale the metric resolves (300 m).
-       A raw epicentre catalogue (USGS ComSearch/FDSN, free and official) plus nodal-plane strikes
-       would add the sub-kilometre structure the bands cannot carry.  The source is named and the
-       sandbox reachability is recorded honestly in ``docs/research/h33-hypotheses.md``; no surface
-       is fabricated for it here.
-
-Provenance for every external input: ``registry/data_manifest.json`` (sha256-pinned).
+This module preserves five prior families: multi-physics oriented-lineament consensus, aligned
+valley chains, en-echelon scarplet chains, long conductive/basement boundaries, and raw seismicity
+with nodal-plane strikes (H33-E). The original implementation's claims about official inputs,
+feature provenance, novelty, or holdout/leakage safety are not independently authenticated by this
+checkout. No H33 surface has been validated with the requested shared spatial holdout evaluator.
+See ``docs/research/h83-hypotheses.md`` for this revision's cautious candidate comparison.
 """
 from __future__ import annotations
 

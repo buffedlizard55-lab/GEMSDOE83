@@ -1,73 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Executive summary — GEMSDOE83</title>
-<style>
-:root{--accent:#0a6b4a;--bg:#f6f8f7;--mut:#5a6b62;--line:#dde6e0}
-*{box-sizing:border-box}body{margin:0;font-family:ui-sans,system-ui,sans-serif;color:#12241e;background:var(--bg)}
-header{background:linear-gradient(135deg,#0a6b4a,#0e8c62);color:#fff;padding:20px 18px}
-.wrap{max-width:960px;margin:0 auto}
-.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0}
-.mut{color:var(--mut);font-size:13px}
-.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:10px 14px;border-radius:10px;font-weight:700}
-code{background:#eef4f1;padding:2px 6px;border-radius:6px;font-size:13px}
-ol li, ul li{margin:6px 0}
-h1{margin:0 0 6px}h2{margin:14px 0 8px;font-size:18px}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Executive summary · GEMSDOE83</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header><div class="wrap"><h1>Executive summary — how to make a submission</h1><div style="opacity:.9">The single remaining blocker to training is data placement (now fixed). After that the full pipeline is ready. This page explains the exact portal steps and the error fix.</div><div style="margin-top:8px"><a href="index.html" style="color:#fff">← Back to Home</a> · <a href="https://github.com/buffedlizard55-lab/GEMSDOE83" style="color:#fff">Repository</a></div></div></header>
-<div class="wrap" style="padding:18px">
-<div class="card" style="border:2px solid var(--accent)">
-<h2>⬇ One‑click download (do this first)</h2>
-<p><a class="btn" href="downloads/gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif" download>⬇ Download the submission GeoTIFF</a> <a class="btn" style="background:#fff;color:var(--accent);border:2px solid var(--accent)" href="downloads/gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3.zip" download>.zip</a></p>
-<p class="mut">Filename: <code>gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif</code> · 195,264 B · sha256 <code>e731b16b2811ff6c0b581742acbd4b7a18858b8a83d5b4f2e4031967bc735a5</code> · <a href="downloads/checks-gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif.json">receipt</a></p>
-<p class="mut"><b>Is it OK to submit?</b> <b style="color:#0a6b4a">YES</b> — all cells finite, in [0,1], no NaN inside footprint, CRS/shape/transform match. See validator block on home page.</p>
-</div>
+<header><nav aria-label="Main navigation"><strong>GEMSDOE83</strong><a href="index.html">Readiness</a><a href="executive-summary.html" aria-current="page">Executive summary</a><a href="research.html">Research</a><a href="hypotheses.html">Hypotheses</a><a href="sources.html">Sources</a></nav></header>
+<main>
+  <div class="eyebrow">Submission guide</div>
+  <h1>Executive summary and submission readiness</h1>
+  <section class="alert" role="status">
+    <span class="badge">CURRENTLY NOT READY — DO NOT SUBMIT</span>
+    <p>There is no downloadable eligible GeoTIFF on this site. No current candidate has passed the assigned-lane, holdout, leakage, complete-registry uniqueness, and automated format checks. Do not submit a historical file from the repository or sibling sites.</p>
+    <p><a href="index.html">Return to readiness status</a> · <a href="run-card.json">Read the current run card</a></p>
+  </section>
 
-<h2>5 steps to submit (DrivenData portal)</h2>
-<ol>
-<li>Open the competition: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">https://www.drivendata.org/competitions/306/competition-doe-gems/</a> → click <b>Submit</b>.</li>
-<li>Under <b>New submission → File to submit</b>, click <b>Choose file</b> and pick the downloaded <code>.tif</code> (or the <code>.zip</code> containing a single <code>.tif</code>). <br><span class="mut">Requirements (from <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#submission-format">problem page, submission format</a>): single‑band float32, EPSG:32611, 100 m, same bounds as training data, values in [0,1], outside bounds null/NaN. Our file meets all.</span></li>
-<li>In <b>Note (optional)</b> paste: <code>GEMSDOE83 H83-B jog+alter 40k | B2 27k kept +13k new ThK breach | HOLDOUT cat 0.0044 sgmc 0.0681 drift 0.0417 | UNIQUE dup-check PASS</code> (127/140 chars).</li>
-<li>In <b>Unique submission name</b> paste: <code>GEMSDOE83-H83B-JOG-AUG-B2-40K</code></li>
-<li>Click <b>Create submission</b>. You should see “Submission created” (not the range error). You have 3 submissions per week; this is 1 slot. Results appear on the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">leaderboard</a> after organizer scoring.</li>
-</ol>
+  <section class="card" aria-labelledby="contest-summary">
+    <h2 id="contest-summary">Contest executive summary — current run, not a submission package</h2>
+    <p><strong>Objective:</strong> identify previously unmapped faults that may inform geothermal exploration. A fault-prediction hypothesis is not evidence of geothermal temperature, permeability, a reservoir, or a resource.</p>
+    <p><strong>Research proposal:</strong> cross-frequency wavelet phase coupling between magnetic and gravity bands is the highest-ranked untested idea in this checkout. It is a qualitative proposal only; the method lane is unassigned, the canonical feature metadata is absent, and related scale/wavelet prior art creates a duplication risk. No experiment or holdout was run.</p>
+    <p><strong>Comparison context:</strong> the user-reported GEMSDOE32 H33-2-B2 value 0.2778 is not organizer-confirmed in reviewed evidence. The pinned owner manifest says `UNSCORED` with no receipt. Owner proxy values and projections are not scores. This run has no accepted HOLDOUT-DTI, confidence interval, or organizer-confirmed score.</p>
+    <p><strong>Outcome and recommendation:</strong> negative / no-go; no candidate raster or weekly slot was produced. The assigned lane, canonical evaluator/writer/cache, official feature package, full comparison registry, and official template semantics are unresolved. An owner-mirror footprint discrepancy of 1,521 cells is also logged. <strong>Do not submit.</strong></p>
+  </section>
 
-<h2>The portal error “Predicted values must be in range [0,1]” — fixed</h2>
-<div class="card">
-<p><b>Two mechanisms were measured that can produce that exact message:</b></p>
-<ul>
-<li><b>1. The float32 sentinel:</b> <code>training_features.tif</code> declares nodata <code>-3.4028234663852886e+38</code> (float32 min). 7,113,308 cells per band use it, 3,061 inside the scored footprint. If those are written through unchanged they are outside [0,1] and the portal rejects. <i>Evidence:</i> we counted them per band (see <code>scripts/fetch_mirrors.sh</code> provenance, sha256 <code>4371c82e…</code>).</li>
-<li><b>2. The NaN sentinel:</b> A raster with <code>nodata=NaN</code> and NaN outside footprint is competition‑legal (sample submission uses it: 5,167,373 finite inside, rest NaN), but one validator change away from same rejection. <i>Evidence:</i> both encodings are published; our portal‑safe variant is all‑finite with <code>nodata=None</code>.</li>
-</ul>
-<p class="mut"><b>The fix (verified by re‑reading the written bytes):</b> Every download here is single‑band float32, EPSG:32611, 3292×3730, 12,279,160 cells, every cell finite, min 0.0 max 1.0, 0 cells outside [0,1], 0 NaN, no nodata tag (zeros variant). Each ships a <code>checks-*.json</code> receipt produced by re‑opening the file from disk. Run <code>python scripts/check_submission.py docs/downloads/&lt;file&gt;.tif --strict-finite</code> to verify yourself.</p>
-<p class="mut"><b>Note:</b> The historical upload that triggered the error was never obtained, so the trigger remains inferred, not proven (IR‑83‑VERIFY‑01). Both mechanisms are engineered out here.</p>
-</div>
+  <h2>What will be required before a file is enabled</h2>
+  <ol class="checklist">
+    <li>The session’s assigned method paragraph and canonical template/tool paths are recorded.</li>
+    <li>The candidate is built from the authorized feature stack using the shared evaluator/writer, and every catalogue-derived feature is fold-local.</li>
+    <li>Each feature passes its holdout leakage canary; the whole-segment buffered holdout reports evaluator version, withheld positives, pooled HOLDOUT-DTI, and 95% CI.</li>
+    <li>The surface is compared with every registry raster before placement, and the final dots are checked against every registry raster. A threshold breach is logged as a duplicate and stops publication.</li>
+    <li>The final bytes are reopened and machine-validated: one band; no NaN in the footprint; values in [0,1]; exact CRS, shape, and geotransform; unique filename; SHA-256 receipt.</li>
+    <li>The current run card says `submission_ready: true`. Only then will this page show the one file link, unique submission name, and note of no more than 140 characters.</li>
+  </ol>
 
-<h2>What the files are</h2>
-<ul>
-<li><b>-zeros.tif</b> (primary, portal‑safe): outside footprint = 0.0, all 12,279,160 cells finite, passes strict validator.</li>
-<li><b>-nan.tif</b> (competition format twin): outside = NaN, identical values inside footprint, for the official spec.</li>
-<li><b>.zip</b>: Deflated zip containing the zeros.tif (portal accepts zip with single tif inside).</li>
-</ul>
-<p class="mut">All three have SHA256 pinned in <code>registry/submission_build.json</code> and a per‑file receipt.</p>
+  <h2>Portal steps after the site says READY</h2>
+  <ol class="checklist">
+    <li>Open the official <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DOE GEMS Prize page</a> and sign in through the organizer’s normal flow.</li>
+    <li>Download only the GeoTIFF linked from the READY project landing page. Confirm the displayed filename and SHA-256 match the run card.</li>
+    <li>On the competition submission form, select the downloaded single-band GeoTIFF. The user-supplied form text says a single-band GeoTIFF or ZIP containing a single GeoTIFF is accepted; verify the current form before upload because the page was not fetched in this session.</li>
+    <li>Copy the unique name and short note exactly from the run card into the corresponding submission fields.</li>
+    <li>Submit, save the organizer’s submission-page receipt, and only then record its score as ORGANIZER-CONFIRMED. This project does not choose a weekly slot or submit automatically.</li>
+  </ol>
 
-<h2>Project structure for inspectors (no human needed)</h2>
-<ul class="mut">
-<li><code>data/raw/</code> — competition rasters (owner‑supplied mirrors, hash‑pinned, 23/23 PASS)</li>
-<li><code>src/gems83/metric.py</code> — exact organizer metric (triangular kernel R=3, α0.2 β0.8) + worked example TP 3.00 FP 1.89 FN 2.00 → 0.60 reproduced in tests</li>
-<li><code>src/gems83/holdout.py</code> — spatially blocked holdout (4 quadrants ×2 draws, collar 1.5 km, erosion 1.2 km, hide 20% of fault segments)</li>
-<li><code>src/gems83/live_mirror.py</code> + <code>live_anchor.py</code> — live‑anchored instrument validated on 6 known live orderings</li>
-<li><code>scripts/build_submission.py</code> — builds emission from H83‑B surface, writes both encodings, re‑reads and validates</li>
-<li><code>scripts/check_submission.py</code> — independent validator (CRS/shape/transform/dtype/range/no‑NaN)</li>
-<li><code>evidence/*.json</code> — machine‑readable receipts for every number on this page</li>
-<li><code>registry/*.json</code> — auditable registries (data manifest, slot plan, irregularities)</li>
-</ul>
+  <h2>About the old “Predicted values must be in range [0, 1]” error</h2>
+  <section class="card">
+    <p>The original rejected upload is not present, so its exact cause cannot be proven. The current independent audit checks every raster cell, not just finite or in-footprint values. A quarantined all-finite H83-B TIFF passes that <em>format-only</em> audit against a hash-pinned owner mirror; its scientific and uniqueness evidence is not accepted, so it is not exposed here. The NaN-outside twin fails the strict whole-raster range check.</p>
+    <p>These results do not prove what the organizer’s current validator accepts. The official submission specification must be checked at the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">problem page</a> and through the submission receipt. See <a href="irregularities.html">IR-83-FORMAT-01</a>.</p>
+  </section>
 
-<p><a href="index.html">← Back to Home</a> · <a href="https://github.com/buffedlizard55-lab/GEMSDOE83">Repository</a></p>
-</div>
+  <h2>Why this project currently refuses to offer a TIFF</h2>
+  <p>The lane paragraph, cached feature stack, canonical shared evaluator/writer, and full comparison registry are missing. A synthetic raster or a copy with a new name would violate the brief. The current file state is negative by design; see the <a href="research/holdout-validation.md">holdout status</a> and <a href="irregularities.html">irregularity register</a>.</p>
+  <footer><small>Submission guide status as of 2026-10-21. No slot used; no organizer score claimed.</small></footer>
+</main>
 </body>
 </html>

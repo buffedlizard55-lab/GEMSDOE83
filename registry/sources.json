@@ -1,18 +1,167 @@
-[
-  {"id": "competition", "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/", "role": "competition home", "status": "verified 2026-10-04"},
-  {"id": "problem", "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/", "role": "metric + format, DTI formula and worked example TP3.00 FP1.89 FN2.00 ->0.60 reproduced", "status": "verified 2026-10-04"},
-  {"id": "leaderboard", "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/", "role": "live scores", "status": "verified 2026-10-04 #1 nchuzhoy 0.3262"},
-  {"id": "rules_pdf", "url": "https://docs.nlr.gov/docs/fy26osti/96647.pdf", "role": "rules, 3 submissions/week", "status": "verified 200 sha256 50d854b1e0239fe6..."},
-  {"id": "reference_solution", "url": "https://github.com/drivendataorg/gems-prize-reference-solution", "role": "U-Net baseline", "status": "verified cloned"},
-  {"id": "geodawn", "url": "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and", "role": "magnetic/radiometric source, DOI 10.5066/P93LGLVQ", "status": "verified 200"},
-  {"id": "sciencebase_area", "url": "https://www.sciencebase.gov/catalog/item/657e1d85d34e23d3533209f7", "role": "survey extent", "status": "verified 200"},
-  {"id": "gbcge", "url": "https://gbcge.org/current-projects/ingenious/", "role": "INGENIOUS faults", "status": "verified 200"},
-  {"id": "mcre_srl", "url": "https://doi.org/10.1785/0220200371", "role": "2020 M6.5 unmapped rupture 28 km", "status": "verified via USGS Pubs 70217872"},
-  {"id": "mcre_bssa", "url": "https://doi.org/10.1785/0120200327", "role": "same", "status": "verified"},
-  {"id": "usgs_qfaults", "url": "https://www.usgs.gov/natural-hazards/earthquake-hazards/faults", "role": "catalogue origin", "status": "verified 200"},
-  {"id": "gdr1391", "url": "https://gdr.openei.org/submissions/1391", "role": "wellsprings 2,146 pts, DOI 10.15121/1881483 CC BY 4.0", "status": "verified 200"},
-  {"id": "3dep", "url": "https://apps.nationalmap.gov/downloader/", "role": "1 m DEM", "status": "verified mirrored"},
-  {"id": "comcat", "url": "https://earthquake.usgs.gov/fdsnws/event/1/", "role": "H83-D seismic, free official", "status": "verified 200 from CI, sandbox 000 so fetcher ships"},
-  {"id": "epsg32611", "url": "https://epsg.io/32611", "role": "CRS UTM 11N", "status": "verified"},
-  {"id": "tversky", "url": "https://en.wikipedia.org/wiki/Tversky_index", "role": "metric family", "status": "verified"}
-]
+{
+  "schema": "gemsdoe83-source-register-v3",
+  "as_of": "2026-10-21",
+  "network_scope": "This session accessed GitHub via GitHub API. Other internet hosts are outside the permitted outbound set. External competition, USGS, GDR, NLR PDF, Copernicus Data Space, EPSG, Wikipedia, and GitHub Pages URLs below were not fetched in this session unless marked otherwise.",
+  "sources": [
+    {
+      "id": "drivendata_overview",
+      "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/",
+      "role": "Competition description and prize context",
+      "status": "USER_SUPPLIED_LINK_NOT_FETCHED_THIS_SESSION",
+      "evidence_class": "USER_SUPPLIED_URL",
+      "official": true
+    },
+    {
+      "id": "drivendata_problem",
+      "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/",
+      "role": "Problem, metric, and submission-format source",
+      "status": "USER_SUPPLIED_LINK_NOT_FETCHED_THIS_SESSION",
+      "evidence_class": "USER_SUPPLIED_URL",
+      "official": true
+    },
+    {
+      "id": "drivendata_about",
+      "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/",
+      "role": "Competition background and resources",
+      "status": "USER_SUPPLIED_LINK_NOT_FETCHED_THIS_SESSION",
+      "evidence_class": "USER_SUPPLIED_URL",
+      "official": true
+    },
+    {
+      "id": "drivendata_data",
+      "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/data/",
+      "role": "Official competition package: feature raster, labels, and sample grid",
+      "status": "NOT_ACCESSED_THIS_SESSION; prior project notes report a login gate",
+      "evidence_class": "USER_SUPPLIED_URL_AND_PRIOR_PROJECT_NOTE",
+      "official": true
+    },
+    {
+      "id": "drivendata_leaderboard",
+      "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+      "role": "Current public competition leaderboard",
+      "status": "NOT_FETCHED_THIS_SESSION; current maximum unknown",
+      "evidence_class": "USER_SUPPLIED_URL",
+      "official": true
+    },
+    {
+      "id": "drivendata_reference",
+      "url": "https://github.com/drivendataorg/gems-prize-reference-solution",
+      "role": "Official reference implementation",
+      "status": "GITHUB_SOURCE_REVIEWED_IN_PRIOR_SESSION; reference training code is not the required shared holdout evaluator",
+      "evidence_class": "GITHUB_SOURCE",
+      "official": true
+    },
+    {
+      "id": "nlr_rules_pdf",
+      "url": "https://docs.nlr.gov/docs/fy26osti/96647.pdf",
+      "role": "Competition rules PDF supplied by the user",
+      "status": "USER_SUPPLIED_LINK_NOT_FETCHED_THIS_SESSION",
+      "evidence_class": "USER_SUPPLIED_URL",
+      "official": true
+    },
+    {
+      "id": "usgs_geodawn",
+      "url": "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and",
+      "role": "Potential official airborne magnetic/radiometric source",
+      "status": "NOT_FETCHED_THIS_SESSION; not treated as an acquired feature input or viable external source",
+      "evidence_class": "USER_SUPPLIED_URL",
+      "official": true
+    },
+    {
+      "id": "gbcge_ingenious",
+      "url": "https://gbcge.org/current-projects/ingenious/",
+      "role": "INGENIOUS project context and manual-review link",
+      "status": "USER_SUPPLIED_LINK_NOT_FETCHED_THIS_SESSION",
+      "evidence_class": "USER_SUPPLIED_URL",
+      "official": "project consortium"
+    },
+    {
+      "id": "gdr_1391",
+      "url": "https://gdr.openei.org/submissions/1391",
+      "role": "Potential geothermal wells/springs and INGENIOUS resources",
+      "status": "NOT_FETCHED_THIS_SESSION; no new data acquired",
+      "evidence_class": "USER_SUPPLIED_URL",
+      "official": "DOE Geothermal Data Repository listing supplied by user"
+    },
+    {
+      "id": "usgs_comcat",
+      "url": "https://earthquake.usgs.gov/fdsnws/event/1/",
+      "role": "Potential free earthquake-event/focal-mechanism source",
+      "status": "NOT_FETCHED; host outside permitted outbound set; obtainability and regional coverage unverified",
+      "evidence_class": "USER_SUPPLIED_URL",
+      "official": true
+    },
+    {
+      "id": "epsg_32611",
+      "url": "https://epsg.io/32611",
+      "role": "User-supplied CRS reference",
+      "status": "USER_SUPPLIED_LINK_NOT_FETCHED_THIS_SESSION",
+      "evidence_class": "USER_SUPPLIED_URL",
+      "official": "CRS registry reference"
+    },
+    {
+      "id": "tversky_background",
+      "url": "https://en.wikipedia.org/wiki/Tversky_index",
+      "role": "Secondary background only; official problem page is authoritative for the competition metric",
+      "status": "NOT_FETCHED_THIS_SESSION",
+      "evidence_class": "USER_SUPPLIED_URL",
+      "official": false
+    },
+    {
+      "id": "gemdoe32_method_source",
+      "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/f62038b54dcb7767d4d997f80b033cdc3d42bef9/src/gems32/hypotheses33.py",
+      "role": "H33-2 catalogue-flank pruning implementation",
+      "status": "FETCHED_VIA_GITHUB_API_AT_COMMIT_f62038b54dcb7767d4d997f80b033cdc3d42bef9; source snapshot preserved",
+      "evidence_class": "OWNER_CODE_NOT_ORGANIZER_EVIDENCE",
+      "official": false
+    },
+    {
+      "id": "gemdoe32_h33_validation",
+      "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/f62038b54dcb7767d4d997f80b033cdc3d42bef9/evidence/h33_validation.json",
+      "role": "Owner-authored validation context for H33-2-B2 and other candidate variants",
+      "status": "FETCHED_VIA_GITHUB_API; bytes match preserved local snapshot",
+      "evidence_class": "OWNER_REPORTED_PROXY_NOT_CANONICAL_HOLDOUT_DTI",
+      "official": false
+    },
+    {
+      "id": "gemdoe32_h33_removal_scan",
+      "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/f62038b54dcb7767d4d997f80b033cdc3d42bef9/evidence/h33_removal_rule_scan.json",
+      "role": "Owner-authored local proxy metric (NOT A SCORE); includes candidate R2-safe-zeroTPp value 0.4412792647",
+      "status": "FETCHED_VIA_GITHUB_API; local snapshot SHA-256 recorded in evidence/upstream/GEMSDOE32_owner_evidence_receipt.json",
+      "evidence_class": "OWNER_REPORTED_PROXY_METRIC_NOT_A_SCORE",
+      "official": false
+    },
+    {
+      "id": "gemdoe32_submission_manifest",
+      "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/f62038b54dcb7767d4d997f80b033cdc3d42bef9/docs/downloads/submissions_manifest.json",
+      "role": "Owner build/receipt manifest for the H33-2-B2 GeoTIFF",
+      "status": "FETCHED_VIA_GITHUB_API; H33-2-B2 record has receipt null and the note says UNSCORED at this snapshot",
+      "evidence_class": "OWNER_MANIFEST_NOT_ORGANIZER_RECEIPT",
+      "official": false
+    },
+    {
+      "id": "gemdoe32_h33_bundles",
+      "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/f62038b54dcb7767d4d997f80b033cdc3d42bef9/evidence/h33_submission_bundles.json",
+      "role": "Owner build notes, candidate artifact hashes, and labelled projections",
+      "status": "FETCHED_VIA_GITHUB_API; preserved selected manifest excerpt locally",
+      "evidence_class": "OWNER_BUILD_METADATA_NOT_ORGANIZER_RECEIPT",
+      "official": false
+    },
+    {
+      "id": "gemdoe32_owner_score_ledger",
+      "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/f62038b54dcb7767d4d997f80b033cdc3d42bef9/docs/score-ledger.csv",
+      "role": "Historical owner score ledger and dated public leaderboard observations",
+      "status": "FETCHED_VIA_GITHUB_API; pinned bytes match local snapshot. Its official-snapshot labels are public-page reads, not organizer submission-page receipts.",
+      "evidence_class": "OWNER_HISTORICAL_LEDGER_NOT_ORGANIZER_RECEIPT",
+      "official": false
+    },
+    {
+      "id": "copernicus_data_space_sentinel1",
+      "url": "https://dataspace.copernicus.eu/",
+      "role": "Potential official Sentinel-1 SAR archive for a future InSAR deformation hypothesis",
+      "status": "USER_IDENTIFIED_OFFICIAL_ENTRY_POINT_NOT_FETCHED; access path, licensing/availability, temporal coverage, and regional footprint not verified; not treated as viable or acquired",
+      "evidence_class": "MANUAL_REVIEW_LINK_NOT_VERIFIED",
+      "official": true
+    }
+  ]
+}

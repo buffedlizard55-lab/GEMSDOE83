@@ -1,6 +1,10 @@
-"""DrivenData GeoTIFF Submission Builder & Range-[0, 1] Validator Auditor.
+"""Historical local GeoTIFF builder/validator; not the shared submission writer.
 
-Permanently fixes the DrivenData error `"Predicted values must be in range [0, 1]"` by:
+The template constants and checks below come from owner-mirrored artifacts and are not organizer-
+authenticated by this checkout. A local format pass does not establish scientific, provenance, or
+submission readiness. Use the official template and shared writer after protocol gates pass.
+
+Historical implementation notes:
 1. Sanitizing all float32 `-3.4028235e+38` sentinels and NaNs inside the 5,167,373-pixel footprint.
 2. Enforcing `np.clip(pred, 0.0, 1.0)` across all 5,167,373 in-footprint pixels and `pred[labels] = 0.0`.
 3. Emitting paired GeoTIFFs for each candidate:

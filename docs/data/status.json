@@ -1,0 +1,19 @@
+{
+  "schema": "gemsdoe83-status-feed-v2",
+  "as_of": "2026-10-21",
+  "project_status": "BLOCKED_NOT_READY",
+  "submission_ready": false,
+  "submission_file": null,
+  "organizer_confirmed_score": null,
+  "holdout_dti": null,
+  "holdout_ci95": null,
+  "method_lane": "UNASSIGNED",
+  "experiments_run": 0,
+  "weekly_slots_used": 0,
+  "current_leaderboard_status": "NOT_FETCHED; user-supplied values conflict",
+  "reason": "No assigned lane, canonical shared tools, official feature stack, complete registry rasters, or reconciled authorized template/footprint.",
+  "run_card": "../run-card.json",
+  "source_register": "sources.json",
+  "score_ledger": "user_supplied_score_ledger.csv",
+  "notice": "Static project snapshot; not a live competition leaderboard feed."
+}

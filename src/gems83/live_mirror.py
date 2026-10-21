@@ -1,7 +1,11 @@
-"""Live-mirror holdout instrument (LM) -- a spatially blocked evaluation built to *reproduce the
-sign* of the public leaderboard, not the sign of the visible catalogue.
+"""Historical owner-authored local proxy, not the canonical holdout evaluator.
 
-Why this exists
+The original rationale and claims below are unverified owner interpretations. This code does not
+establish how the organizer masks faults or scores the live leaderboard, and it has not been
+validated against an organizer receipt. Its output is not a ``HOLDOUT-DTI`` or a score. Do not use
+it for current candidate or slot decisions.
+
+Original rationale (preserved for audit):
 ---------------
 Every locally available truth raster in this competition is derived from the published catalogue,
 and the organisers **mask catalogue pixels out of scoring**.  A holdout whose truth *is* the

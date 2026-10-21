@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "gems83"
 version = "0.1.0"
-description = "GEMSDOE83 — Unique dilational jog + radiometric alteration submission for DOE GEMS Prize"
+description = "GEMSDOE83 — Historical research code and audit support for the DOE GEMS Prize"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [

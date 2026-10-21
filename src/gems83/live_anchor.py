@@ -1,6 +1,10 @@
-"""Live-anchored decision rule for the three-slot budget (GEMSDOE32, session 3).
+"""Historical owner-authored proxy/decision experiment; not an active slot selector.
 
-Why this exists
+The owner-reported numbers and interpretations below are not organizer-confirmed scores, and this
+module is not part of the canonical holdout or promotion pipeline. This project must not use it to
+choose a weekly slot; promotion is handled separately.
+
+Original rationale (preserved for audit):
 ---------------
 The prompt asks for the standing rule "do not spend a slot on an idea that has not beaten the
 current holdout best" to become *a running decision rule that also says what to try next*, and for

@@ -1,8 +1,9 @@
-"""Novel Geological Hypotheses (H32-A, H32-B, H32-C, H32-D) for GEMSDOE32.
+"""Historical owner-authored H32 hypothesis implementations; not validated in this checkout.
 
-All feature transforms are 100% label-free (computed strictly from the 19 geophysical/geodetic/seismic/
-topographic bands of training_features.tif plus the USGS 3DEP 1 m LiDAR scarp and USGS GeoDAWN radiometric
-rasters), guaranteeing zero retrospective catalogue leakage on spatial holdouts.
+The original layer/provenance, novelty, label-free, and zero-leakage assurances are preserved in
+this legacy module but are not authenticated by the current project. This is not the assigned method
+lane or the canonical shared evaluator. No H32 surface has been accepted under the requested
+whole-segment buffered hide-and-recover protocol; see the current run card and research notes.
 """
 
 from __future__ import annotations

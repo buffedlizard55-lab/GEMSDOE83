@@ -1,0 +1,21 @@
+{
+  "schema": "gems83-format-audit-v1",
+  "candidate": "research/quarantine/prior-h83b/downloads/gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif",
+  "template": "data/sample_submission.tif",
+  "sha256": "e731b16b2811ff6cc0b581742acbd4b7a18858b8a83d5b4f2e4031967bc735a5",
+  "checks": {
+    "single_band": true,
+    "shape_match": true,
+    "crs_match": true,
+    "transform_match": true,
+    "nonempty_footprint": true,
+    "no_nan_inside_footprint": true,
+    "no_masked_predictions_inside_footprint": true,
+    "all_pixels_finite": true,
+    "all_values_in_0_1": true,
+    "real_numeric_dtype": true
+  },
+  "format_valid": true,
+  "submission_ready": false,
+  "scope": "Format only. No holdout, uniqueness, official template authentication, or slot authorization implied."
+}

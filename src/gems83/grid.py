@@ -1,11 +1,11 @@
-"""Competition grid geometry, footprint, raster IO.
+"""Historical local grid helpers; not the canonical submission writer.
 
-All geometry is taken from the competition rasters themselves (byte-verified against the
-owner-mirror manifest in ``registry/data_manifest.json``), never invented:
-
-    EPSG:32611 (UTM 11N), 100 m, width 3292 x height 3730, origin (243350, 4508550),
-    feature nodata -3.4e38, footprint 5,165,852 px (measured, ``registry/feature_receipt.json``).
-    Everything outside the footprint is NaN in a legal submission.
+The geometry below was copied from owner-mirrored rasters/receipts, not authenticated against an
+organizer-provided template in this checkout. Use the official template and shared writer for any
+candidate. The owner-mirrored sample template has EPSG:32611, 100 m, width 3292 x height 3730, origin
+(243350, 4508550), and 5,167,373 finite cells. A legacy feature-footprint count of 5,165,852
+references a missing receipt and differs by 1,521 cells; it is unresolved. The official template and
+outside-mask encoding are not available here, so these local helpers do not certify submission format.
 """
 from __future__ import annotations
 
@@ -27,7 +27,7 @@ def open_template(path: str | Path) -> dict:
 
 
 def read_footprint(features_path: str | Path, band: int = 1) -> np.ndarray:
-    """Boolean footprint from the official feature raster (finite pixels of band 1)."""
+    """Local finite-mask helper; verify the mask against the authorized feature/template rasters."""
     with rasterio.open(features_path) as s:
         a = s.read(band)
     return np.isfinite(a) & (a > NODATA_F32 * np.float32(0.5))
@@ -48,11 +48,11 @@ def read_band(path: str | Path, band: int, fill: float = 0.0) -> np.ndarray:
 
 def write_submission(mask: np.ndarray, template_path: str | Path, out_path: str | Path,
                      footprint: np.ndarray | None = None, outside: str = "nan") -> Path:
-    """Write a legal single-band float32 GeoTIFF on the exact template grid.
+    """Write a local single-band float32 GeoTIFF using the supplied template path.
 
-    ``outside='nan'`` fills the footprint rim with NaN (the format the sample submission uses);
-    ``outside='zero'`` fills it with 0.0, which is the belt-and-braces variant for a validator
-    that rejects NaN (every pixel then satisfies 0 <= v <= 1).
+    This helper is historical and does not validate organizer provenance or disputed footprint
+    semantics. Outside-mask encoding must be taken from the authorized template and shared writer,
+    not inferred from this local implementation.
     """
     meta = open_template(template_path)
     out = np.asarray(mask, dtype=np.float32)

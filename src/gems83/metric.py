@@ -1,11 +1,11 @@
-"""Official Distance-Weighted Tversky Index (DTI) for the DOE GEMS Prize Challenge.
+"""Historical local DTI-like metric implementation; not the canonical holdout evaluator.
 
-Verified from official competition problem description (DrivenData Page 967):
-https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#performance-metric
-and official organizer forum clarification on known-fault masking (Thread 11516):
-https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516
+The URLs below are preserved for manual provenance review; they were not fetched in this session.
+This local formulation, including known-fault masking assumptions, is not organizer-verified and
+must not replace the shared ``evaluate_holdout.py``. Use only the canonical evaluator and its
+versioned protocol when reporting a HOLDOUT-DTI.
 
-Mathematical formulation:
+Local mathematical formulation:
 - Triangular kernel: k(d) = max(1 - d / R, 0), with R = 300 m = 3 pixels at 100 m resolution.
 - TP_w = sum_{g in G} max_{x : d(x,g) <= R} p(x) * k(d(x,g))
 - FP_w = sum_{x : p(x) > 0} p(x) * [1 - max_{g in G} k(d(x,g))]

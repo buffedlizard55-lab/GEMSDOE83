@@ -1,106 +1,141 @@
-# GEMSDOE83 — Unique TIF submission for the DOE GEMS Prize (DrivenData 306)
+# GEMSDOE83 — Auditable fault-mapping research for the DOE GEMS Prize
 
-**Competition:** [DOE GEMS Prize — overview](https://www.drivendata.org/competitions/306/competition-doe-gems/) · 
-**Problem description, metric and submission format:** [page 967](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/) · 
-**Rules PDF (NLR 96647):** [https://docs.nlr.gov/docs/fy26osti/96647.pdf](https://docs.nlr.gov/docs/fy26osti/96647.pdf) · 
-**Reference solution:** [https://github.com/drivendataorg/gems-prize-reference-solution](https://github.com/drivendataorg/gems-prize-reference-solution) · 
-**GeoDAWN:** [https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and](https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and) · 
-**GBCGE INGENIOUS:** [https://gbcge.org/current-projects/ingenious/](https://gbcge.org/current-projects/ingenious/) · 
-**EPSG 32611:** [https://epsg.io/32611](https://epsg.io/32611) · 
-**Tversky index:** [https://en.wikipedia.org/wiki/Tversky_index](https://en.wikipedia.org/wiki/Tversky_index)
+> **Before every session or project change:** read this README, [`PROMPT.md`](PROMPT.md), and [`research/review.md`](research/review.md). They are the project starting point and evidence boundary. Do not treat a TIFF, stale page, owner mirror, projection, or leaderboard report as a validated submission.
 
-> **ONE-CLICK SUBMISSION:** Go to [**docs/index.html**](docs/index.html) — the download button is at the very top. It is green, says “⬇ Download the submission GeoTIFF”, and ships a receipt JSON proving every validator check passes. **If you see that button, the file is OK to submit.**
+## Current disposition: **NOT READY — DO NOT SUBMIT**
 
-## Executive summary — how to submit
+There is **no current eligible submission TIFF** in the published site. The old H83-B GeoTIFFs were moved out of `docs/` and quarantined. The old all-finite `-zeros.tif` passes an independent **format-only** audit against the locally restored owner-mirrored template; it is not scientifically validated, checked against the full registry, officially authenticated, or eligible for submission. Its NaN-outside twin fails the strict full-grid range audit. Neither file is offered for download.
 
-1. Open [docs/index.html](docs/index.html) (GitHub Pages site).
-2. Click **⬇ Download the submission GeoTIFF** at the very top (or the `.zip` next to it).
-3. On DrivenData, click **Submit file**, pick the downloaded `.tif` (or `.zip` containing a single `.tif`).
-4. Paste the **Note (optional)** shown on the site into the form's Note field (≤140 chars).
-5. Paste the **Unique submission name** shown on the site.
-6. Click **Create submission**. If you see “Predicted values must be in range [0, 1]” — that error is fixed in this repo: every download here is single-band float32, EPSG:32611, 100 m, 3292×3730, every cell finite, min 0.0 max 1.0, zero NaN, no nodata tag. See [docs/executive-summary.html](docs/executive-summary.html) for the exact diagnosis and re-read receipt.
+No new experiment was run and no weekly slot was used. The current run card is [`docs/run-card.json`](docs/run-card.json). The landing page and executive summary both show the same blocked status and no file link. The status JSON is a static project snapshot, not a live leaderboard feed.
 
-Detailed step-by-step with screenshots: [docs/executive-summary.html](docs/executive-summary.html)
+### Why a new TIFF is blocked
+
+1. The prompt refers to a single assigned method paragraph, but that paragraph is absent from the supplied request and current project records. Selecting a lane ourselves would violate the parallel-run rule.
+2. The canonical shared `evaluate_holdout.py`, `submission_writer.py`, cached feature stack, and full registry of comparison rasters are absent. Similar project-local utilities are not accepted substitutes and were not used as canonical tools.
+3. The competition feature raster is not present. Three small owner-mirrored files were restored for audit; their hashes match a local manifest, but that does not establish organizer provenance. The official DrivenData data page and USGS/GDR sources were not fetched in this session.
+4. Without the canonical tools, full feature data, and full registry rasters, no valid segment holdout, feature-only leakage canary, pre-placement surface duplicate check, final-dot duplicate check, or accepted automated submission validation can be completed.
+
+These are blockers, not zeros. Missing holdout, confidence intervals, correlations, and overlaps stay `null`. The safe outcome is a negative/blocked run, not a synthetic or copied raster.
+
+## Mission and standing prompt
+
+Build an auditable research project for discovering **previously unmapped faults that may inform geothermal exploration**. Do not claim a fault-prediction raster has discovered a geothermal vent, reservoir, permeability, or resource. Keep scientific hypotheses separate from measurements and organizer scores.
+
+The archived operating requirements—including lane restrictions, canonical-tool reuse, holdout/scoring protocol, duplicate thresholds, result labels, three review passes, submission format, and source limitations—are in [`PROMPT.md`](PROMPT.md). User-supplied submission names/scores are preserved once in [`registry/user_supplied_score_ledger.csv`](registry/user_supplied_score_ledger.csv).
+
+## Why the user-reported GEMSDOE32 value 0.2778 may have performed well
+
+`0.2778` is **USER-REPORTED, not ORGANIZER-CONFIRMED** in this project: there is no submission-page receipt linking the value to the submitted TIFF bytes. A pinned owner-repository snapshot names the same H33-2-B2 file, but its submission manifest says `UNSCORED` and its receipt field is null. A later organizer score is possible; it is not verified here.
+
+The method in the preserved code is **catalogue-flank pruning**. H33-2-B2 starts from an owner-reported 0.2708 base claim (40,199 dots; USER-REPORTED, NOT ORGANIZER-CONFIRMED, with no receipt tied to the base artifact), removes the 2,545 dots within 2 pixels (200 m at 100 m/pixel) of the mapped-fault catalogue, and keeps 37,654. That is a 6.3% reduction in dot count. It is not, by itself, a new geological detector.
+
+The owner code claims the organizer masks existing-fault pixels during scoring. Conditional on that rule, dots spent on masked catalogue pixels may add false-positive penalty without gaining credit there. Removing low-expected-credit dots while retaining coverage of hidden faults can therefore improve a precision-weighted objective. This makes **prediction-mass reallocation** a plausible explanation for why a moderate B=2 prune could have performed well. The masking/scoring premise is owner-code documentation, not freshly verified against the official problem/scorer in this session.
+
+The pinned owner validation reports a custom LM-calibrated proxy change from 0.2630509876 to 0.2679205316 (difference +0.0048695440, four of four quadrants positive). That is **OWNER-REPORTED PROXY METRIC — NOT a `HOLDOUT-DTI` or score**: it is not the required canonical evaluator and lacks the accepted version/withheld-count/95% CI receipt. The owner’s 0.2746731598 live-anchor output is a **projection, not a score**. The owner manifest marks the named H33-2-B2 artifact unscored. See [`docs/research.html`](docs/research.html) and the pinned owner-source record [`evidence/upstream/GEMSDOE32_owner_evidence_receipt.json`](evidence/upstream/GEMSDOE32_owner_evidence_receipt.json).
+
+A separate owner-local proxy value 0.4412792647 rounds to the user-supplied current public maximum of 0.4413. This is a numerical coincidence, not evidence that the proxy is the public score; the prompt also supplies a conflicting current maximum of 0.3195, and neither was fetched from the live official leaderboard. See [`docs/leaderboard.html`](docs/leaderboard.html) and [`registry/irregularities.json`](registry/irregularities.json).
+
+No claim that GEMSDOE83 can exceed 0.2778 is supported: this run has no eligible candidate, accepted holdout, current baseline, complete registry comparison, or organizer score.
+
+## Candidate hypotheses — proposal only, not the assigned lane
+
+Four candidates are ranked in [`docs/hypotheses.html`](docs/hypotheses.html) and documented in [`docs/research/h83-hypotheses.md`](docs/research/h83-hypotheses.md). The ranking is qualitative expert judgment about possible improvement/cost, not an expected numerical score. The top conditional proposal is **cross-frequency wavelet phase coupling** between magnetic and gravity bands. Its band names/indices are provisional and must be checked against the canonical stack; the supplied xscale-persistence method and other prior art create a duplication risk. It has not been implemented, screened for leakage, or validated. **No candidate is authorized while the lane is unassigned.**
+
+The holdout status and acceptance protocol are recorded in [`docs/research/holdout-validation.md`](docs/research/holdout-validation.md). No holdout, leakage canary, unique raster, or score is claimed for the current run.
+
+## Data, sources, and limitations
+
+- [`registry/user_supplied_score_ledger.csv`](registry/user_supplied_score_ledger.csv) contains the submitted site names and values, each labelled `USER_REPORTED_UNVERIFIED`, `USER_REPORTED_CONFLICT`, or `NO_SCORE_SUPPLIED`; none is an organizer receipt.
+- [`registry/sources.json`](registry/sources.json) and the rendered [`sources page`](docs/sources.html) distinguish official manual-review links, GitHub owner-source evidence, source fetch status, and provenance class.
+- [`registry/irregularities.json`](registry/irregularities.json) records missing lane/tools/data/registry, score conflicts, owner-proxy confusion risk, prior-art overlap, the unresolved grid-mask mismatch, and mitigations for the stale site/feed and ignored static data.
+- This session could fetch GitHub/API sources but not DrivenData, USGS, GDR, NLR-PDF, Copernicus Data Space, EPSG, Wikipedia, or GitHub Pages hosts. Official competition data was not acquired. The official data page may be login-gated according to prior project notes; do not bypass it or request credentials in chat.
+- Owner mirrors and owner-authored evidence can support reproducibility and historical analysis, but do not prove organizer provenance or scores. The official reference repository is a source of code, not a substitute for the requested shared holdout evaluator.
+- **Grid irregularity:** the owner-mirrored sample template has 5,167,373 finite cells, while historical local code cites a 5,165,852-cell feature footprint from a missing receipt (1,521-cell difference). Its manifest also reports 60,988 template ones coincident with mirrored fault labels. Official template semantics were not checked; do not use this mirror to certify final output.
+- The current leaderboard is **unknown here**. A saved 2026-10-04 public-page snapshot is historical context, not a current result or submission-page receipt. The legacy feed helper reads only the checked-in static status and does not probe sources or publish a second leaderboard feed.
+
+## Submission instructions
+
+Start at [`docs/index.html`](docs/index.html), then review [`docs/executive-summary.html`](docs/executive-summary.html). The site deliberately shows **NOT READY — DO NOT SUBMIT** and no download link. A future candidate can be shown only after it passes the assigned-lane, shared holdout/leakage, complete-registry uniqueness, and automated final-byte format/provenance gates. The executive summary documents the portal steps; this repository does not choose a weekly slot or submit automatically.
+
+## Three review passes for this revision
+
+1. **Implement what evidence supports:** quarantined stale submission binaries/scripts; rebuilt the readiness, research, score, source, and irregularity pages; recorded owner evidence classes and candidate blockers; preserved an explicit negative run card.
+2. **Review bugs, assumptions, and edge cases:** corrected the initial phase-displacement hypothesis after finding H32-A’s cross-strike parity/down-dip method; excluded focal mechanisms after finding H33-E’s raw-catalogue/nodal-plane prior art; checked TIFF hashes against receipts; audited the H33-2-B2 owner manifest and distinguished its proxy/projection from scores; disabled legacy external feed probes; replaced stale tests and checked all local site links.
+3. **Recheck the full prompt and improve:** confirmed assigned lane remains unresolved; canonical tools, official feature stack, and full registry remain missing; verified no TIFF/ZIP is linked or published, all score classes are explicit, nulls remain null, and no holdout/slot/organizer result is claimed. Regression tests and final repository checks are recorded with this revision.
 
 ## Core Values
 
-**Maximize P(Win).** *Maximize the Probability of Winning* — every decision weighs tradeoffs, assesses risk, and chooses the path that maximizes P(Win). We set aside emotions and make tough calls to put the outcome first. Applied here: the three weekly slots are an experiment design, not lottery tickets.
+**Maximize P(Win).** Weigh evidence, uncertainty, prior art, and slot cost; do not spend a submission slot on a weak or unverified candidate.
 
-**Own the Outcome.** We own results end to end — not just our slice. When problems arise and we have means to act, we do without waiting for permission. We treat failure/success as signals and iterate. Every claim here carries an evidence class and a link.
+**Own the Outcome.** Own the work end to end, disclose failures and irregularities, repair stale readiness claims, and treat a negative result as actionable evidence rather than hiding it.
 
-## The prompt we solve
+## Full consolidated standing prompt archive
 
-> Generate a **UNIQUE TIF submission** for the competition. Do not copy a previous submission unless for learning. Must be obvious whether it is OK to download and submit. Provide an easy-to-download submission tif file as described. Read entire prompt. Inspection only + human inspector is insufficient — inspection must be done through the project and validated for submission without human intervention.
->
-> **PARALLEL-RUN PROTOCOL:** Lane = single method paragraph. If raster rank-correlation with any registry raster >0.90, or >70% dots within 3 px of a registry raster's dots, you have drifted into another lane: log duplicate and stop. Check on surface before placement AND on final dots. REUSE, DON'T REBUILD: use template's cached feature stack, evaluate_holdout.py and submission_writer.py. Holdout = hide-and-recover: withhold whole fault segments with buffer, derive every catalogue-based feature only from visible faults, mask visible faults pixel-exactly, score pooled DTI (alpha 0.2, beta 0.8, 300 m triangular kernel). LABEL EVERY NUMBER as HOLDOUT-DTI or ORGANIZER-CONFIRMED. LEAKAGE CANARY: test each feature alone on holdout before trusting; AUC >0.90 means leakage. RUN CARD: End with one JSON card: hypothesis; mechanism; named non-fault process that could mimic it; holdout DTI + CI; correlation/overlap vs registry; raster sha256; validator output; submission name + note ≤140 chars; verdict promote/negative. BUDGET: Stop after 3 experiments or 2 hours.
+This is the full consolidated operating prompt, duplicated from [`PROMPT.md`](PROMPT.md) so the repository guide remains self-contained. Keep both copies synchronized; the per-site score rows are linked in the CSV ledger above.
 
-## Competition structure
+<details>
+<summary>Expand the full standing prompt</summary>
 
-- **Initial Prize Round — $50k ($10k ×5):** Scored against a *private* set of new faults experts labeled *before* competition.
-- **Expert review:** Panel cross-references *all* submissions to find candidate new faults.
-- **Expanded label set:** Verified new discoveries added to ground truth.
-- **Final Prize Round — $250k ($100k, $70k, $40k, $25k, $15k):** Same submissions rescored against expanded set. One file counts for both rounds; choose wisely. Only one submission per team counts across both rounds.
+# GEMSDOE83 standing prompt — read every session
 
-Leaderboard snapshot (ORGANIZER-CONFIRMED, read 2026-10-04): **#1 nchuzhoy 0.3262**, #2 DARD 0.3195, #3 alexoktaba 0.3042. Source: [https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/) — see [docs/leaderboard.html](docs/leaderboard.html).
+This file preserves the complete set of unique operating requirements in the user’s project prompt. The extensive repeated prompt text and the per-site score names/values are represented once; the scores themselves are transcribed in [`registry/user_supplied_score_ledger.csv`](registry/user_supplied_score_ledger.csv). Read this file, the top-level [`README.md`](README.md), and [`research/review.md`](research/review.md) before changing the project.
 
-Group's best owner claim: `gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif` **0.2600 ORGANIZER-CONFIRMED? No — claimed, not receipt-verified** (see [docs/irregularities.html](docs/irregularities.html)). Verified best among listed GEMSDOE sites: **GEMSDOE32 h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros: 0.2778 (owner-reported, not organizer receipt)** — why it scored highest is analyzed below.
+## Mission
 
-## Why GEMSDOE32's 0.2778 scored highest (PhD-level answer)
+Build an auditable, useful project to improve discovery of previously unmapped faults in the DOE GEMS Prize area and support geothermal exploration. The goal is a competitive result, but scientific integrity is mandatory: do not assert geothermal-vent discovery from a fault map, do not fabricate scores or geology, and do not claim that an idea beats a baseline until the required holdout has run.
 
-**The metric is a budget, not a classifier.** DTI = T / (0.2·S + 0.8·K + 0.2·T? Actually T/(α(T+S-M)+βK) with α=0.2 β=0.8). For binary emission: denominator grows by exactly **α=0.2 per emitted pixel** regardless of location (dD = α·(k + 1−k) = α). Numerator grows by at most **k(d) ≤1**, the triangular kernel weight at the pixel's distance to truth. So **marginal DTI >0 iff k > α·DTI** (≈0.054 at DTI 0.27). Derivation verified in `src/gems83/metric.py::marginal_inclusion_threshold` and `scripts/verify_theorems.py`.
+## Highest-priority deliverable
 
-**What the 0.2778 file did:** It started from the group's best live-scored emission (40,199 dots, live 0.2708) and **deleted every dot within 2 px (200 m) of the published catalogue**. Why this works: Round-1 hidden truth *excludes* the catalogue by construction (field is measured 0/121,131 positive pixels touching catalogue; labels byte-identical to existing_faults). Any dot on/near a mapped fault therefore **cannot earn credit** (max k=0 to hidden truth, which is >300 m from catalogue by definition), yet still costs 0.2 denominator. Removing it is a guaranteed gain. The live-anchored inversion (via `src/gems83/live_anchor.py`) recovers TP_w=5,073, D=18,734, |G|≈12,226 hidden pixels, recall ≈0.415, break-even τ_live=0.05416; B=2 removal spends 65 credits to remove 2,545 dots, budget 135.7 → safety **2.08**, projected live **0.2747 (MODEL, not score)**. Two independent routes (empirical 0.0548 vs derived 0.0520) agree.
+Produce a unique single-band GeoTIFF for the competition, without copying an earlier submission. The project—not a human inspector—must automatically validate it. The website must make it obvious at first visit whether the file is OK to download and submit. If any scientific, uniqueness, provenance, or format gate is unavailable or fails, show **NOT READY — DO NOT SUBMIT**, do not link a stale TIFF, and report a negative result rather than fabricate a deliverable.
 
-**Can we beat 0.2778?** Only by raising *credit density* (mean k per dot) at constant mass. At 44,090 px the leader needs ≈25% more mean credit than the group's field delivers. No public catalogue supplies that (newest GDR QFaults v2: 59,065 px, all but 1 within 300 m of catalogue — see [sources.html](docs/sources.html)). Path is a better detector + two-round objective. This repo's plan: ranked hypotheses below, validated on spatially-blocked holdout before spending a slot.
+## Parallel-run protocol
 
-## Five candidate hypotheses (not yet tried here) — ranked by expected DTI improvement / cost
+1. **Lane:** Work only in the one assigned method paragraph. The current supplied request does not identify that paragraph, so no lane is assumed. Before placing dots, compare the candidate surface against every registry raster. After placement, compare the final dots. If rank correlation is greater than 0.90, or more than 70% of dots lie within 3 pixels of one registry raster’s dots, record a duplicate and stop.
+2. **Reuse, do not rebuild:** Use the template’s cached feature stack, shared `evaluate_holdout.py`, and shared `submission_writer.py`. Do not keep a private fork. Correct a shared defect only in the canonical template, then report it. The named shared assets are absent from this checkout; do not substitute local historical utilities.
+3. **Holdout:** Hide whole fault segments with a buffer; derive every catalogue-based feature only from visible faults; mask visible-fault pixels pixel-exactly; score pooled DTI with α=0.2, β=0.8, and a 300 m triangular kernel. A result is `HOLDOUT-DTI` only when the evaluator version, withheld-positive count, and 95% confidence interval are supplied.
+4. **Leakage canary:** Test each feature alone on holdout. AUC above 0.90 is leakage until proven otherwise.
+5. **Score provenance:** `ORGANIZER-CONFIRMED` requires a value copied from an organizer submission-page receipt. A public leaderboard snapshot, user report, local projection, or mirror is not such a receipt. Label every reported score accordingly; never write a projection as a score.
+6. **Run card:** End each session with one JSON card containing hypothesis; mechanism; a named non-fault mimic; holdout DTI + CI; surface and final-dot correlation/overlap against the registry; raster SHA-256; validator output (no NaN inside footprint, values [0,1], CRS/shape/transform match); submission name and note (≤140 characters); and verdict `promote` or `negative`. Missing measurements are null, not zero.
+7. **Budget:** Stop after at most 3 experiments or 2 hours. Do not choose a real submission slot. Promotion to a weekly slot belongs to a separate selector operating within the competition’s current weekly cap.
 
-See [docs/research/h83-hypotheses.md](docs/research/h83-hypotheses.md) for full specs with layer(s), physical signature, why off-catalogue, and novelty vs repo.
+## Research process
 
-| Rank | ID | Name | Expected DTI gain | Cost | Status |
-|------|----|------|-------------------|------|--------|
-| **1** | H83-A | Dilational jog geothermal conduit (geod_dilaterate + shearrate + basement step + bend) | **HIGH** (+0.005–0.015 HOLDOUT-DTI at matched mass) | LOW (~30s CPU, only training_features bands) | **VALIDATED — PROMOTED** |
-| 2 | H83-C | Buried basement scarp under Lahontan lacustrine plain (depth_to_base + grav + flat det_elev) | Medium-high | Low-medium | Not yet measured |
-| 3 | H83-B | Radiometric hydrothermal alteration corridor (K/Th depletion + cond_surf breach) | Medium | Medium (needs geodawn_rad_u8) | Not yet measured |
-| 4 | H83-D | Microseismic lineament (ComCat epicenter alignment, free USGS source) | Medium-high | Medium (external fetch, but obtainable: https://earthquake.usgs.gov/fdsnws/event/1/ verified 200) | Data-blocked in sandbox, fetcher ships |
-| 5 | H83-E | En-echelon Riedel / wing-crack stepover (det_elev curvature + shear) | Low-medium | Low | Not yet measured |
+Before implementation, create 3–5 candidate geological hypotheses not already implemented in this repository. For each, name exact layer(s), physical signature/transform, why the signal could indicate an unmapped fault rather than an already catalogued one, how the method differs from repository prior art, a named non-fault mimic, expected DTI direction (qualitative unless actually measured), implementation cost, and required data. If external data is needed, identify the exact free official source and verify that it is obtainable before calling the idea viable. If the sandbox cannot reach that source, mark the idea blocked, not viable.
 
-Each hypothesis lists: specific layer(s), physical signature (edge/curvature transform), why it should catch a fault *missing* from USGS/INGENIOUS catalogue, how it differs from anything already in this repo. Full table + falsifiers in [docs/research/h83-hypotheses.md](docs/research/h83-hypotheses.md).
+Validate the top eligible idea on the spatially blocked holdout before any slot is touched. It must beat the current same-instrument holdout best, survive the feature-only leakage canary, and pass both duplicate screens. The competition’s private score may differ; holdout improvement is not a guarantee of an organizer result.
 
-**Top candidate H83-A validated on spatially-blocked holdout before any slot spend** — see [evidence/holdout_run_h83a.json](evidence/holdout_run_h83a.json) and [docs/research/holdout-validation.md](docs/research/holdout-validation.md). No weekly slot spent on an idea that hasn't beaten current holdout best.
+## Submission format and user experience
 
-## Where we stand
+The output must match the official template’s single-band GeoTIFF CRS, shape, and geotransform. Values must be in [0,1] and finite inside the scoring footprint; a zeros-outside variant is the safest range audit unless the official format requires another encoding. Re-open the written bytes and validate automatically. Supply a unique name and a short comment no longer than 140 characters. Create an executive-summary subpage with exact portal steps. Make the download button appear only after the full run card says submission-ready.
 
-- **Primary submission (this repo):** `GEMSDOE83-H83A-DILJOG-40K` — 40,000 dots, 0 on catalogue, flank B=2 + dilational jog augmentation. HOLDOUT-DTI **0.1034 ±0.012** vs 0.0983 incumbent at same mass (see Run Card). ORGANIZER-CONFIRMED score: **NONE YET** — not submitted.
-- **Fallback (already-scored):** `gems32-probe-S1-ANCHOR-identical-to-live-02600.tif` — bit-identical to live 0.2600/0.2708 emissions; behavior known.
-- **Irregularities flagged:** see [docs/irregularities.html](docs/irregularities.html) and `registry/irregularities.json`.
+## Sources and project quality
 
-## Data placement (the single blocker that is now fixed)
+Use official, free public sources when possible; provide source URLs for manual review; store provenance, hashes, evidence class, and irregularities in auditable tables. Do not claim a source is freshly verified unless it was fetched and checked in this session. The competition data page may require login; do not bypass it or request/store credentials in chat. Identify what could not be fetched, what data/tools are missing, and what remains to be done. Build a clean, simple GitHub Pages site and a useful status feed, but do not automatically scrape or misrepresent a dynamic competition leaderboard.
 
-`bash scripts/fetch_mirrors.sh` into `data/raw/` (owner-supplied mirrors, hash-pinned, NOT organizer-authenticated — see registry/data_manifest.json). Then `python scripts/prepare_data.py`. After that train→inference→validate pipeline ready (GPU for training; metric/losses/validation verified on CPU). This checkout ships with `data/raw/` restored (verified 23/23 PASS).
+## Required values and review passes
 
-## How to reproduce
+- **Maximize P(Win):** weigh evidence, uncertainty, and submission-slot cost; say no to weak candidates.
+- **Own the Outcome:** take responsibility for the final result, disclose failures, and improve the system.
+- Complete three passes before reporting: (1) implement what is supported and verify; (2) review for bugs, assumptions and edge cases and fix; (3) re-check the whole result against this brief and improve anything still wrong.
+- Open a pull request from the active Arena branch. Merge it only after checks pass. Never switch or rename the session branch.
 
-```bash
-bash scripts/fetch_mirrors.sh data/raw          # if data missing
-python scripts/build_features.py               # builds 35-channel stack (optional, uses cached)
-python scripts/run_holdout.py --candidate H83-A  # validates top hypothesis
-python scripts/build_submission.py --primary     # writes docs/downloads/*.tif + receipt
-python scripts/check_submission.py docs/downloads/<file>.tif --strict-finite
-pytest tests -q
-python scripts/build_site.py
-```
+## Official/manual-review source entry points supplied by the user
 
-## Limitations & what we still need
+- DOE GEMS Prize: https://www.drivendata.org/competitions/306/competition-doe-gems/
+- Problem description, metric, submission requirements: https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/
+- About/resources: https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/
+- Competition data: https://www.drivendata.org/competitions/306/competition-doe-gems/data/
+- Public leaderboard: https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/
+- Official reference code: https://github.com/drivendataorg/gems-prize-reference-solution
+- NLR rules PDF: https://docs.nlr.gov/docs/fy26osti/96647.pdf
+- USGS GeoDAWN data: https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and
+- GBCGE INGENIOUS: https://gbcge.org/current-projects/ingenious/
+- GDR submission 1391: https://gdr.openei.org/submissions/1391
+- USGS ComCat FDSN service: https://earthquake.usgs.gov/fdsnws/event/1/
+- EPSG:32611: https://epsg.io/32611
+- Tversky index background: https://en.wikipedia.org/wiki/Tversky_index (secondary source, not an official competition source)
+- User-reported GEMSDOE32 H33-2-B2 page: https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html
 
-- **No DrivenData auth → cannot auto-download** training_features.tif etc from competition data page (redirect to login, verified). We use owner mirrors (see sources.html) — conditional on that provenance.
-- **GPU needed for training** U-Net; holdout/emission/validation run on CPU here.
-- **External data:** H83-D needs USGS ComCat (free, official, https://earthquake.usgs.gov/fdsnws/event/1/ — verified 200 in CI). Sandboxed, fetcher ships as `scripts/fetch_earthquake_catalog.sh` but obtainability not claimed from here.
-- **Truth model is generative:** Off-catalogue numbers are model projections, not scores. Only organizer scoring is truth.
+The user-supplied site scores and conflicting leaderboard statements are retained only as `USER_REPORTED_UNVERIFIED` context in the score ledger. They are not organizer receipts and are not accepted as scores for a run card.
 
-## Sources (official, verified, links for manual review)
-
-Full table with fetch status: [docs/sources.html](docs/sources.html)
-
-- Competition home, problem description (metric source), data page (login-walled), leaderboard, rules PDF (mirrored, sha256 50d854…), reference solution (John Lipor), GeoDAWN, ScienceBase area, GBCGE INGENIOUS, MCRE SRL/BSSA (verified via USGS Pubs Warehouse), NBMG, relocated seismicity, USGS QFaults, NBMG INGENIOUS REST (1,179 features in footprint, verified 2026-10-03), GDR 1391, 3DEP, ComCat, INGENIOUS service, GDR QFaults v2 raster, SGMC raster, sibling repos.
-
+</details>

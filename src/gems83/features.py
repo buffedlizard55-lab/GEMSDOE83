@@ -1,6 +1,10 @@
-"""Multi-scale structural feature stack built from the 19 official bands (+ derived transforms).
+"""Historical local multi-scale feature experiment; not the canonical cached feature stack.
 
-Design notes (documented, not tuned on the held-out blocks):
+The statements about source bands, tuning, and leakage below are owner-authored historical claims
+and are not independently authenticated for the current protocol. Confirm all features and metadata
+against the official stack; use the canonical cache and holdout evaluator.
+
+Original design notes:
 
 * the 19 official bands are used as given (NaN -> 0, plus a footprint flag);
 * the *derived* channels are all **line/structure transforms**, not raw fields: curvature,

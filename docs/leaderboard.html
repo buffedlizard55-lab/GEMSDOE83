@@ -1,48 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Leaderboard — GEMSDOE83</title>
-<style>
-body{font-family:system-ui,sans-serif;margin:0;color:#12241e;background:#f6f8f7}
-header{background:linear-gradient(135deg,#0a6b4a,#0e8c62);color:#fff;padding:18px}
-.wrap{max-width:960px;margin:0 auto}
-.card{background:#fff;border:1px solid #dde6e0;border-radius:10px;padding:12px;margin:12px 0}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{border:1px solid #dde6e0;padding:6px;text-align:left}
-th{background:#eef4f1}
-.mut{color:#5a6b62;font-size:12px}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Score reports · GEMSDOE83</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header><div class="wrap"><h1>Leaderboard — verified read + group claims</h1><div style="opacity:.9;font-size:13px">ORGANIZER‑CONFIRMED rows are read from the official DrivenData page; owner claims are not scores.</div><div style="margin-top:6px"><a href="index.html" style="color:#fff">← Home</a></div></div></header>
-<div class="wrap" style="padding:18px">
-<div class="card">
-<h3>Public leaderboard (ORGANIZER‑CONFIRMED, read 2026‑10‑04)</h3>
-<table>
-<tr><th>#</th><th>Team</th><th>Public DTI</th><th>Source</th></tr>
-<tr><td>1</td><td>nchuzhoy</td><td><b>0.3262</b></td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">drivendata.org/leaderboard</a> (2 snapshots stored)</td></tr>
-<tr><td>2</td><td>DARD</td><td>0.3195</td><td>same</td></tr>
-<tr><td>3</td><td>alexoktaba</td><td>0.3042</td><td>same</td></tr>
-</table>
-<p class="mut">Snapshot stored in <code>registry/leaderboard_snapshot_2026-10-04.json</code>. Prompt mentions current high 0.4413 (unverified, possibly after 2026‑10‑04).</p>
-</div>
-<div class="card">
-<h3>Group’s own ledger (claims, not organizer receipts)</h3>
-<table>
-<tr><th>Site</th><th>File</th><th>Claimed DTI</th><th>Evidence class</th></tr>
-<tr><td>GEMSDOE32</td><td>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros</td><td>0.2778</td><td>owner‑reported, not organizer receipt</td></tr>
-<tr><td>GEMSDOE28</td><td>h36-1-rung30-blind-r1</td><td>0.2710</td><td>claim</td></tr>
-<tr><td>GEMSDOE31</td><td>h27-4-solo-d28</td><td>0.2708</td><td>owner‑reported, used for live anchor</td></tr>
-<tr><td>GEMSDOE25</td><td>dotted-h19-5-d2-8</td><td>0.2600</td><td>owner‑reported, H28 inversion base</td></tr>
-<tr><td>GEMSDOE83 (this repo)</td><td>h83b-dilational-jog-aug-b2-40000</td><td><i>not yet scored</i></td><td>HOLDOUT‑DTI 0.0044/0.0681/0.0417 (see home)</td></tr>
-</table>
-<p class="mut">All “0.2600”‑type numbers are from the group’s brief, not live receipts linking bytes to rows (IR‑83‑SCORE‑01). Only public leaderboard rows for <i>other teams</i> are organizer‑confirmed.</p>
-</div>
-<div class="card">
-<h3>How to tell a claim from a score</h3>
-<p class="mut"><b>ORGANIZER‑CONFIRMED:</b> copied from a submission‑page receipt (not present for any file in this repo). <b>HOLDOUT‑DTI:</b> evaluator version + withheld positives + 95% CI from spatially‑blocked holdout. <b>MODEL / projection:</b> never written as a score. Every table here labels the class.</p>
-</div>
-</div>
+<header><nav aria-label="Main navigation"><strong>GEMSDOE83</strong><a href="index.html">Readiness</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Research</a><a href="hypotheses.html">Hypotheses</a><a href="sources.html">Sources</a><a href="leaderboard.html" aria-current="page">Score ledger</a></nav></header>
+<main>
+  <div class="eyebrow">Score provenance</div>
+  <h1>Reported scores are not receipts</h1>
+  <section class="alert"><span class="badge">CURRENT LEADERBOARD NOT FETCHED</span><p>The prompt gives conflicting current maxima. The live official leaderboard was not accessed in this session, so no current rank is asserted.</p></section>
+  <div class="scroll"><table>
+    <thead><tr><th>Value / item</th><th>Evidence class</th><th>Interpretation</th></tr></thead>
+    <tbody>
+      <tr><td>0.2778 — GEMSDOE32 H33-2-B2</td><td><strong>USER-REPORTED, not ORGANIZER-CONFIRMED</strong></td><td>No submission-page receipt linking the value to the artifact hash was provided. The pinned owner manifest says `UNSCORED` and `receipt: null`; a later score is possible but unverified.</td></tr>
+      <tr><td>0.3195 — user-provided current maximum</td><td><strong>USER-REPORTED, CONFLICTED</strong></td><td>Conflicts with the other current maximum supplied in the prompt; not fetched here.</td></tr>
+      <tr><td>0.4413 — user-provided current maximum</td><td><strong>USER-REPORTED, CONFLICTED</strong></td><td>Conflicts with 0.3195. It also numerically matches an owner-local proxy rounded to four decimals; that is not evidence the proxy is a leaderboard result.</td></tr>
+      <tr><td>0.4412792647 — R2-safe-zeroTPp</td><td><strong>OWNER-REPORTED LOCAL PROXY METRIC — NOT A SCORE</strong></td><td>A separate GEMSDOE32 `LM` proxy output for a 7,943-dot candidate. It rounds to 0.4413; no organizer receipt or public leaderboard row connects them.</td></tr>
+      <tr><td>2026-10-04 snapshot metadata</td><td>Historical public-page metadata only; no receipt-bound score is recorded</td><td>The dated source URL and evidence limitation are retained, but numeric leaderboard values are omitted because the snapshot has no submission-page receipt linking scores to artifact bytes. It is not current.</td></tr>
+      <tr><td>GEMSDOE83 current run</td><td><strong>No HOLDOUT-DTI; no ORGANIZER-CONFIRMED score</strong></td><td>No experiment or competition submission was made. See the <a href="run-card.json">run card</a>.</td></tr>
+    </tbody>
+  </table></div>
+  <h2>Complete user-supplied site list</h2>
+  <p>Filenames and values in the user prompt are preserved in the <a href="data/user_supplied_score_ledger.csv">CSV ledger</a>. Rows are marked `USER_REPORTED_UNVERIFIED`, `USER_REPORTED_CONFLICT`, or `NO_SCORE_SUPPLIED`; they are not organizer receipts and are not accepted as this project’s scores.</p>
+  <h2>What counts as confirmed?</h2>
+  <p>For this project, an `ORGANIZER-CONFIRMED` score requires the organizer’s submission-page receipt and a trace to the submitted file/hash. A leaderboard snapshot, user report, owner mirror, local proxy, or projection is a different evidence class.</p>
+  <p>Manual review: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">official DrivenData leaderboard</a>. The page was not accessed in this session.</p>
+  <footer><small>No current leaderboard claim is made.</small></footer>
+</main>
 </body>
 </html>

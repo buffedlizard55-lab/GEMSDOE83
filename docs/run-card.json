@@ -1,52 +1,183 @@
 {
-  "schema": "gems83-run-card-v1",
+  "schema": "gemsdoe83-run-card-v3",
   "as_of": "2026-10-21",
-  "hypothesis": "No lane supplied. Highest-ranked conditional proposal: cross-contact magnetic phase displacement.",
-  "mechanism": "Match lateral displacement across independent gravity edges; not implemented or evaluated.",
-  "non_fault_mimic": "Intrusive contact geometry or survey stitching",
+  "method_lane": {
+    "status": "UNASSIGNED",
+    "assigned_paragraph": null
+  },
+  "hypothesis": "Rank-1 research proposal only: cross-frequency wavelet phase coupling between magnetic and gravity bands may reveal a buried structural corridor. This is not the assigned lane and was not implemented.",
+  "mechanism": "If a concealed fault or damage corridor organizes structure across wavelengths, short- and long-scale magnetic/gravity wavelet phases may remain linearly coherent and change together across the corridor beneath cover. This is an untested physical hypothesis, not evidence of a fault or geothermal discovery.",
+  "non_fault_mimic": "Survey-line leveling/gridding seam or a non-fault intrusive/lithologic contact.",
+  "holdout_protocol": {
+    "status": "REQUIRED_NOT_RUN",
+    "hide_unit": "Whole fault segments with a spatial buffer",
+    "catalogue_features": "Derive from visible faults only, fold by fold",
+    "visible_fault_mask": "Pixel-exact",
+    "metric": {
+      "pooling": "pooled",
+      "alpha": 0.2,
+      "beta": 0.8,
+      "kernel": "triangular",
+      "radius_m": 300
+    }
+  },
+  "template_audit": {
+    "status": "UNRESOLVED_BLOCKER_OWNER_MIRROR_ONLY",
+    "sample_template": {
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "provenance": "OWNER_MIRROR_NOT_ORGANIZER_AUTHENTICATED",
+      "shape": [
+        3730,
+        3292
+      ],
+      "crs": "EPSG:32611",
+      "finite_cells": 5167373,
+      "one_valued_cells": 60988,
+      "one_valued_cells_coincide_with_mirrored_labels": true,
+      "rasterio_transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ]
+    },
+    "legacy_feature_footprint_claim": 5165852,
+    "difference_cells": 1521,
+    "legacy_receipt": "registry/feature_receipt.json is absent from this checkout",
+    "official_template_authenticated": false,
+    "outside_mask_semantics_resolved": false
+  },
   "holdout": {
     "label": "HOLDOUT-DTI",
-    "status": "NOT_RUN",
+    "status": "NOT_RUN_BLOCKED",
     "evaluator_version": null,
-    "withheld_positives": null,
-    "dti": null,
+    "withheld_positive_count": null,
+    "withheld_positive_count_unit": null,
+    "withheld_positive_segments": null,
+    "withheld_positive_pixels": null,
+    "pooled_dti": null,
     "ci95": null,
-    "incumbent_same_instrument": null
+    "same_instrument_incumbent": null,
+    "feature_only_leakage_canary": {
+      "status": "NOT_RUN",
+      "feature_count": null,
+      "maximum_auc": null,
+      "leakage_alarm_threshold_auc": 0.9
+    }
   },
   "registry": {
-    "status": "BLOCKED_MISSING_CANONICAL_REGISTRY",
-    "surface_max_rank_correlation": null,
-    "final_max_rank_correlation": null,
-    "surface_dot_overlap_within_3px": null,
-    "final_dot_overlap_within_3px": null,
+    "surface": {
+      "status": "NOT_RUN_MISSING_CANONICAL_REGISTRY",
+      "rasters_checked": 0,
+      "maximum_rank_correlation": null,
+      "rank_correlation_threshold": 0.9,
+      "duplicate": null
+    },
+    "final_dots": {
+      "status": "NOT_RUN_NO_AUTHORIZED_CANDIDATE_OR_REGISTRY",
+      "rasters_checked": 0,
+      "maximum_fraction_within_3px": null,
+      "overlap_threshold": 0.7,
+      "duplicate": null
+    },
     "unique_verified": false
   },
   "raster_sha256": null,
   "validator": {
-    "status": "NOT_RUN_NO_CANDIDATE",
+    "status": "NOT_RUN_NO_CURRENT_CANDIDATE",
     "no_nan_inside_footprint": null,
     "values_in_0_1": null,
     "crs_match": null,
     "shape_match": null,
-    "transform_match": null
+    "transform_match": null,
+    "single_band": null,
+    "reopened_written_bytes": null,
+    "validator_output": null
   },
-  "submission_name": null,
-  "note": "Blocked: no assigned lane, canonical shared template or registry. No TIFF generated; no weekly slot used.",
-  "verdict": "negative",
-  "submission_ready": false,
-  "experiments_run": 0,
-  "weekly_slots_used": 0,
-  "blockers": [
-    "Assigned single method paragraph not identified in supplied prompt",
-    "Canonical shared evaluate_holdout.py and submission_writer.py absent",
-    "Cached feature stack and canonical registry absent from this checkout",
-    "No same-instrument incumbent, canary results, holdout CI, or uniqueness audit",
-    "Mirrored template integrity verified, but organizer authenticity not established"
+  "submission": {
+    "name": null,
+    "note": null,
+    "note_max_characters": 140,
+    "file": null,
+    "sha256": null,
+    "submission_ready": false,
+    "weekly_slot_used": false
+  },
+  "score_provenance_context": {
+    "user_reported_gemsdoe32_h33_2_b2": {
+      "value": 0.2778,
+      "evidence_class": "USER-REPORTED-UNVERIFIED",
+      "organizer_submission_page_receipt": null,
+      "reported_artifact_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "owner_manifest_status_at_snapshot": "UNSCORED; receipt null",
+      "interpretation": "A later score is possible, but no receipt tying the reported value to these bytes was found in the owner repository snapshot reviewed."
+    },
+    "owner_lm_calibrated_proxy_for_h33_2_b2": {
+      "evidence_class": "OWNER-REPORTED-PROXY-METRIC-NOT-A-SCORE",
+      "evaluator": "GEMSDOE32 owner LM-calibrated proxy; not the requested canonical evaluator",
+      "base_metric": 0.2630509875503576,
+      "candidate_metric": 0.2679205315698004,
+      "difference": 0.004869544019442784,
+      "positive_quadrants": 4,
+      "quadrants": 4,
+      "submission_page_receipt": null
+    },
+    "owner_live_projection_for_h33_2_b2": {
+      "value": 0.27467315976932155,
+      "evidence_class": "PROJECTION-NOT-A-SCORE",
+      "source": "Owner live-anchor calculation in evidence/h33_validation.json",
+      "organizer_receipt": null
+    },
+    "owner_local_proxy_matching_rounded_user_claim": {
+      "value": 0.44127926469416334,
+      "evidence_class": "OWNER-REPORTED-LOCAL-PROXY-METRIC-NOT-A-SCORE",
+      "candidate_id": "R2-safe-zeroTPp",
+      "source": "GEMSDOE32 evidence/h33_removal_rule_scan.json",
+      "user_reported_current_leaderboard_value": 0.4413,
+      "user_reported_value_evidence_class": "USER-REPORTED-CONFLICT-NOT-ORGANIZER-CONFIRMED",
+      "coincides_when_rounded_to_4_decimal_places": true,
+      "organizer_receipt": null,
+      "interpretation": "Numerical coincidence only; it does not establish that this local proxy is a public leaderboard score."
+    },
+    "current_organizer_confirmed_score": null
+  },
+  "legacy_artifact_audits": [
+    {
+      "status": "FORMAT_ONLY_NOT_ELIGIBLE",
+      "file": "research/quarantine/prior-h83b/downloads/gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-zeros.tif",
+      "sha256": "e731b16b2811ff6cc0b581742acbd4b7a18858b8a83d5b4f2e4031967bc735a5",
+      "format_valid_against_owner_mirrored_grid": true,
+      "scientific_validation_accepted": false,
+      "full_registry_uniqueness_verified": false,
+      "published_for_download": false
+    },
+    {
+      "status": "FORMAT_INVALID_NOT_ELIGIBLE",
+      "file": "research/quarantine/prior-h83b/downloads/gemsdoe83-h83b-dilational-jog-aug-b2-40000-20261004T220000Z-c48ac2b3-nan.tif",
+      "sha256": "4379f3ea044a27c69b0a17c6887f1d260debe47caaf874921266ad1390d82789",
+      "format_valid_against_owner_mirrored_grid": false,
+      "scientific_validation_accepted": false,
+      "full_registry_uniqueness_verified": false,
+      "published_for_download": false
+    }
   ],
-  "concurrent_artifacts": {
-    "status": "QUARANTINED_NOT_ENDORSED",
-    "source_merge": "b57875f",
-    "reason": "Synthetic generator reads no geological layers, fabricates footprint, and does not reproduce advertised holdout/registry claims.",
-    "audit": "evidence/concurrent-artifact-audit.json"
-  }
+  "budget": {
+    "experiments_run": 0,
+    "experiments_limit": 3,
+    "weekly_slots_used": 0,
+    "elapsed_hours_on_experiments": null,
+    "time_limit_hours": 2
+  },
+  "blockers": [
+    "The supplied prompt does not identify the assigned single-method lane.",
+    "Canonical cached feature stack, evaluate_holdout.py, and submission_writer.py are absent from this checkout; local historical utilities are not accepted substitutes.",
+    "The official feature stack and complete registry rasters are absent; small owner mirrors do not establish organizer provenance.",
+    "No accepted same-instrument HOLDOUT-DTI baseline, withheld-positive count, confidence interval, or feature-only leakage canary is available.",
+    "The current leaderboard was not fetched; user-supplied current maximum values conflict, and an owner-local proxy happens to round to one claimed value.",
+    "The owner-mirrored sample grid and legacy feature-footprint counts differ by 1,521 cells; the referenced receipt is missing and official template semantics are unresolved."
+  ],
+  "submission_ready": false,
+  "verdict": "negative"
 }

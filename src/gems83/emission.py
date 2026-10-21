@@ -1,13 +1,17 @@
-"""Emitters: how a detector field becomes a legal 0/1 prediction raster.
+"""Historical local emitter experiments; not the canonical submission writer.
 
-The decision rule is analytic.  With ``D = 0.2 (T + S - M) + 0.8 K`` (see ``metric.py``), adding
+The algebra below is specific to this package's local metric implementation and is not an
+organizer-verified scoring instrument. Do not use its historical thresholds or outputs for a
+current slot decision. With local ``D = 0.2 (T + S - M) + 0.8 K`` (see ``metric.py``), adding
 one unit of prediction mass at a pixel changes ``D`` by exactly 0.2, so
 
     dDTI > 0  <=>  dT > 0.2 * dS * DTI  <=>  credit per unit mass  >  0.2 * DTI .
 
-Let ``c* = 0.2 * DTI`` be the **credit bar**.  It is 0.052 at the group's claimed best (0.26) and
-0.065 at the current public leaderboard #1 (0.3262).  Every emitter below is a way of estimating
-the left-hand side without the hidden labels.  Two structural consequences drive the design:
+Let ``c* = 0.2 * DTI`` be the **credit bar**. Earlier examples were derived from unverified owner
+reports and a dated public-board snapshot; those numeric values are omitted and are not accepted
+score evidence, submission-page receipts, or inputs to a current slot decision. Every emitter below
+is a historical way of estimating the left-hand side without hidden labels. Two structural
+consequences drive the design:
 
 * mass that is *not* the best covering pixel of some hidden truth pixel is pure cost, so
   duplicates must be pruned -- this is why dotting a thick surface helps;

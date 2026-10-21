@@ -1,125 +1,72 @@
-"""The site's machine-readable feed.
+"""Deprecated status-feed compatibility helpers; no network probes or dynamic board data.
 
-Everything the site shows that can change -- build state, hypotheses, the holdout summary, the
-leaderboard snapshot, source health -- is assembled here, so the published page is always a
-rendering of the repository rather than something a human retyped.
-
-Score discipline: an owner-reported number is stored with ``"kind": "owner_report"`` and is never
-rendered next to a verified number without that label; leaderboard rows carry ``verified: true``
-only when they were read from the public page in the same run that stored them.
+The current site consumes the reviewed static snapshot at ``docs/data/status.json`` and the
+registered source statuses at ``registry/sources.json``. This historical module must not scrape
+a leaderboard, probe external sources, synthesize evidence, or write a competing feed.
 """
 from __future__ import annotations
 
 import hashlib
 import json
-import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-SKIP_PROBE = ("drivendata.org",)      # standing brief: never automate access to the competition host
 
 
-def _read_json(p: Path, default=None):
+def _read_json(path: Path, default=None):
     try:
-        return json.loads(p.read_text())
-    except Exception:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
         return default
 
 
 def sha256(path: Path, limit: int | None = None) -> str | None:
+    """Historical file-hash helper retained for compatibility; does not access the network."""
     if not path.exists():
         return None
-    h = hashlib.sha256()
-    with path.open("rb") as fh:
-        while True:
-            b = fh.read(1 << 20)
-            if not b:
+    digest = hashlib.sha256()
+    remaining = limit
+    with path.open("rb") as file:
+        while remaining is None or remaining > 0:
+            block = file.read(1 << 20 if remaining is None else min(1 << 20, remaining))
+            if not block:
                 break
-            h.update(b)
-    return h.hexdigest()
+            digest.update(block)
+            if remaining is not None:
+                remaining -= len(block)
+    return digest.hexdigest()
 
 
 def build(root: Path = ROOT) -> dict:
-    reg, docs = root / "registry", root / "docs"
-    feed: dict = {"schema": 1, "generated_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
-
-    src = _read_json(reg / "sources.json", {"sources": []})
-    feed["sources"] = src["sources"]
-    feed["source_count"] = len(src["sources"])
-
-    rows = []
-    lb_path = reg / "leaderboard_history.jsonl"
-    if lb_path.exists():
-        for line in lb_path.read_text().splitlines():
-            if line.strip():
-                rows.append(json.loads(line))
-    feed["leaderboard"] = rows[-1]["rows"] if rows else []
-    feed["leaderboard_observed_utc"] = rows[-1].get("observed_utc") if rows else None
-    feed["leaderboard_verified"] = bool(rows and rows[-1].get("verified"))
-    feed["leaderboard_snapshots"] = len(rows)
-
-    hyp = _read_json(reg / "hypotheses.json", {"hypotheses": []})
-    feed["hypotheses"] = hyp["hypotheses"]
-
-    claims = _read_json(reg / "claims.json", {"claims": []})
-    feed["claims"] = claims["claims"]
-
-    sub = _read_json(reg / "submission_build.json")
-    if sub:
-        feed["submission"] = sub
-        f = sub.get("file", {})
-        fp = root / f.get("path", "")
-        f["sha256"] = f.get("sha256") or (sha256(fp) if fp.is_file() else None)
-        f["bytes"] = f.get("bytes") or (fp.stat().st_size if fp.is_file() else None)
-    hold = _read_json(root / "evidence" / "holdout_run1.json")
-    if hold:
-        def _arms(f):
-            a = f.get("arms", {})
-            if isinstance(a, dict):
-                return {k: {"dti": v.get("dti"), "n_px": v.get("n_px")} for k, v in a.items()}
-            return {v["name"]: {"dti": v.get("dti"), "n_px": v.get("n_px")} for v in a}
-        feed["holdout"] = {"preregistration": hold["preregistration"]["id"],
-                           "summary": hold["summary"], "generated_utc": hold.get("generated_utc"),
-                           "folds": [{"block": f.get("block"), "auc": f.get("auc"),
-                                      "n_truth": f.get("n_truth", 0), "arms": _arms(f)}
-                                     for f in hold["folds"]]}
-    for name in ("h60_2_catalogue_difference.json", "truth_model_mc.json",
-                 "emission_models_mc.json", "shipped_vs_incumbent_mc.json"):
-        ev = _read_json(root / "evidence" / name)
-        if ev:
-            feed.setdefault("evidence", {})[name] = ev
-    feed["irregularities"] = _read_json(reg / "irregularities.json", {"items": []})["items"]
-    (docs / "data").mkdir(parents=True, exist_ok=True)
-    (docs / "data" / "feed.json").write_text(json.dumps(feed, indent=1) + "\n")
-    return feed
+    """Return the checked-in static status; do not assemble or write a second feed."""
+    status_path = root / "docs" / "data" / "status.json"
+    status = _read_json(status_path)
+    if not isinstance(status, dict) or status.get("schema") != "gemsdoe83-status-feed-v2":
+        raise RuntimeError(f"Reviewed static status feed missing or invalid: {status_path}")
+    return status
 
 
 def refresh_sources(root: Path = ROOT, timeout: float = 15.0) -> dict:
-    """Probe every *non-competition* source once and record the observed status.
+    """Return the recorded source register without probing hosts or changing files.
 
-    Sources on ``SKIP_PROBE`` (the competition host) are recorded as ``not_probed``: the standing
-    brief is explicit that access to the competition site is never automated.
+    ``timeout`` remains in the signature for compatibility but is intentionally unused. Source
+    availability must be verified explicitly and recorded by a reviewed session; this helper
+    cannot claim live availability.
     """
-    import urllib.request
-    results = []
-    src = _read_json(root / "registry" / "sources.json", {"sources": []})
-    now = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
-    for s in src["sources"]:
-        url = s["url"]
-        rec = {"id": s["id"], "url": url, "checked_utc": now}
-        if any(h in url for h in SKIP_PROBE):
-            rec.update(status="not_probed", note="competition host: never probed automatically")
-            results.append(rec)
-            continue
-        try:
-            req = urllib.request.Request(url, headers={"User-Agent": "GEMSDOE32-feed/1.0 (+research)"})
-            with urllib.request.urlopen(req, timeout=timeout) as r:
-                rec.update(http_status=int(r.status), content_type=r.headers.get("Content-Type", ""))
-        except Exception as exc:                      # noqa: BLE001 - recorded, never raised
-            rec.update(http_status=None, error=f"{type(exc).__name__}: {exc}")
-        results.append(rec)
-    out = {"checked_utc": now, "results": results,
-           "policy": "drivendata.org is never requested by this repository"}
-    (root / "docs" / "data").mkdir(parents=True, exist_ok=True)
-    (root / "docs" / "data" / "source_health.json").write_text(json.dumps(out, indent=1) + "\n")
-    return out
+    del timeout
+    register = _read_json(root / "registry" / "sources.json", {"sources": []})
+    results = [
+        {
+            "id": source.get("id"),
+            "url": source.get("url"),
+            "status": source.get("status", "UNKNOWN_NOT_PROBED"),
+            "evidence_class": source.get("evidence_class", "NOT_RECORDED"),
+            "note": "Registered status only; no network request was made by this helper.",
+        }
+        for source in register.get("sources", [])
+    ]
+    return {
+        "checked_utc": None,
+        "results": results,
+        "policy": "No automatic network probes or leaderboard scraping; use reviewed source statuses.",
+    }

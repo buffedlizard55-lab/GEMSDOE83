@@ -1,10 +1,9 @@
 {
-  "fetched": "2026-10-04T13:00:00Z",
+  "schema": "gemsdoe83-public-leaderboard-snapshot-metadata-v3",
+  "observed_utc": "2026-10-04T13:00:00Z",
   "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
-  "entries": [
-    {"rank": 1, "team": "nchuzhoy", "score": 0.3262, "verified": true},
-    {"rank": 2, "team": "DARD", "score": 0.3195, "verified": true},
-    {"rank": 3, "team": "alexoktaba", "score": 0.3042, "verified": true}
-  ],
-  "note": "ORGANIZER-CONFIRMED read from official page, not owner claim"
+  "evidence_class": "HISTORICAL_PUBLIC_PAGE_SNAPSHOT_METADATA_ONLY",
+  "verification_note": "A prior session transcribed public-page values at the stated time, but this metadata record intentionally omits all numeric leaderboard values. A public-page snapshot is not a submission-page receipt and cannot establish a score-to-artifact link under this project's evidence policy. It is not current.",
+  "numeric_leaderboard_values_included": false,
+  "entries": []
 }

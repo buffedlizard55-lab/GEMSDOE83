@@ -1,53 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sources — GEMSDOE83</title>
-<style>
-body{font-family:system-ui,sans-serif;margin:0;color:#12241e;background:#f6f8f7}
-header{background:linear-gradient(135deg,#0a6b4a,#0e8c62);color:#fff;padding:18px}
-.wrap{max-width:1080px;margin:0 auto}
-.card{background:#fff;border:1px solid #dde6e0;border-radius:10px;padding:12px;margin:12px 0}
-.mut{color:#5a6b62;font-size:12px}
-table{width:100%;border-collapse:collapse;font-size:12px}
-th,td{border:1px solid #dde6e0;padding:6px;text-align:left}
-th{background:#eef4f1}
-code{background:#eef4f1;padding:1px 4px;border-radius:4px}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sources and provenance · GEMSDOE83</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header><div class="wrap"><h1 style="margin:0">Official sources, with role and fetch status</h1><div style="opacity:.9;font-size:13px">“verified” means fetched from this sandbox or CI and digest‑pinned; “listed” is official/public but not fetched here (egress limited to github.com + fetcher). Every claim here carries an evidence class.</div><div style="margin-top:6px"><a href="index.html" style="color:#fff">← Home</a> · <a href="https://github.com/buffedlizard55-lab/GEMSDOE83" style="color:#fff">Repo</a></div></div></header>
-<div class="wrap" style="padding:18px">
-<div class="card">
-<table>
-<tr><th>id</th><th>source</th><th>role</th><th>status</th></tr>
-<tr><td>competition</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DOE GEMS Prize – overview</a></td><td>competition home</td><td>verified 2026‑10‑04 (fetched, title + prize structure $50k/$250k read)</td></tr>
-<tr><td>problem</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Problem description, metric and submission format (verbatim source of metric.py)</a></td><td>metric + format: DTI = TPw/(TPw+0.2FPw+0.8FNw), R=300m, worked example TP3.00 FP1.89 FN2.00 →0.60 reproduced</td><td>verified 2026‑10‑04 (fetched twice, equations transcribed to metric.py, test passes)</td></tr>
-<tr><td>about</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">About / additional resources</a></td><td>rules and resources</td><td>listed</td></tr>
-<tr><td>data</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">Data download page (login‑walled)</a></td><td>competition data (19‑band training_features, labels, sample)</td><td>login required; not accessed; owner mirrors used, hash‑pinned</td></tr>
-<tr><td>leaderboard</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Public leaderboard</a></td><td>live scores</td><td>verified 2026‑10‑04: #1 nchuzhoy 0.3262, #2 DARD 0.3195, #3 alexoktaba 0.3042 (two snapshots stored)</td></tr>
-<tr><td>rules_pdf</td><td><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">GEMS rules PDF (NLR 96647)</a></td><td>official rules, 3 submissions/week cap</td><td>verified 2026‑10‑04 (HTTP 200, sha256 50d854b1e0239fe6… mirrored)</td></tr>
-<tr><td>reference_solution</td><td><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Official reference solution (U‑Net, John Lipor, Portland State)</a></td><td>baseline: U‑Net + TverskyLoss(0.2,0.8)</td><td>verified 2026‑10‑04 (cloned, notebook read, architecture recorded)</td></tr>
-<tr><td>geodawn</td><td><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">GeoDAWN airborne magnetic+ radiometric, NW Great Basin</a></td><td>magnetic/radiometric bands source</td><td>verified 2026‑10‑04 (HTTP 200)</td></tr>
-<tr><td>sciencebase_area</td><td><a href="https://www.sciencebase.gov/catalog/item/657e1d85d34e23d3533209f7">GeoDAWN study‑area item</a></td><td>survey extent</td><td>verified 2026‑10‑04 (HTTP 200)</td></tr>
-<tr><td>gbcge</td><td><a href="https://gbcge.org/current-projects/ingenious/">GBCGE INGENIOUS project</a></td><td>fault catalogue source</td><td>verified 2026‑10‑04 (HTTP 200)</td></tr>
-<tr><td>mcre_srl</td><td><a href="https://doi.org/10.1785/0220200371">Koehler et al. 2021, 2020 M6.5 Monte Cristo Range, SRL 92(2A)</a></td><td>H60‑1/83‑A evidence: 28 km rupture on largely unmapped faults</td><td>verified via USGS Pubs Warehouse record 70217872</td></tr>
-<tr><td>mcre_bssa</td><td><a href="https://doi.org/10.1785/0120200327">Liu et al. 2021, BSSA 111(6)</a></td><td>same, causative faults not previously identified</td><td>verified</td></tr>
-<tr><td>mcre_nbmg</td><td><a href="http://www.nbmg.unr.edu/Geohazards/Earthquakes/MonteCristoRangeEQData.html">NBMG Monte Cristo data</a></td><td>rupture maps</td><td>verified (HTTP 200)</td></tr>
-<tr><td>mcre_reloc</td><td><a href="https://zenodo.org/records/5302368">Ruhl et al. relocated seismicity</a></td><td>aftershock lineaments</td><td>verified (HTTP 200)</td></tr>
-<tr><td>usgs_qfaults</td><td><a href="https://www.usgs.gov/natural-hazards/earthquake-hazards/faults">USGS Quaternary Faults DB</a></td><td>catalogue origin</td><td>verified (HTTP 200)</td></tr>
-<tr><td>nbmg_ingenious_rest</td><td><a href="https://web2.nbmg.unr.edu/arcgis/rest/services/Qfaults/Qfaults_INGENIOUS/MapServer/0">NBMG Qfaults‑INGENIOUS REST (1,179 features in footprint)</a></td><td>newer catalogue</td><td>verified 2026‑10‑03 (group report, status json sha256 4d6efc7b…)</td></tr>
-<tr><td>gdr1391</td><td><a href="https://gdr.openei.org/submissions/1391">GDR 1391 – Nevada geothermal data</a></td><td>springs/wells (H83‑B wellsprings 2,146 pts)</td><td>verified (HTTP 200, DOI 10.15121/1881483 CC BY 4.0)</td></tr>
-<tr><td>3dep</td><td><a href="https://apps.nationalmap.gov/downloader/">USGS 3DEP</a></td><td>1 m DEM (lidar_scarp_features_u8.tif 706/716 tiles, OCR from competition PDF)</td><td>verified (mirrored, link table dem_links.json sha256 8804dbff…)</td></tr>
-<tr><td>comcat</td><td><a href="https://earthquake.usgs.gov/fdsnws/event/1/">USGS ComCat FDSNWS</a></td><td>H83‑D seismic lineaments (free, official)</td><td>verified 2026‑10‑04 (HTTP 200 from CI; sandbox 000 so fetcher ships, not claimed here)</td></tr>
-<tr><td>epsg32611</td><td><a href="https://epsg.io/32611">EPSG:32611 (UTM 11N)</a></td><td>CRS</td><td>verified</td></tr>
-<tr><td>tversky</td><td><a href="https://en.wikipedia.org/wiki/Tversky_index">Tversky index (Wikipedia)</a></td><td>metric family</td><td>verified</td></tr>
-<tr><td>gdr_qfaults_v2</td><td>Owner mirror GDR QFaults v2 raster (59,065 px, all but 1 within 300 m of catalogue)</td><td>catalogue difference audit</td><td>verified locally (sha256 pinned)</td></tr>
-<tr><td>sgmc_raster</td><td>Owner mirror SGMC raster (61,664 px beyond 300 m of given catalogue)</td><td>off‑catalogue truth</td><td>verified locally (sha256 pinned, median 15 px from catalogue)</td></tr>
-</table>
-<p class="mut">Last health probe 2026‑10‑04: rules_pdf 200, reference_solution 200, geodawn 200, sciencebase 200, gbcge 200, nbmg 200, comcat 200, gdr1391 200, etc. See evidence/probe_*.json</p>
-</div>
-</div>
+<header><nav aria-label="Main navigation"><strong>GEMSDOE83</strong><a href="index.html">Readiness</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Research</a><a href="hypotheses.html">Hypotheses</a><a href="sources.html" aria-current="page">Sources</a><a href="irregularities.html">Irregularities</a></nav></header>
+<main>
+  <div class="eyebrow">Manual-review source register</div>
+  <h1>Sources, scope, and fetch status</h1>
+  <section class="alert"><p><strong>No external-source claim below is presented as freshly verified in this session.</strong> The sandbox allowed GitHub/API access, which was used for repository evidence. DrivenData, USGS, GDR, NLR-PDF, Copernicus Data Space, EPSG, Wikipedia, and GitHub Pages sources were not fetched. The official competition feature package and live leaderboard were not accessed. Owner-mirrored files are not organizer-authenticated.</p></section>
+  <div class="scroll"><table>
+    <thead><tr><th>Source</th><th>Purpose</th><th>Current evidence status</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DOE GEMS Prize overview</a></td><td>Competition scope and rules entry point</td><td>User-supplied URL; not fetched here.</td></tr>
+      <tr><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Problem description</a></td><td>Authoritative metric and submission-format source</td><td>User-supplied URL; not fetched here. Confirm organizer scoring/masking rules here.</td></tr>
+      <tr><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">About/resources</a></td><td>Additional project context</td><td>User-supplied URL; not fetched here.</td></tr>
+      <tr><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">Competition data</a></td><td>Official feature stack, labels, and sample grid</td><td>Not accessed this session; prior notes report a login gate. Do not bypass it. Canonical stack is missing.</td></tr>
+      <tr><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Public leaderboard</a></td><td>Current public competition ranks</td><td>Not fetched here; current maximum unknown and user-supplied values conflict.</td></tr>
+      <tr><td><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Official reference solution</a></td><td>Organizer-provided code baseline</td><td>GitHub source previously reviewed; a local README copy exists. Reference model/training loss is not the requested shared holdout evaluator.</td></tr>
+      <tr><td><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">NLR rules PDF</a></td><td>Rules and submission process</td><td>User-supplied URL; PDF host not fetched.</td></tr>
+      <tr><td><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN</a></td><td>Potential official magnetic/radiometric products</td><td>Not fetched; no new official raster acquired. Not treated as viable new input here.</td></tr>
+      <tr><td><a href="https://gbcge.org/current-projects/ingenious/">GBCGE INGENIOUS</a></td><td>Regional project context</td><td>User-supplied URL; not fetched here.</td></tr>
+      <tr><td><a href="https://gdr.openei.org/submissions/1391">DOE Geothermal Data Repository 1391</a></td><td>Potential wells/springs and project resources</td><td>User-supplied URL; not fetched; no new data acquired.</td></tr>
+      <tr><td><a href="https://earthquake.usgs.gov/fdsnws/event/1/">USGS ComCat FDSN</a></td><td>Potential earthquake/focal-mechanism data</td><td>Official URL; host outside sandbox allowlist, so availability and coverage were not tested.</td></tr>
+      <tr><td><a href="https://dataspace.copernicus.eu/">Copernicus Data Space</a></td><td>Potential Sentinel-1 SAR archive for InSAR deformation</td><td>Manual-review URL only; not fetched. Access path, licensing/availability, time-series, and footprint coverage are unverified; no data acquired.</td></tr>
+      <tr><td><a href="https://epsg.io/32611">EPSG:32611</a></td><td>CRS reference</td><td>User-supplied URL; not fetched. Local format checks read CRS from an owner-mirrored template.</td></tr>
+      <tr><td><a href="https://en.wikipedia.org/wiki/Tversky_index">Tversky index background</a></td><td>Secondary general background only</td><td>Not official and not fetched; competition problem page is authoritative.</td></tr>
+      <tr><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE32/blob/f62038b54dcb7767d4d997f80b033cdc3d42bef9/src/gems32/hypotheses33.py">GEMSDOE32 H33-2 source</a></td><td>Owner method description for catalogue-flank pruning</td><td>Fetched via GitHub API at a pinned commit. Owner code, not an organizer score receipt.</td></tr>
+      <tr><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE32/blob/f62038b54dcb7767d4d997f80b033cdc3d42bef9/evidence/h33_validation.json">GEMSDOE32 H33 validation record</a></td><td>Owner-reported LM-calibrated proxy and projection</td><td>Fetched via GitHub API; explicitly not the required canonical HOLDOUT-DTI or an organizer score.</td></tr>
+      <tr><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE32/blob/f62038b54dcb7767d4d997f80b033cdc3d42bef9/evidence/h33_removal_rule_scan.json">GEMSDOE32 removal-rule scan</a></td><td>Owner-local proxy values for catalogue-flank and safe-zero pruning</td><td>Fetched via GitHub API; includes a value that rounds to user-supplied 0.4413, but it is a proxy metric only.</td></tr>
+      <tr><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE32/blob/f62038b54dcb7767d4d997f80b033cdc3d42bef9/docs/downloads/submissions_manifest.json">GEMSDOE32 artifact manifest</a></td><td>H33-2-B2 filename/hash/build note/receipt field</td><td>Fetched via GitHub API; the matching H33-2-B2 record says `UNSCORED` and `receipt: null` at that snapshot. Later score is not ruled out.</td></tr>
+      <tr><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE32/blob/f62038b54dcb7767d4d997f80b033cdc3d42bef9/docs/score-ledger.csv">GEMSDOE32 owner score ledger</a></td><td>Historical owner ledger, including dated public leaderboard observations</td><td>Fetched via GitHub API; `official-snapshot` denotes a public-page read, not an organizer submission-page receipt. Not used as an ORGANIZER-CONFIRMED result.</td></tr>
+      <tr><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE82/blob/main/data/README.md">GEMSDOE82 data README</a></td><td>Sibling repository context for shared tools/data state</td><td>Read through GitHub API in a prior session; owner documentation, not canonical template provenance.</td></tr>
+    </tbody>
+  </table></div>
+  <h2>Local data receipts</h2>
+  <p>Three small owner-mirrored rasters were fetched from GitHub and their bytes match the local manifest. This proves consistency with that mirror, not organizer provenance. The large official feature stack, canonical shared cache/evaluator/writer, and complete registry rasters are absent.</p>
+  <p>Machine-readable source register: <a href="data/sources.json">published JSON</a>. Pinned owner evidence hashes and the H33-2-B2 manifest excerpt: <a href="https://github.com/buffedlizard55-lab/GEMSDOE83/blob/main/evidence/upstream/GEMSDOE32_owner_evidence_receipt.json">local provenance receipt</a>.</p>
+  <footer><small>Source statements are limited to what was fetched or documented locally; proxies and projections are kept separate from scores.</small></footer>
+</main>
 </body>
 </html>

@@ -1,19 +1,9 @@
-"""Round-4 candidate geological hypotheses (H33-1 .. H33-5) for GEMSDOE32.
+"""Historical owner-authored GEMSDOE32 H33 proposal code; not validated here.
 
-Everything here is *new to this repository*.  Before writing it we audited, in order:
-
-* `src/gems32/hypotheses.py` (H32-A..D, this repo) and `src/gems32/features.py` (35 channels);
-* the group's earlier hypothesis registers, in particular
-  16GEMSDOE `docs/research/hypothesis_register.md`, whose rank-3 hypothesis **H18-5
-  "thermal-anchor linking"** proposed exactly the GDR spring/well/sinter/volcanic prior and
-  recorded its status as *"Premise measured; operator not built"*.  Nothing in any group
-  repository has ever turned the GDR **measured geothermometer temperatures** into an operator.
-  That is the gap H33-1 fills.
-
-Design rule inherited from H32 and kept: every transform is **label-free**.  The only rasters
-touched are the 19 official bands, the USGS 3DEP LiDAR scarp stack, the GeoDAWN rasters, and the
-GDR 1391 point tables -- never `labels.tif`.  Where a hypothesis needs a raster that is *not* in
-`data/raw` it says so explicitly and names the official source (see `docs/research/hypotheses-round4.md`).
+Original claims of novelty, official-input provenance, label-free processing, and holdout safety
+are not independently authenticated by this checkout. H33-E is prior art for raw seismicity plus
+nodal-plane strikes and was removed from this revision's candidate ranking. This module is not the
+assigned lane, canonical feature cache, or shared evaluator; do not use it to report a score.
 """
 
 from __future__ import annotations
